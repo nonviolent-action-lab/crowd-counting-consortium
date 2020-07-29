@@ -1,2 +1,2 @@
-# crowd-counting-consortium
-Data and code for the Crowd Counting Consortium
+# Crowd Counting Consortium Crowd Data
+Compiled and cleaned Crowd Counting Consortium data and code for exploring and visualizing it.
