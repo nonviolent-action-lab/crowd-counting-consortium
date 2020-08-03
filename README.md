@@ -1,5 +1,5 @@
 # Crowd Counting Consortium Crowd Data
-This repository stores a compiled and cleaned version of the [Crowd Counting Consortium](https://sites.google.com/view/crowdcountingconsortium/home)'s data on political crowds in the United States, including marches, protests, demonstrations, strikes, riots, and similar actions.
+This repository stores a compiled and cleaned version of the [Crowd Counting Consortium](https://sites.google.com/view/crowdcountingconsortium/home)'s data on political crowds in the United States, including marches, protests, demonstrations, strikes, riots, and similar actions. Geocoordinates in this table come from the [Google Maps Geocoding API](https://developers.google.com/maps/documentation).
 
 This data set is updated weekly on Fridays not later than 4 PM Eastern time. It serves as the input to the Crowd Counting Consortium (CCC) Data Dashboard, which, along with the compiled version of the data set posted here, is maintained by The [Nonviolent Action Lab](https://carrcenter.hks.harvard.edu/non-violent-social-movements), a research program within the [Carr Center for Human Rights Policy](https://carrcenter.hks.harvard.edu/) at the [Harvard Kennedy School](https://www.hks.harvard.edu/).
 
