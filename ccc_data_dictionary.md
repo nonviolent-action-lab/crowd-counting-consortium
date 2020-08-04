@@ -1,6 +1,5 @@
 # Crowd Counting Consortium Crowd Data Dictionary #
-
-
+This dictionary describes the compiled and cleaned version of the Crowd Counting Consortium (CCC) Crowd Data stored in this repository. Columns that appear in some of the CCC Google Sheets but are specific to certain months or macro-events have been dropped; some columns have been added or modified to facilitate mapping and analysis; and events occurring outside the United States and U.S. territories have been omitted. If you want to work with those columns or events, or just want to work with the data in its raw form, please use the original Google Sheets,  which you can access from the CCC website ([here](https://sites.google.com/view/crowdcountingconsortium/view-download-the-data)).
 
 - **Date**. Date of event in YYYY-MM-DD format, starting with the earliest action in the locality.
 
