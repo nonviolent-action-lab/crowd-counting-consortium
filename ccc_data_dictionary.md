@@ -12,6 +12,8 @@
 
 - **LocationDetail**. If known, details on the location within the city or town where the action took place.
 
+- **Online**. Binary indicator for online-only events. 1 = yes, 0 = no.
+
 - **EventType**. Type of action (e.g. march, protest, demonstration, strike, riot). If more than one, separate with semi-colons.
 
 - **MacroEvent**. Where relevant, a string identifying a larger coordinated action or wave with which an event is associated (e.g., "Women's March (January 2017)", "Movement for Black Lives (2020)", or "Climate Strike (March 15, 2019)").
