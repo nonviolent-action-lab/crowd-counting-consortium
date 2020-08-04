@@ -11,6 +11,8 @@ This dictionary describes the compiled and cleaned version of the Crowd Counting
 
 - **LocationDetail**. If known, details on the location within the city or town where the action took place.
 
+- **County**. The name of the county (or similar administrative unit) in which the event's locality is situated. Where localities span multiple counties, the county names are concatenated in a semicolon-separated string (e.g., "Durham; Orange" for "Durham, NC").
+
 - **Online**. Binary indicator for online-only events. 1 = yes, 0 = no.
 
 - **EventType**. Type of action (e.g. march, protest, demonstration, strike, riot). If more than one, separate with semi-colons.
