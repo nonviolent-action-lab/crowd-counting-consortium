@@ -53,6 +53,6 @@ This dictionary describes the compiled and cleaned version of the Crowd Counting
 
 - **Final**. Binary indicator of whether or not CCC identifies the data for that month as "finalized." 1 = yes, 0 = no.
 
-- **lat**. Latitude of locality in which the event took place, as geocoded with the Google Maps Geocoding API.
+- **lat**. Latitude of locality in which the event took place, as geocoded by passing Location to the Google Maps Geocoding API.
 
-- **lon**. Longitude of locality in which the event took place, as geocoded with the Google Maps Geocoding API.
+- **lon**. Longitude of locality in which the event took place, as geocoded by passing Location the Google Maps Geocoding API.
