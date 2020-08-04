@@ -29,7 +29,7 @@ This dictionary describes the compiled and cleaned version of the Crowd Counting
 
 - **EstimateText**. In cases where crowd size is only described in vague terms (e.g., "dozens"), the word(s) used.
 
-- **EstimateCat**. Ordered categorical indicator of crowd size, representing orders of magnitude and based on EstimateLow. 0 = unknown, 1 = tens, 2 = hundreds, 3 = thousands, 4 = 10,000+.
+- **EstimateCat**. Ordered categorical indicator of crowd size, representing orders of magnitude and based on EstimateLow. 0 = unknown; 1 = 1-99; 2 = 100-999; 3 = 1,000-9,999; 4 = 10,000+.
 
 - **ReportedArrests**. Number of participants reportedly arrested, if applicable.
 
