@@ -7,4 +7,4 @@ The CCC collects these data in the public interest and to further scholarly rese
 
 We recognize that [no large-scale data set on political crowds will ever capture all relevant events with 100% accuracy](https://willopines.wordpress.com/2014/03/03/no-more-fountains-of-youthpots-o-gold-conceptualization-and-events-data-part-1/). Even so, we aspire to make this record as complete and error-free as possible. If you see a record that you believe needs correcting, or if you are aware of a relevant event that is not included, please do *not* open an issue here to report it. Instead, please submit a record or correction via the CCC website, [here](https://sites.google.com/view/crowdcountingconsortium/submit-a-record).
 
-If you have suggestions on how to improve this repository or the compiled version of the data it hosts, please open an issue here by clicking on "Issues" above.
+If you have suggestions on how to improve this repository or the compiled version of the data it hosts, please open an issue here by clicking on the "Issues" button above (or just [here](https://github.com/nonviolent-action-lab/crowd-counting-consortium/issues)).
