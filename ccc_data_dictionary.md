@@ -7,11 +7,9 @@ This dictionary describes the compiled and cleaned version of the Crowd Counting
 
 - **StateTerritory**. Two-letter U.S. postal abbreviation for the state or territory in which the event took place.
 
-- **Location**. Concatenation of CityTown and StateTerritory in "[locality], [state]" format used for geocoding.
-
 - **LocationDetail**. If known, details on the location within the city or town where the action took place.
 
-- **County**. The name of the county (or similar administrative unit) in which the event's locality is situated. Where localities span multiple counties, the county names are concatenated in a semicolon-separated string (e.g., "Durham; Orange" for "Durham, NC").
+- **County**. The name of the county (or similar administrative unit) in which the event's locality is situated, as recorded by human coder.
 
 - **Online**. Binary indicator for online-only events. 1 = yes, 0 = no.
 
@@ -55,6 +53,12 @@ This dictionary describes the compiled and cleaned version of the Crowd Counting
 
 - **Final**. Binary indicator of whether or not CCC identifies the data for that month as "finalized." 1 = yes, 0 = no.
 
-- **lat**. Latitude of locality in which the event took place, as geocoded by passing Location to the Google Maps Geocoding API.
+- **lat**. Latitude of locality in which the event took place, as resolved by Google Maps Geocoding API.
 
-- **lon**. Longitude of locality in which the event took place, as geocoded by passing Location the Google Maps Geocoding API.
+- **lon**. Longitude of locality in which the event took place, as resolved by Google Maps Geocoding API.
+
+- **locality**. Name of the locality in which the event took place, as resolved by Google Maps Geocoding API.
+
+- **county**. Name of the county in which that locality sits, as resolved by the Google Maps Geocoding API.
+
+- **state**. Postal abbreviation of the state or territory in which that locality sits, as resolved by the Google Maps Geocoding API.
