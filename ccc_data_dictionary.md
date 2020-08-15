@@ -39,10 +39,6 @@ This dictionary describes the compiled and cleaned version of the Crowd Counting
 
 - **ReportedPropertyDamage**. 1 if property was reportedly damaged, 0 if otherwise.
 
-- **TownsCities**. Coded 1 if this is an independent event (i.e., not already listed under another city/town name on the same date), 0 otherwise.
-
-- **Events**. Coded 1 if this is an independent event (i.e., not already listed under another city/town name on the same date), 0 if otherwise. A protest and counter-protest in the same location on the same day both get a 1.
-
 - **Source1**. URL or description of source for EstimateText or EstimateLow.
 
 - **Source2**. URL of source for EstimateHigh, when relevant.
