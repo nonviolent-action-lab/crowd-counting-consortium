@@ -23,6 +23,8 @@ This dictionary describes the compiled and cleaned version of the Crowd Counting
 
 - **ClaimType**. Valence of event relative to President Trump, broadly construed. 2 = pro-Trump, 1 = anti-Trump, 0 = neither or unrelated.
 
+- **ClaimCodes**. String of semicolon-separated tags identifying political issues associated with the event (e.g., "democracy; women's rights" for events associated with the 2017 Women's March). These tags are encoded by applying keyword- and keyphrase-based regular expressions to the participant claims recorded in the Claim field.
+
 - **EstimateLow**. Lowest reported participation count. Often (not always) the number cited by police or public officials. Vague estimates are interpreted as follows: "hundreds" = 200; "thousands" =2000; "tens of thousands" = 20000; "hundreds of thousands" = 200000.
 
 - **EstimateHigh**. Highest reported participant count. Often (not always) the number cited by event organizers and/or activists. Vague estimates are interpreted as follows: "hundreds" = 200; "thousands" =2000; "tens of thousands" = 20000; "hundreds of thousands" = 200000.
