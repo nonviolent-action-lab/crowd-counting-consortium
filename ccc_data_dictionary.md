@@ -33,7 +33,7 @@ This dictionary describes the compiled and cleaned version of the Crowd Counting
 
 - **size_text**. In cases where crowd size is only described in vague terms (e.g., "dozens"), the word(s) used. *EstimateText* in the source data.
 
-- **size_cat**. Ordered categorical indicator of crowd size, representing orders of magnitude and based on EstimateLow. 0 = unknown; 1 = 1-99; 2 = 100-999; 3 = 1,000-9,999; 4 = 10,000+.
+- **size_cat**. Ordered categorical indicator of crowd size, representing orders of magnitude and based on average of *size_low* and *size_high*. 0 = unknown; 1 = 1-99; 2 = 100-999; 3 = 1,000-9,999; 4 = 10,000+.
 
 - **arrests**. Number of participants reportedly arrested, if applicable. *ReportedArrests* in the source data.
 
