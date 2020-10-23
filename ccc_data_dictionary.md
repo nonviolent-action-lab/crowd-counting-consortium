@@ -31,9 +31,11 @@ This dictionary describes the compiled and cleaned version of the Crowd Counting
 
 - **size_high**. Highest reported participant count. Often (not always) the number cited by event organizers and/or activists. Vague estimates are interpreted as follows: "hundreds" = 200; "thousands" =2000; "tens of thousands" = 20000; "hundreds of thousands" = 200000. *EstimateHigh* in the source data.
 
+- **size_mean**. Average of *size_low* and *size_high* (which in most cases is the same value).
+
 - **size_text**. In cases where crowd size is only described in vague terms (e.g., "dozens"), the word(s) used. *EstimateText* in the source data.
 
-- **size_cat**. Ordered categorical indicator of crowd size, representing orders of magnitude and based on EstimateLow. 0 = unknown; 1 = 1-99; 2 = 100-999; 3 = 1,000-9,999; 4 = 10,000+.
+- **size_cat**. Ordered categorical indicator of crowd size, representing orders of magnitude and based on *size_mean*. 0 = unknown; 1 = 1-99; 2 = 100-999; 3 = 1,000-9,999; 4 = 10,000+.
 
 - **arrests**. Number of participants reportedly arrested, if applicable. *ReportedArrests* in the source data.
 
