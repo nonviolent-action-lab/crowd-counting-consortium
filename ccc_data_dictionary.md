@@ -45,13 +45,15 @@ This dictionary describes the compiled and cleaned version of the Crowd Counting
 
 - **damage**. 1 if property was reportedly damaged, 0 if otherwise. *ReportedPropertyDamage* in the source data.
 
-- **teargas**. Binary indicator of whether or not police or other state security forces used tear gas or other chemical irritants on protesters. *TearGas* in the source data; only coded starting in May 2020.
+- **chemical_agents**. Binary indicator of whether or not police or other state security forces used tear gas or other chemical irritants such as pepper spray on protesters. *TearGas* in the source data; only coded starting in May 2020.
 
 - **source_1**. URL of first source, or description where none is available. *Source1* in the source data.
 
 - **source_2**. URL of second source where relevant. *Source2* in the source data.
 
 - **source_3**. URL of third source where relevant. *Source3* in the source data.
+
+- **source_4**. URL of fourth source where relevant. *Source4* in the source data.
 
 - **misc**. Miscellaneous additional information about the event as noted by the coder. *Misc.* or *Misc* in the source data.
 
