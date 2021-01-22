@@ -37,23 +37,25 @@ This dictionary describes the compiled and cleaned version of the Crowd Counting
 
 - **size_cat**. Ordered categorical indicator of crowd size, representing orders of magnitude and based on *size_mean*. 0 = unknown; 1 = 1-99; 2 = 100-999; 3 = 1,000-9,999; 4 = 10,000+.
 
-- **arrests**. Number of participants reportedly arrested, if applicable. *ReportedArrests* in the source data.
+- **arrests**. String, usually identifying the number of reported arrests, sometimes a phrase indicating ambiguity (e.g., "more than 5", "unclear"). *ReportedArrests* in the source data.
 
-- **injuries_crowd**. Number of participants with reported injuries, if applicable. *ReportedParticipantInjuries* in the source data.
+- **arrests_any**. Binary indicator for whether or not any arrests occurred. 1 = yes, 0 = no.
 
-- **injuries_police**. Number of police reportedly injured, if applicable. *ReportedPoliceInjuries* in the source data.
+- **injuries_crowd**. String, usually identifying the number of protesters reportedly injured, sometimes a phrase indicating ambiguity (e.g., "more than 5", "unclear"). *ReportedParticipantInjuries* in the source data.
 
-- **damage**. 1 if property was reportedly damaged, 0 if otherwise. *ReportedPropertyDamage* in the source data.
+- **injuries_crowd_any**. Binary indicator for whether or not any protesters were reportedly injured. 1 = yes, 0 = no.
 
-- **chemical_agents**. Binary indicator of whether or not police or other state security forces used tear gas or other chemical irritants such as pepper spray on protesters. *TearGas* in the source data; only coded starting in May 2020.
+- **injuries_police**. String, usually identifying the number of police officers reportedly injured, sometimes a phrase indicating ambiguity (e.g., "more than 5", "unclear"). *ReportedPoliceInjuries* in the source data.
 
-- **source_1**. URL of first source, or description where none is available. *Source1* in the source data.
+- **injuries_police_any**. Binary indicator for whether or not any police officers were reportedly injured. 1 = yes, 0 = no.
 
-- **source_2**. URL of second source where relevant. *Source2* in the source data.
+- **property_damage**. String, usually a binary indicator for whether or not any property damage occurred, sometimes a count, and from January 2021 forward, a semicolon-separated list of types of property damage reported (e.g., "graffiti; broken windows; cars damaged"). *ReportedPropertyDamage* in the source data.
 
-- **source_3**. URL of third source where relevant. *Source3* in the source data.
+- **property_damage_any**. Binary indicator for whether or not protesters caused any property damage. 1 = yes, 0 = no.
 
-- **source_4**. URL of fourth source where relevant. *Source4* in the source data.
+- **chemical_agents**. Binary indicator of whether or not police or other state security forces used tear gas or other chemical irritants such as pepper spray or pepper balls on protesters. *TearGas* in the source data; only coded starting in May 2020.
+
+- **source_n**. URL of nth source, or description where none is available. *Sourcen* in the source data.
 
 - **misc**. Miscellaneous additional information about the event as noted by the coder. *Misc.* or *Misc* in the source data.
 
