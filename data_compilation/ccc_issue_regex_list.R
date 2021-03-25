@@ -10,11 +10,11 @@ ccc_issue_regex_list <- list(
 
   `criminal justice` = "criminal justice|prison|jail|carceral|incarcerat|decarcerat|parole|death penalty|death sentence|capital punishment|\\bexecution|juvenile detention|\\binmate|wrongful conviction|clemency|\\bfelon|ex-felon|correctional|criminal violence",
 
-  democracy = "democracy|voter|voting rights|election|ballot|redistrict|gerrymander|\\bfascis.|\\bmarxis.|\\bcommunis.|anarchis.|socialis.|\\bcoup\\b",
+  democracy = "democracy|voter|voting rights|election|ballot|redistrict|gerrymander|\\bfascis.|\\bmarxis.|\\bcommunis.|anarchis.|socialis.|\\bcoup\\b|dc statehood",
 
   development = "development|zoning|gentrif|historic preservation|construction(?! worker)|nimby|yimby",
 
-  `disabled rights` = "disabilit|disable|otherly able|\\bada\\b|accessib|\\bblind\\b|\\bdeaf\\b|wheelchair|special needs|down's syndrome|down syndrome|tourette's",
+  `disabled rights` = "disabilit|disable|otherly able|\\bada\\b|accessib|\\bblind\\b|\\bdeaf\\b|wheelchair|special needs|down's syndrome|down syndrome|tourette's|\\bautis.{1,}",
 
   drugs = "\\bdrug|alcohol|marijuana|cannabis|\\bpot\\b|\\bcbd\\b|cocaine|opioid|opiate|narcotic|lsd|heroin|hemp|safe injection|overdose|oxycontin|\\bmeth\\b|methadone|methamphetamine|needle",
 
@@ -40,11 +40,11 @@ ccc_issue_regex_list <- list(
 
   labor = "\\blabor\\b|\\bworker|employee|lockout|shutout|\\bunion|collective bargain|\\bpay\\b|\\bjob\\b|layoff|furlough|pension|\\bwage|\\bcontract\\b|working|benefits|compensation|paid leave|sick leave|maternity leave|paternity leave|hazardous conditions|pink slip|hiring|may day|right.to.work|workplace|hazard pay|furlough|profession",
 
-  legislative = "legislat|\\blaw(?! enforcement)|\\bbill\\b|\\bbills\\b|lawmaker|\\bsenat|representative|congress|rep\\.|sen\\.|general assembly|\\bhb \\d{1,}|\\bhb\\d{1,}|\\bsb \\d{1,}|\\bsb\\d{1,}",
+  legislative = "legislat|\\blaw(?! enforcement)|\\bbill\\b|\\bbills\\b|lawmaker|\\bsenat|representative|congress|rep\\.|sen\\.|general assembly|\\bhb \\d{1,}|\\bhb\\d{1,}|\\bsb \\d{1,}|\\bsb\\d{1,}|Heroes Act",
 
   `lgbtq rights`= "lgbt|lesbian|\\bgay\\b|bisexual|transgender|trans (?!-)|queer|pride parade|pride march|same.sex|conversion therapy|bathroom bill",
 
-  migration = "\\bimmigra|\\bmigrant|dreamers|daca|border|refugee|asylum|h-1b|h1b|\\bvisa\\b|sanctuary cit|sanctuary state|illegal alien|undocumented|\\bice\\b|anti-ice|family separation|child separation|deportation|deportee|travel ban|travel eo|muslim ban",
+  migration = "\\bimmigra|\\bmigrant|dreamers|daca|border|refugee|asylum|h-1b|h1b|\\bvisa\\b|sanctuary cit|sanctuary state|illegal alien|undocumented|\\bice\\b|anti-ice|family separation|child separation|deportation|deportee|travel ban|travel eo|muslim ban|\\btps\\b|temporary protected status|\\bexile",
 
   military = "military|(?<!civil) \\bwar\\b|antiwar|\\dod\\b|army|navy|air force|marines|space force|coast guard|(?<!confederate|union) soldier|veteran|us strike|air strike|airstrike|bombing|nuclear weapon|armed force|\\bva\\b|imperial|\\bvfw\\b|service member|fort hood",
 
@@ -52,7 +52,7 @@ ccc_issue_regex_list <- list(
 
   policing = "police|policing|she[r]{1,2}iff|\\bdeput|law enforcement|\\bcop\\b|\\bcops\\b|blue lives matter|back the blue|thin blue line|defend the blue|black lives matter|\\bblm\\b",
 
-  racism = "\\bracis|antiracis|anti-racis|\\bracial|bigot|\\bhate\\b|discriminat|segregat|\\bredlin|diversity|prejudice|of color|\\bbipoc\\b|\\bblack|african.american|white supremac|white nationalis.|swastika|blm|all lives matter|george floyd|breonna taylor|michael brown|alt-right|confederate|confederacy|kkk|klan|mlk|conquistador|christopher columbus|affirmative action|hispanic|\\blatin[a-z]{1,2}\\b|\\bchican[a-z]{1,2}\\b|minority",
+  racism = "\\bracis|antiracis|anti-racis|\\bracial|bigot|\\bhate\\b|discriminat|segregat|\\bredlin|diversity|prejudice|of color|\\bbipoc\\b|\\bblack|african.american|white supremac|white nationalis.|swastika|blm|all lives matter|george floyd|breonna taylor|michael brown|alt-right|confederate|confederacy|kkk|klan|mlk|conquistador|christopher columbus|affirmative action|hispanic|\\blatin[a-z]{1,2}\\b|\\bchican[a-z]{1,2}\\b|minority|aapi|\\basian\\b",
 
   religion = "religio|evangeli|\\bgod\\b|\\bjesus\\b|christian|catholic|protestant|presbyterian|baptist|islam|muslim|buddhis|sikh|\\bhindu\\b|jewish|semiti|mormon|church|synagogue|temple|mosque|sharia|prayer|zionis.|judaism|hijab|pastor|reverend|priest|cleric|\\bimam\\b|\\brabbi\\b|monk|worship",
 
