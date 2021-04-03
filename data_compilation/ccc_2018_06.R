@@ -15,7 +15,7 @@ dat_2 <- dat %>%
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
   slice(1:738) %>% 
   mutate(Date = datescrub(Date),
-         MacroEvent = "Families Belong Together (June 30, 2018)",
+         MacroEvent = "20180630-familiesbelongtogether",
          Final = 1)
 
 # 'Pride, June 24' tab not read b/c it is duplicated on Tally, according to note in sheet

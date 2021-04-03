@@ -14,9 +14,9 @@ dat_2 <- dat %>%
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
   select(-...27, -...28) %>%
   mutate(Date = datescrub(Date),
-         Claim = "for urgent action against climate change, for climate justice and equity",
+         Claim = "for urgent action on climate change, for climate justice and equity",
          ClaimType = 1,
-         MacroEvent = "Global Climate Strike (September 2019)",
+         MacroEvent = "20190920-climatestrike",
          Final = 1)
 
 # need to use data.table here to resolve issue with inconsistent col types

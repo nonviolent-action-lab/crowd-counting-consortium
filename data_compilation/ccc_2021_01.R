@@ -35,7 +35,7 @@ dat <- dat %>%
          TearGas,
          TownsCities = city_days,
          Events = events,
-         Macroevent = macroevent,
+         MacroEvent = macroevent,
          Misc,
          starts_with("Source"),
          Final)

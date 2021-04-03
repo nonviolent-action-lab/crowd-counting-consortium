@@ -14,7 +14,7 @@ dat <- read_excel("data_raw/Crowd Estimates March 2018.xlsx", sheet = "WalkoutMa
 dat_2 <- dat %>%
   rename(ClaimType = Pro2Anti1) %>%
   select(-...26) %>%
-  mutate(MacroEvent = "Enough! National School Walkout (March 14, 2018)",
+  mutate(MacroEvent = "20180314-nationalschoolwalkout",
          Date = as.character(Date),
          Final = 1) %>%
   mutate_at(c("EstimateLow", "EstimateHigh"), as.numeric) %>%
@@ -25,7 +25,7 @@ dat <- read_excel("data_raw/Crowd Estimates March 2018.xlsx", sheet = "MarchLive
 dat_3 <- dat %>%
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
   mutate(Date = datescrub(Date),
-         MacroEvent = "March For Our Lives (March 24, 2018)",
+         MacroEvent = "20180324-marchforourlives",
          Final = 1) %>%
   # get rid of summary rows at bottom of table
   slice(1:765)

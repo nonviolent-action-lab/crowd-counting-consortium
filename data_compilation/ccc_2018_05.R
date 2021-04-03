@@ -14,7 +14,7 @@ dat <- read_excel("data_raw/Crowd Estimates May 2018.xlsx", sheet = "WalkoutMay2
 dat_2 <- dat %>%
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
   mutate(Date = datescrub(Date),
-         MacroEvent = "Stand for the Second (May 2, 2018)",
+         MacroEvent = "20180502-standforthesecond",
          Final = 1) %>%
   slice(1:168)
 

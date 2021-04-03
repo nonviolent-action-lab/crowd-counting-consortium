@@ -1,6 +1,6 @@
 source("~/nval/ccc/r/ccc_scrubber.r")
 
-dat <- read_excel("data_raw/Crowd Estimates March 2021.xlsx", sheet = "Tally")
+dat <- read_excel("data_raw/Crowd Estimates April 2021.xlsx", sheet = "Tally")
 
 dat <- dat %>%
   filter(state != "INT") %>%
@@ -40,4 +40,4 @@ dat <- dat %>%
          starts_with("Source"),
          Final)
 
-write.csv(dat, "data_clean/ccc_2021_03.csv", row.names = FALSE)
+write.csv(dat, "data_clean/ccc_2021_04.csv", row.names = FALSE)

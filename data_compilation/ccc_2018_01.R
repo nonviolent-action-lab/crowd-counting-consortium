@@ -15,7 +15,7 @@ dat_2 <- dat %>%
   select(-...27, -`Women's?`) %>%
   slice(1:413) %>%  # remove trailing rows with summary cells 
   mutate(Date = datescrub(Date),
-         MacroEvent = "Women's March (January 20, 2018)",
+         MacroEvent = "20180120-womensmarch",
          Final = 1)
 
 dat <- bind_rows(dat_1, dat_2)

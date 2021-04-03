@@ -13,7 +13,7 @@ dat_2 <- dat %>%
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
   slice(1:885) %>%  # bottom of sheet has some summary rows and notes; get rid of them
   mutate(Date = datescrub(Date),
-         MacroEvent = "Rally to Protect Mueller Investigation (November 8, 2018)",
+         MacroEvent = "20181108-mueller",
          Final = 1)
 
 # need to use data.table here to resolve issue with inconsistent col types

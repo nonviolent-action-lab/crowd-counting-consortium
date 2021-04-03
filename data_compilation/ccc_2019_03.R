@@ -15,7 +15,7 @@ dat_2 <- dat %>%
   select(-...27) %>%
   slice(1:223) %>%  # bottom of sheet has some summary rows and notes; get rid of them
   mutate(Date = datescrub(Date),
-         MacroEvent = "Climate Strike (March 15, 2019)",
+         MacroEvent = "20190315-climatestrike",
          Final = 1)
 
 # need to use data.table here to resolve issue with inconsistent col types

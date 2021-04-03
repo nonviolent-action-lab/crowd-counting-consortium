@@ -24,8 +24,8 @@ dat2 <- dat %>%
   mutate(Date = "2017-01-21",
          EventType = "march",
          ClaimType = 1,
-         Claim = "Empower Voters to Support Women's Rights",
-         MacroEvent = "Women's March (January 21, 2017)",
+         Claim = "women's rights are human rights",
+         MacroEvent = "20170121-womensmarch",
          Final = 1) %>%
   select(-blank) %>%
   # drop international data and data for online events
