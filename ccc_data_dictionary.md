@@ -17,7 +17,7 @@ This dictionary describes the compiled and cleaned version of the Crowd Counting
 
 - **type**. Type(s) of action (e.g. march, protest, demonstration, strike, counter-protest, sit-in), separated with semi-colons if more than one. *EventType* in the source data.
 
-- **macroevent**. Where relevant, a string identifying a larger coordinated action or wave with which an event is associated (e.g., "Women's March (January 2017)", "Movement for Black Lives (2020)", or "Climate Strike (March 15, 2019)"). In the source data, these are identified by their location on separate tabs.
+- **macroevent**. Where relevant, a string composed of a date followed by a text label that can be used to associate an event with other events. These get used two ways. First, across the entire dataset, these may be used to identify coordinated actions on or around a specific date (e.g., "20170121-womensmarch", "20210301-nyc-cancelrent"). Second, starting in 2021, these are also used to associate counter-protests with the protests they target (e.g., "20210304-byu-lgbtq"). In the latter case, both/all events get the same macroevent tag, and at least one of the events will have *type* equal to 'counter-protest'. In rare cases where an event is associated with more than one macroevent---e.g., it is part of a larger coordinated action and it is counter-protested---the macroevent ids are separated with semicolons.
 
 - **actors**. The organization that organized the event (e.g. Women's March, Greenpeace, etc.) or, in some cases, the type of people participating (e.g., students, nurses), separated by semi-colons if more than one. *Actor* in the source data.
 
