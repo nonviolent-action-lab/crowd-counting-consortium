@@ -1,6 +1,7 @@
 library(data.table)
 library(googleway)
 library(tidyverse)
+library(tigris)
 
 options(stringsAsFactors = FALSE)
 
@@ -222,8 +223,7 @@ dat$ClaimCodes <- claimcoder(dat$Claim)
 
 dat <- claimcoder_addendum("ClaimCodes", dat)
 
-
-### FINAL ARRANGING ###
+### ARRANGING ###
 
 # remove cols that will be excluded from the compiled version, usually because they are specific to
 # one macro-event (e.g., Women's March 2017) and therefore missing for almost all events, or b/c
@@ -272,6 +272,14 @@ dat <- dat %>%
 
 # may solve problem with stray carriage returns and other oddities from GS
 dat <- mutate_if(dat, is.character, str_trim)
+
+
+### ADD FIPS CODES ###
+
+source("https://raw.githubusercontent.com/nonviolent-action-lab/crowd-counting-consortium/master/data_compilation/fips_for_county_function.R")
+
+dat <- fips_for_county(dat)
+
 
 ### OUTPUT ###
 

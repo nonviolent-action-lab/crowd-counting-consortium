@@ -70,3 +70,5 @@ This dictionary describes the compiled and cleaned version of the Crowd Counting
 - **resolved_county**. Name of the county in which that locality falls, as resolved by running *location* through the Google Maps Geocoding API..
 
 - **resolved_state**. Postal abbreviation of the state or territory in which that locality falls, as resolved by the Google Maps Geocoding API.
+
+- **fips_code**. Five-digit FIPS code for the county (or LA parish or AK borough or independent city or DC or U.S. territory). See 'data-compilation/fips_for_county_function.r' for details on how these are generated using the 'tigris' package and some custom code to handle various exceptions. When you load the data from this repository, you will probably need to add leading zeros back to codes that have them, because your software will probably read that column as integers instead of strings. In R, you could do this with `ifelse(nchar(fips_code) == 4, paste0("0", fips_code), fips_code)`.
