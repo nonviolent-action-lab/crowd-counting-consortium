@@ -1,4 +1,5 @@
-# function to append FIPS code to compiled CCC data using 'tigris' package
+# function to append FIPS code to compiled CCC data
+# dependencies: tigris, stringr
 
 fips_for_county <- function(data,
                             resolved_county_col = "resolved_county",
@@ -9,6 +10,7 @@ fips_for_county <- function(data,
                             newcol = "fips_code") {
 
   require(tigris)
+  require(stringr)
 
   # lookup vector for independent cities in VA
   va_independent_cities <- c("Alexandria", "Bristol", "Buena Vista", "Charlottesville", "Chesapeake",
@@ -46,9 +48,9 @@ fips_for_county <- function(data,
 
        y <- tigris::lookup_code(j[resolved_state_col], j[resolved_county_col])
 
-       state <- str_extract(y, "\\d{2}")
+       state <- stringr::str_extract(y, "\\d{2}")
 
-       county <- str_extract(y, "\\d{3}")
+       county <- stringr::str_extract(y, "\\d{3}")
 
        z <- ifelse(is.na(state) | is.na(county), NA, paste0(state, county))
 
