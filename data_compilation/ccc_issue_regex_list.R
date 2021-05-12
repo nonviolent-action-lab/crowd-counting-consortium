@@ -46,7 +46,7 @@ ccc_issue_regex_list <- list(
 
   migration = "\\bimmigra|\\bmigrant|dreamers|daca|border|refugee|asylum|h-1b|h1b|\\bvisa\\b|sanctuary cit|sanctuary state|illegal alien|undocumented|\\bice\\b|anti-ice|family separation|child separation|deportation|deportee|travel ban|travel eo|muslim ban|\\btps\\b|temporary protected status|\\bexile",
 
-  military = "military|(?<!civil )\\bwar\\b(?! on drugs)|antiwar|\\dod\\b|army|navy|air force|marines|space force|coast guard|(?<!confederate|union) soldier|veteran|us strike|air strike|airstrike|bombing|nuclear weapon|armed force|\\bva\\b|imperial|\\bvfw\\b|service member|fort hood",
+  military = "military|(?<!civil )\\bwar\\b(?! on )|antiwar|\\dod\\b|army|navy|air force|marines|space force|coast guard|(?<!confederate|union) soldier|veteran|us strike|air strike|airstrike|bombing|nuclear weapon|armed force|\\bva\\b|imperial|\\bvfw\\b|service member|fort hood",
 
   `native peoples' rights` = "indigenous|native people|native american|\\btribal|\\btribe|\\bindian\\b|\\bindians\\b|land back|colonial|coloniz",
 
@@ -66,7 +66,7 @@ ccc_issue_regex_list <- list(
 
   transportation = "\\btransport\\b|transportation|subway|\\btransit\\b|bicycle|\\bbike\\b|cyclist|pedestrian|highway|freeway|interstate|\\broad|street|\\bcar\\b|\\bbus\\b|\\btrain\\b|railroad|tunnel|\\bbridge\\b|airport|airline|ferry|\\btram\\b|\\btoll\\b",
 
-  `women's rights` = "women|metoo|\\bsexis|patriarch|\\bgender\\b|domestic violence|femicide|equal rights amendment|take back the night|\\bmen's rights"
+  `women's rights` = "women|metoo|\\bsexis|patriarch|\\bgender\\b|domestic violence|femicide|equal rights amendment|take back the night|\\bmen's rights|\\bmother"
 
 )
 
