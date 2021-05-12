@@ -10,11 +10,16 @@ setwd("~/nval/ccc")
 
 ### DATA COMPILATION ###
 
-file_names <- list.files("data_clean")
-file_names <- file_names[!grepl("compiled", file_names)]
+# NOTE: This assumes that current versions of all CCC Google Sheets have been downloaded 
+# as .xls files into a local directory called ~/nval/ccc/data_raw
 
-clean_files <- map(paste0("data_clean/", file_names), read.csv)
+# pre-process all raw monthly files
+script.names <- grep("ccc_[0-9]{4}_[0-9]{2}.R", list.files("r"), value = TRUE)
+walk(script.names, ~source(paste0("r/", .)))
 
+# compile all pre-processed monthly files into one table
+file.names <- grep("ccc_[0-9]{4}_[0-9]{2}", list.files("data_clean"), value = TRUE)
+clean_files <- map(paste0("data_clean/", file.names), read.csv)
 dat_raw <- data.table::rbindlist(clean_files, fill = TRUE)
 
 
@@ -222,6 +227,7 @@ source("r/ccc_issue_regex_list.R")
 dat$ClaimCodes <- claimcoder(dat$Claim)
 
 dat <- claimcoder_addendum("ClaimCodes", dat)
+
 
 ### ARRANGING ###
 
