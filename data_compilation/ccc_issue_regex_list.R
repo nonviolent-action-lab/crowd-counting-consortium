@@ -32,7 +32,7 @@ ccc_issue_regex_list <- list(
 
   guns = "\\bgun\\b|firearm|second amendment|2nd amendment|\\b2a\\b|\\bnra\\b|national rifle association|concealed carry|open.carry|ar-15|assault rifle|automatic rifle|bump stock|right to bear arms",
 
-  healthcare = "health|doctor|physician|nurse|nursing|hospital|\\bclinic\\b|\\bpatient|medical|medicine|medicare|medicaid|prescription|\\brx\\b|obamacare|\\baca\\b|affordable care act|preexisting condition|vaccin|disease|cancer|depression|suicide|maternal care|dhhr|\\bhiv\\b|\\baids\\b|hiv.aids|birthing|family act|\\bahca\\b|osteopath|chiropract|acupunctur|\\bhealer",
+  healthcare = "health|doctor|physician|nurse|nursing|hospital|\\bclinic\\b|\\bpatient|medical|medicine|medicare|medicaid|prescription|\\brx\\b|obamacare|\\baca\\b|affordable care act|preexisting condition|vaccin|disease|cancer|depression|suicide|maternal care|dhhr|\\bhiv\\b|\\baids\\b|hiv.aids|birthing|family act|\\bahca\\b|osteopath|chiropract|acupunctur|\\bhealer|\\bpharmac",
 
   housing = "homeless|\\bhousing|\\beviction|\\brent\\b|mortgage|panhandl|unhoused|\\btenant|homeowner",
 
