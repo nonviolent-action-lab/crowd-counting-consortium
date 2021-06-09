@@ -1,9 +1,11 @@
 source("~/nval/ccc/r/ccc_scrubber.r")
 
-dat <- read_excel("data_raw/February 2017 Final.xlsx")
+dat <- read_excel("data_raw/Crowd Estimates, February 2017 (II).xlsx", sheet = "Tally")
 
 dat <- dat %>%
-  rename(ClaimType = `Pro (2)/anti(1)`) %>%
+  select(-AdjustedLow, -AdjustedHigh, -BestGuess) %>%
+  rename(ClaimType = `Pro(2)/Anti(1)`,
+         Misc = Misc.) %>%
   mutate(Date = datescrub(Date),
          Final = 1)
 

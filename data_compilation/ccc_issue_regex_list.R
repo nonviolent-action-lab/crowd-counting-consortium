@@ -12,7 +12,7 @@ ccc_issue_regex_list <- list(
 
   democracy = "democracy|voter|voting rights|election|ballot|redistrict|gerrymander|\\bfascis.|\\bmarxis.|\\bcommunis.|anarchis.|socialis.|\\bcoup\\b|dc statehood",
 
-  development = "development|zoning|gentrif|historic preservation|construction(?! worker)|nimby|yimby",
+  development = "development|zoning|gentrif|historic preservation|construction(?! worker)|nimby|yimby|displacement",
 
   `disabled rights` = "disabilit|disable|otherly able|\\bada\\b|accessib|\\bblind\\b|\\bdeaf\\b|wheelchair|special needs|down's syndrome|down syndrome|tourette's|\\bautis.{1,}",
 
@@ -52,7 +52,7 @@ ccc_issue_regex_list <- list(
 
   policing = "police|policing|she[r]{1,2}iff|\\bdeput|law enforcement|\\bcop\\b|\\bcops\\b|blue lives matter|back the blue|thin blue line|defend the blue|black lives matter|\\bblm\\b|school resource officer",
 
-  racism = "\\bracis|antiracis|anti-racis|\\bracial|bigot|\\bhate\\b|discriminat|segregat|\\bredlin|diversity|prejudice|of color|\\bbipoc\\b|\\bblack|african.american|white supremac|white nationalis.|swastika|blm|all lives matter|george floyd|breonna taylor|michael brown|alt-right|confederate|confederacy|kkk|klan|mlk|conquistador|christopher columbus|affirmative action|hispanic|\\blatin[a-z]{1,2}\\b|\\bchican[a-z]{1,2}\\b|minority|aapi|\\basian\\b",
+  racism = "\\bracis|antiracis|anti-racis|\\bracial|bigot|\\bhate\\b|discriminat|segregat|\\bredlin|diversity|prejudice|of color|\\bbipoc\\b|\\bblack|african.american|white supremac|white nationalis.|swastika|blm|all lives matter|george floyd|breonna taylor|michael brown|alt-right|confederate|confederacy|kkk|klan|mlk|conquistador|christopher columbus|affirmative action|hispanic|\\blatin[a-z]{1,2}\\b|\\bchican[a-z]{1,2}\\b|minority|aapi|\\basian\\b|critical race theory|\\bcrt\\b|1619 project",
 
   religion = "religio|evangeli|\\bgod\\b|\\bjesus\\b|christian|catholic|protestant|presbyterian|baptist|islam|muslim|buddhis|sikh|\\bhindu\\b|jewish|semiti|mormon|church|synagogue|temple|mosque|sharia|prayer|zionis.|judaism|hijab|pastor|reverend|priest|cleric|\\bimam\\b|\\brabbi\\b|monk|worship|\\bsatan|secular|atheis.",
 
@@ -62,7 +62,7 @@ ccc_issue_regex_list <- list(
 
   `sexual violence` = "sexual violence|sexual assault|sexual ha[r]{1,2}assment|\\brape\\b|rapist|sex offender|sexual abuse|sex abuse|sex trafficking|vanessa guillen",
 
-  taxes = "tax(?! return)",
+  taxes = "\\btax\\b(?! return)|\\btaxes\\b",
 
   transportation = "\\btransport\\b|transportation|subway|\\btransit\\b|bicycle|\\bbike\\b|cyclist|pedestrian|highway|freeway|interstate|\\broad|street|\\bcar\\b|\\bbus\\b|\\btrain\\b|railroad|tunnel|\\bbridge\\b|airport|airline|ferry|\\btram\\b|\\btoll\\b",
 

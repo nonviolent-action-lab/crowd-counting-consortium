@@ -14,11 +14,11 @@ setwd("~/nval/ccc")
 # as .xls files into a local directory called ~/nval/ccc/data_raw
 
 # pre-process all raw monthly files
-script.names <- grep("ccc_[0-9]{4}_[0-9]{2}.R", list.files("r"), value = TRUE)
+script.names <- grep("^ccc_\\d{4}_\\d{2}", list.files("r"), value = TRUE)
 walk(script.names, ~source(paste0("r/", .)))
 
 # compile all pre-processed monthly files into one table
-file.names <- grep("ccc_[0-9]{4}_[0-9]{2}", list.files("data_clean"), value = TRUE)
+file.names <- grep("ccc_\\d{4}_\\d{2}", list.files("data_clean"), value = TRUE)
 clean_files <- map(paste0("data_clean/", file.names), read.csv)
 dat_raw <- data.table::rbindlist(clean_files, fill = TRUE)
 
