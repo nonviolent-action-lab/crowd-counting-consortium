@@ -42,7 +42,7 @@ ccc_issue_regex_list <- list(
 
   legislative = "legislat|\\blaw(?! enforcement)|\\bbill\\b|\\bbills\\b|lawmaker|\\bsenat|representative|congress|rep\\.|sen\\.|general assembly|\\bhb \\d{1,}|\\bhb\\d{1,}|\\bsb \\d{1,}|\\bsb\\d{1,}|Heroes Act",
 
-  `lgbtq rights`= "lgbt|lesbian|\\bgay\\b|bisexual|transgender|trans (?!-)|queer|pride parade|pride march|same.sex|conversion therapy|bathroom bill",
+  `lgbtq rights`= "lgbt|lesbian|\\bgay\\b|bisexual|transgender|trans (?!-)|queer|pride parade|pride march|same.sex|conversion therapy|bathroom bill|rainbow capitalism|two.spirit",
 
   migration = "\\bimmigra|\\bmigrant|dreamers|daca|border|refugee|asylum|h-1b|h1b|\\bvisa\\b|sanctuary cit|sanctuary state|illegal alien|undocumented|\\bice\\b|anti-ice|family separation|child separation|deportation|deportee|travel ban|travel eo|muslim ban|\\btps\\b|temporary protected status|\\bexile",
 
@@ -50,7 +50,7 @@ ccc_issue_regex_list <- list(
 
   `native peoples' rights` = "indigenous|native people|native american|\\btribal|\\btribe|\\bindian\\b|\\bindians\\b|land back|colonial|coloniz",
 
-  policing = "police|policing|she[r]{1,2}iff|\\bdeput|law enforcement|\\bcop\\b|\\bcops\\b|blue lives matter|back the blue|thin blue line|defend the blue|black lives matter|\\bblm\\b|school resource officer",
+  policing = "police|policing|she[r]{1,2}iff|\\bdeput|law enforcement|\\bcop\\b|\\bcops\\b|blue lives matter|back the blue|thin blue line|defend the blue|black lives matter|\\bblm\\b|school resource officer|\\bsro",
 
   racism = "\\bracis|antiracis|anti-racis|\\bracial|bigot|\\bhate\\b|discriminat|segregat|\\bredlin|diversity|prejudice|of color|\\bbipoc\\b|\\bblack|african.american|white supremac|white nationalis.|swastika|blm|all lives matter|george floyd|breonna taylor|michael brown|alt-right|confederate|confederacy|kkk|klan|mlk|conquistador|christopher columbus|affirmative action|hispanic|\\blatin[a-z]{1,2}\\b|\\bchican[a-z]{1,2}\\b|minority|aapi|\\basian\\b|critical race theory|\\bcrt\\b|1619 project",
 
