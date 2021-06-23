@@ -1,6 +1,6 @@
 source("~/nval/ccc/r/ccc_scrubber.r")
 
-dat <- read_excel("data_raw/Crowd Estimates August 2017(3).xlsx", sheet = "Tally")
+dat <- read_excel("data_raw/Crowd Estimates August 2017.xlsx", sheet = "Tally")
 
 dat <- dat %>%
   select(-...26) %>%
