@@ -6,6 +6,7 @@ dat <- dat %>%
   filter(state != "INT") %>%
   rename_at(vars(starts_with("source")), ~str_to_title(.)) %>% 
   mutate(Country = "US",
+         date = as.character(date),
          Misc = paste(title, notes),
          Misc = str_trim(str_replace_all(Misc, "NA", "")),
          Actor = case_when(
@@ -38,6 +39,13 @@ dat <- dat %>%
          MacroEvent = macroevent,
          Misc,
          starts_with("Source"),
-         Final)
+         Final,
+         title,
+         organizations,
+         participants,
+         participant_measures,
+         police_measures,
+         participant_deaths,
+         police_deaths)
 
 write.csv(dat, "data_clean/ccc_2021_06.csv", row.names = FALSE)

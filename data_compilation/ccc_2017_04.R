@@ -9,10 +9,10 @@ dat <- dat %>%
          MacroEvent = NA,
          Final = 1)
 
-dat$MacroEvent[dat$Claim == "March for Science"] <- "20170422-marchforscience"
-dat$MacroEvent[dat$Claim == "People's Climate March"] <- "20170429-peoplesclimatemarch"
+dat$MacroEvent[grepl("March for Science", dat$Claim)] <- "20170422-marchforscience"
+dat$MacroEvent[grepl("People's Climate March", dat$Claim)] <- "20170429-peoplesclimatemarch"
 
-dat$Claim[dat$Claim == "March for Science"] <- "against political suppression of science"
-dat$Claim[dat$Claim == "People's Climate March"] <- "for action on climate change, for environmental protection, for clean energy, climate jobs justice"
+dat$Claim[grepl("March for Science", dat$Claim)] <- "against political suppression of science"
+dat$Claim[grepl("People's Climate March", dat$Claim)] <- "for action on climate change, for environmental protection, for clean energy, climate jobs justice"
 
 write.csv(dat, "data_clean/ccc_2017_04.csv", row.names = FALSE)

@@ -38,6 +38,13 @@ dat <- dat %>%
          MacroEvent = macroevent,
          Misc,
          starts_with("Source"),
-         Final)
+         Final,
+         title,
+         organizations,
+         participants,
+         participant_measures,
+         police_measures,
+         participant_deaths,
+         police_deaths)
 
 write.csv(dat, "data_clean/ccc_2021_05.csv", row.names = FALSE)
