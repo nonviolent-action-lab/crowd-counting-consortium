@@ -44,15 +44,15 @@ ccc_issue_regex_list <- list(
 
   `lgbtq rights`= "lgbt|lesbian|\\bgay\\b|bisexual|transgender|trans (?!-)|queer|pride parade|pride march|same.sex|conversion therapy|bathroom bill|rainbow capitalism|two.spirit",
 
-  migration = "\\bimmigra|\\bmigrant|dreamers|daca|border|refugee|asylum|h-1b|h1b|\\bvisa\\b|sanctuary cit|sanctuary state|illegal alien|undocumented|\\bice\\b|anti-ice|family separation|child separation|deportation|deportee|travel ban|travel eo|muslim ban|\\btps\\b|temporary protected status|\\bexile",
+  migration = "\\bimmigra|\\bmigrant|dreamers|daca|border|refugee|asylum|h-1b|h1b|\\bvisa\\b|sanctuary cit|sanctuary state|illegal alien|undocumented|\\bice\\b|anti-ice|family separation|child separation|deportation|deportee|travel ban|travel eo|muslim ban|\\btps\\b|temporary protected status|\\bexile|\\bmigra\\b",
 
   military = "military|(?<!civil )\\bwar\\b(?! on )|antiwar|\\dod\\b|army|navy|air force|marines|space force|coast guard|(?<!confederate|union) soldier|veteran|us strike|air strike|airstrike|bombing|nuclear weapon|armed force|\\bva\\b|imperial|\\bvfw\\b|service member|fort hood",
 
   `native peoples' rights` = "indigenous|native people|native american|\\btribal|\\btribe|\\bindian\\b|\\bindians\\b|land back|colonial|coloniz",
 
-  policing = "police|policing|she[r]{1,2}iff|\\bdeput|law enforcement|\\bcop\\b|\\bcops\\b|blue lives matter|back the blue|thin blue line|defend the blue|black lives matter|\\bblm\\b|school resource officer|\\bsro",
+  policing = "police|policing|she[r]{1,2}iff|\\bdeput|law enforcement|\\bcop\\b|\\bcops\\b|blue lives matter|back the blue|thin blue line|defend the blue|black lives matter|\\bblm\\b|school resource officer|\\bsro|\\bacab\\b",
 
-  racism = "\\bracis|antiracis|anti-racis|\\bracial|bigot|\\bhate\\b|discriminat|segregat|\\bredlin|diversity|prejudice|of color|\\bbipoc\\b|\\bblack|african.american|white supremac|white nationalis.|swastika|blm|all lives matter|george floyd|breonna taylor|michael brown|alt-right|confederate|confederacy|kkk|klan|mlk|conquistador|christopher columbus|affirmative action|hispanic|\\blatin[a-z]{1,2}\\b|\\bchican[a-z]{1,2}\\b|minority|aapi|\\basian\\b|critical race theory|\\bcrt\\b|1619 project",
+  racism = "\\bracis|antiracis|anti-racis|\\bracial|bigot|\\bhate\\b|discriminat|segregat|\\bredlin|diversity|prejudice|of color|\\bbipoc\\b|\\bblack|african.american|white supremac|white nationalis.|swastika|blm|all lives matter|white lives matter|no white guilt|george floyd|breonna taylor|alt-right|confederate|confederacy|kkk|klan|mlk|conquistador|christopher columbus|affirmative action|hispanic|\\blatin[a-z]{1,2}\\b|\\bchican[a-z]{1,2}\\b|minority|aapi|\\basian\\b|critical race theory|\\bcrt\\b|1619 project",
 
   religion = "religio|evangeli|\\bgod\\b|\\bjesus\\b|christian|catholic|protestant|presbyterian|baptist|islam|muslim|buddhis|sikh|\\bhindu\\b|jewish|semiti|mormon|church|synagogue|temple|mosque|sharia|prayer|zionis.|judaism|hijab|pastor|reverend|priest|cleric|\\bimam\\b|\\brabbi\\b|monk|worship|\\bsatan|secular|atheis.",
 
