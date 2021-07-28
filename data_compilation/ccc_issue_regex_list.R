@@ -88,16 +88,17 @@ claimcoder <- function(myvec) {
 
 }
 
-claimcoder_addendum <- function(issuecol, dat) {
+# kludge for a couple of known issues
+claimcoder_addendum <- function(df) {
 
-  dat[,issuecol] <- ifelse(dat[,issuecol] == "" & grepl("women's march", dat[,"MacroEvent"], ignore.case = TRUE),
-                           "women's rights; democracy",
-                           dat[,issuecol])
+  df$ClaimCodes <- replace(df$ClaimCodes,
+                           df$ClaimCodes == "" & grepl("women's march", df$MacroEvent, ignore.case = TRUE),
+                          "women's rights; democracy")
 
-  dat[,issuecol] <- ifelse(dat[,issuecol] == "" & grepl("teach|student|educat|faculty", dat[,"Actor"], ignore.case = TRUE) & grepl("fund|budget|firing", dat[,"Claim"], ignore.case = TRUE),
-                           "education",
-                           dat[,issuecol])
+  df$ClaimCodes <- replace(df$ClaimCodes,
+                           df$ClaimCodes == "" & grepl("teach|student|educat|faculty", df$Actor, ignore.case = TRUE) & grepl("fund|budget|firing", df$Claim, ignore.case = TRUE),
+                          "education")
 
-  return(dat)
+  return(df)
 
 }
