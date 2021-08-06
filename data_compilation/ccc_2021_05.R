@@ -33,8 +33,6 @@ dat <- dat %>%
          ReportedPoliceInjuries = police_injuries,
          ReportedPropertyDamage = property_damage,
          TearGas,
-         TownsCities = city_days,
-         Events = events,
          MacroEvent = macroevent,
          Misc,
          starts_with("Source"),

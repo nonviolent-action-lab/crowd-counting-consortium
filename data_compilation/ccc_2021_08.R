@@ -1,6 +1,6 @@
 source("~/nval/ccc/r/ccc_scrubber.r")
 
-dat <- read_excel("data_raw/Crowd Estimates July 2021.xlsx", sheet = "Tally")
+dat <- read_excel("data_raw/Crowd Estimates August 2021.xlsx", sheet = "Tally")
 
 dat <- dat %>%
   filter(state != "INT") %>%
@@ -46,4 +46,4 @@ dat <- dat %>%
          participant_deaths,
          police_deaths)
 
-write.csv(dat, "data_clean/ccc_2021_07.csv", row.names = FALSE)
+write.csv(dat, "data_clean/ccc_2021_08.csv", row.names = FALSE)
