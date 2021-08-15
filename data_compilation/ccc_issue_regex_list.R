@@ -10,7 +10,7 @@ ccc_issue_regex_list <- list(
 
   `criminal justice` = "criminal justice|prison|jail|carceral|incarcerat|decarcerat|parole|death penalty|death sentence|capital punishment|\\bexecution|juvenile detention|\\binmate|wrongful conviction|clemency|\\bfelon|ex-felon|correctional|criminal violence",
 
-  democracy = "democracy|voter|voting rights|election|ballot|redistrict|gerrymander|\\bfascis.|\\bmarxis.|\\bcommunis.|anarchis.|socialis.|\\bcoup\\b|dc statehood",
+  democracy = "democracy|voter|voting rights|election|ballot|redistrict|gerrymander|\\bfascis.|\\bmarxis.|\\bcommunis.|anarchis.|socialis.|\\bcoup\\b|dc statehood|Trump won",
 
   development = "development|zoning|gentrif|historic preservation|construction(?! worker)|nimby|yimby|displacement",
 
