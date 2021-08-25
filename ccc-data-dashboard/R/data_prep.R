@@ -1,14 +1,18 @@
 ccc <- read.csv("data/ccc_compiled.csv")
 
+require(lubridate)
+require(dplyr)
+
 # format date col and then get nicely formatted date string for use in label
 ccc$date <- lubridate::date(ccc$date)
 ccc$date_string <- lubridate::stamp_date("January 1, 2017")(ccc$date)
 
-# drop rows identified as occurring online or as virtual events; events without dates; and events in the future
-ccc <- filter(ccc, state != "VIRTUAL",
-                   !grepl("online", locality, ignore.case = TRUE),
-                   !is.na(date),
-                   date <= Sys.Date())
+# drop rows identified as occurring online or as virtual events;
+# events without dates; and events in the future
+ccc <- ccc[ccc$state != "VIRTUAL" & 
+           !grepl("online", ccc$locality, ignore.case = TRUE) &
+           !is.na(ccc$date) &
+            ccc$date < Sys.Date(),]
 
 ccc$size_label <- with(ccc, case_when(
   size_cat == 1 ~ "tens",
@@ -18,7 +22,7 @@ ccc$size_label <- with(ccc, case_when(
   TRUE ~ "unknown"
 ))
 
-ccc$location <- with(ccc, paste(locality, state, sep = ", "))
+ccc$location <- paste(ccc$locality, ccc$state, sep = ", ")
 
 # build the label that will appear when users click on an event marker, complete with style
 ccc$marker_label <- with(ccc, paste(
