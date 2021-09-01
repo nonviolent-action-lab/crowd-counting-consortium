@@ -4,7 +4,7 @@ dat <- read_excel("data_raw/Crowd Estimates September 2019.xlsx", sheet = "Tally
 
 dat_1 <- dat %>%
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
-  select(-...27, -...28, -...29) %>%
+  select(-starts_with("...")) %>%
   mutate(Date = datescrub(Date),
          Final = 0)
 
@@ -12,7 +12,7 @@ dat <- read_excel("data_raw/Crowd Estimates September 2019.xlsx", sheet = "Clima
 
 dat_2 <- dat %>%
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
-  select(-...27, -...28) %>%
+  select(-starts_with("...")) %>%
   mutate(Date = datescrub(Date),
          Claim = "for urgent action on climate change, for climate justice and equity",
          ClaimType = 1,

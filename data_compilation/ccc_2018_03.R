@@ -4,7 +4,7 @@ dat <- read_excel("data_raw/Crowd Estimates March 2018.xlsx", sheet = "Tally")
 
 dat_1 <- dat %>%
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
-  select(-...26) %>%
+  select(-starts_with("...")) %>%
   mutate(Date = datescrub(Date),
          Final = 1) %>%
   slice(1:821)
@@ -13,24 +13,24 @@ dat <- read_excel("data_raw/Crowd Estimates March 2018.xlsx", sheet = "WalkoutMa
 
 dat_2 <- dat %>%
   rename(ClaimType = Pro2Anti1) %>%
-  select(-...26) %>%
+  select(-starts_with("...")) %>%
   mutate(MacroEvent = "20180314-nationalschoolwalkout",
          Date = as.character(Date),
-         Final = 1) %>%
-  mutate_at(c("EstimateLow", "EstimateHigh"), as.numeric) %>%
-  mutate_at(vars(starts_with("Reported")), as.numeric)
+         Final = 1)
 
 dat <- read_excel("data_raw/Crowd Estimates March 2018.xlsx", sheet = "MarchLives24")
 
 dat_3 <- dat %>%
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
+  select(-starts_with("...")) %>% 
   mutate(Date = datescrub(Date),
          MacroEvent = "20180324-marchforourlives",
          Final = 1) %>%
-  # get rid of summary rows at bottom of table
+  # get rid of summary rows at bottom of tablea
   slice(1:765)
 
-dat <- bind_rows(list(dat_1, dat_2, dat_3))
+# need to use data.table here to resolve issue with inconsistent col types
+dat <- data.table::rbindlist(list(dat_1, dat_2, dat_3), fill = TRUE)
 
 dat <- arrange(dat, Date, StateTerritory, CityTown)
               

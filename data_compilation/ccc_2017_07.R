@@ -3,7 +3,7 @@ source("~/nval/ccc/r/ccc_scrubber.r")
 dat <- read_excel("data_raw/Crowd Estimates July 2017.xlsx", sheet = "Tally")
 
 dat <- dat %>%
-  select(-...26, -...27, -...28) %>%
+  select(-starts_with("...")) %>%
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
   mutate(Date = datescrub(Date),
          Final = 1)

@@ -3,7 +3,7 @@ source("~/nval/ccc/r/ccc_scrubber.r")
 dat <- read_excel("data_raw/Crowd Estimates August 2018.xlsx", sheet = "Tally")
 
 dat <- dat %>%
-  select(-...26) %>%
+  select(-starts_with("...")) %>%
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
   slice(1:573) %>%
   # date format screwed up by row with "week of..." in it, so different scrubbing needed

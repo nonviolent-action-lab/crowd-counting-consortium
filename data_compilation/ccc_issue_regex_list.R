@@ -54,7 +54,7 @@ ccc_issue_regex_list <- list(
 
   racism = "\\bracis|antiracis|anti-racis|\\bracial|bigot|\\bhate\\b|discriminat|segregat|\\bredlin|diversity|prejudice|of color|\\bbipoc\\b|\\bblack|african.american|white supremac|white nationalis.|swastika|blm|all lives matter|white lives matter|no white guilt|george floyd|breonna taylor|alt-right|confederate|confederacy|kkk|klan|mlk|conquistador|christopher columbus|affirmative action|hispanic|\\blatin[a-z]{1,2}\\b|\\bchican[a-z]{1,2}\\b|minority|aapi|\\basian\\b|critical race theory|\\bcrt\\b|1619 project",
 
-  religion = "religio|evangeli|\\bgod\\b|\\bjesus\\b|christian|catholic|protestant|presbyterian|baptist|islam|muslim|buddhis|sikh|\\bhindu\\b|jewish|semiti|mormon|church|synagogue|temple|mosque|sharia|prayer|zionis.|judaism|hijab|pastor|reverend|priest|cleric|\\bimam\\b|\\brabbi\\b|monk|worship|\\bsatan|secular|atheis.",
+  religion = "religio|evangeli|\\bgod\\b|\\bjesus\\b|christian|catholic|protestant|presbyterian|baptist|islam|muslim|buddhis|sikh|\\bhindu\\b|jewish|semiti|mormon|church|synagogue|temple|mosque|sharia|prayer|zionis.|judaism|hijab|pastor|reverend|priest|cleric|\\bimam\\b|\\brabbi\\b|monk|worship|\\bsatan|secular|atheis.|\\bfaith\\b",
 
   `reproductive rights` = "reproductive rights|abortion|planned parenthood|planed parenthood|pro.life|pro.choice|birth control|contracepti|condom|family planning",
 

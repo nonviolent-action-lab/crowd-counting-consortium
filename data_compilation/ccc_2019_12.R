@@ -20,7 +20,6 @@ dat <- read_excel("data_raw/Crowd Estimates December 2019.xlsx", sheet = "Impeac
 
 dat_3 <- dat %>%
   select(-starts_with("...")) %>%  # there is some content in some of these, incl urls
-  slice(1:599) %>%  # remove summary rows
   rename(ClaimType = `Pro(2)/Anti(1)`) %>%
   # date field is extra wack here, so gotta go manual
   mutate(Date = as.character(as.Date(Date, origin = "1899-12-30")),

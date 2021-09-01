@@ -4,7 +4,7 @@ dat <- read_excel("data_raw/Crowd Estimates July 2019.xlsx", sheet = "Tally")
 
 dat_1 <- dat %>%
   rename(CityTown = City, ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
-  select(-...27, -...28) %>%
+  select(-starts_with("...")) %>%
   mutate(Date = datescrub(Date),
          Final = 0)
 
@@ -12,7 +12,7 @@ dat <- read_excel("data_raw/Crowd Estimates July 2019.xlsx", sheet = "LightsForL
 
 dat_2 <- dat %>%
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
-  select(-...27, -...28) %>%
+  select(-starts_with("...")) %>%
   slice(1:708) %>%  # bottom of sheet has some summary rows and notes; get rid of them
   mutate(Date = datescrub(Date),
          Country = "US",  # not sure why, but links were in this col on this tab

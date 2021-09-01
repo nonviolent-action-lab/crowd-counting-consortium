@@ -3,7 +3,7 @@ source("~/nval/ccc/r/ccc_scrubber.r")
 dat <- read_excel("~/nval/ccc/data_raw/April 2017.xlsx", sheet = "Tally")
 
 dat <- dat %>%
-  select(-...25) %>%
+  select(-starts_with("...")) %>%
   rename(ClaimType = `Pro(2)/Anti(1)`) %>%
   mutate(Date = datescrub(Date),
          MacroEvent = NA,

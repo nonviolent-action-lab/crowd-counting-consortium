@@ -4,7 +4,7 @@ dat <- read_excel("data_raw/Crowd Estimates January 2019.xlsx", sheet = "Tally")
 
 dat_1 <- dat %>%
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
-  select(-...27, -...28, -...29) %>%
+  select(-starts_with("...")) %>%
   mutate(Date = datescrub(Date),
          Final = 1)
 
@@ -12,7 +12,8 @@ dat <- read_excel("data_raw/Crowd Estimates January 2019.xlsx", sheet = "WomensM
 
 dat_2 <- dat %>%
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
-  select(-`1.12 Go`, -`1.12 Int`, -`time (EST)`, -`1.19 Go`, -`1.19 Int`, -`time (EST`, -...33, -...34) %>%
+  select(-`1.12 Go`, -`1.12 Int`, -`time (EST)`, -`1.19 Go`, -`1.19 Int`, -`time (EST`) %>%
+  select(-starts_with("...")) %>%
   slice(1:339) %>%  # bottom of sheet has some summary rows and notes; get rid of them
   mutate(Date = datescrub(Date),
          MacroEvent = "20190119-womensmarch",

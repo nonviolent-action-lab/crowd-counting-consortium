@@ -4,7 +4,7 @@ dat <- read_excel("data_raw/Crowd Estimates July 2018.xlsx", sheet = "Tally")
 
 dat <- dat %>%
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
-  select(-...26) %>%
+  select(-starts_with("...")) %>%
   slice(1:743) %>%
   mutate(Date = datescrub(Date),
          Final = 1)
