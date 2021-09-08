@@ -12,7 +12,7 @@ ccc_issue_regex_list <- list(
 
   democracy = "democracy|voter|voting rights|election|ballot|redistrict|gerrymander|\\bfascis.|\\bmarxis.|\\bcommunis.|anarchis.|socialis.|\\bcoup\\b|dc statehood|Trump won",
 
-  development = "development|zoning|gentrif|historic preservation|construction(?! worker)|nimby|yimby|displacement",
+  development = "development|zoning|\\brezon|gentrif|historic preservation|construction(?! worker)|nimby|yimby|displacement",
 
   `disabled rights` = "disabilit|disable|otherly able|\\bada\\b|accessib|\\bblind\\b|\\bdeaf\\b|wheelchair|special needs|down's syndrome|down syndrome|tourette's|\\bautis.{1,}",
 
@@ -32,9 +32,9 @@ ccc_issue_regex_list <- list(
 
   guns = "\\bgun\\b|firearm|second amendment|2nd amendment|\\b2a\\b|\\bnra\\b|national rifle association|concealed carry|open.carry|ar-15|assault rifle|automatic rifle|bump stock|right to bear arms",
 
-  healthcare = "health|doctor|physician|nurse|nursing|hospital|\\bclinic\\b|\\bpatient|medical|medicine|medicare|medicaid|prescription|\\brx\\b|obamacare|\\baca\\b|affordable care act|preexisting condition|vaccin|disease|cancer|depression|suicide|maternal care|dhhr|\\bhiv\\b|\\baids\\b|hiv.aids|birthing|family act|\\bahca\\b|osteopath|chiropract|acupunctur|\\bhealer|\\bpharmac",
+  healthcare = "health|doctor|physician|nurse|nursing|hospital|\\bclinic\\b|\\bpatient|medical|medicine|medicare|medicaid|prescription|\\brx\\b|obamacare|\\baca\\b|affordable care act|preexisting condition|vaccin|\\bjab\\b|disease|cancer|depression|suicide|maternal care|dhhr|\\bhiv\\b|\\baids\\b|hiv.aids|birthing|family act|\\bahca\\b|osteopath|chiropract|acupunctur|\\bhealer|\\bpharmac",
 
-  housing = "homeless|\\bhousing|\\beviction|\\brent\\b|mortgage|panhandl|unhoused|\\btenant|homeowner",
+  housing = "homeless|\\bhousing|\\beviction|\\brent\\b|mortgage|panhandl|unhoused|\\btenant|homeowner|landlord|slumlord|apartment|\\bhome",
 
   judiciary = "judicia|judge|lawyer|prosecutor|attorney|\\bda\\b|public defender|\\btrial\\b|\\bcourt\\b|gorsuch|kavanaugh|ginsburg|\\brbg\\b|amy coney barrett|\\bscotus\\b",
 
