@@ -10,8 +10,8 @@ setwd("~/nval/ccc")
 
 ### DATA COMPILATION ###
 
-# NOTE: This assumes that current versions of all CCC Google Sheets have been downloaded 
-# as .xls files into a local directory called ~/nval/ccc/data_raw
+# NOTE: This assumes that current versions of all CCC Google Sheets have been 
+# downloaded as .xls files into a local directory called ~/nval/ccc/data_raw
 
 # pre-process all raw monthly files
 script.names <- grep("^ccc_\\d{4}_\\d{2}", list.files("r"), value = TRUE)
@@ -27,7 +27,8 @@ dat_raw <- data.table::rbindlist(clean_files, fill = TRUE)
 
 dat <- dat_raw
 
-# get rid of events outside US and then remove country col (will get replaced in merge with geoloc data below)
+# get rid of events outside US and then remove country col (will get replaced in
+# merge with geoloc data below)
 valid_country_strings <- c("US", "USA", "Us", "USa", "us", "UA", "US and 26 others", "US`", "PR", "DC", "UD", "IA", "NV", "UW", "YS", "0.0", "1.0")
 dat <- filter(dat, Country %in% valid_country_strings)
 dat <- select(dat, -Country)
@@ -132,6 +133,7 @@ dat$Location <- with(dat, paste(CityTown, StateTerritory, sep = ", "))
 # get a df with only unique combos of locality, state
 locations <- dat %>% 
   select(CityTown, StateTerritory, Location) %>%
+  filter(!is.na(CityTown)) %>%
   distinct(Location, .keep_all = TRUE) %>%
   # need this next bit to prevent api from choking on non-UTF-8 characters (e.g., smart quotes, n's with tildes)
   mutate(CityTown2 = iconv(CityTown, to = "ASCII//TRANSLIT"))
@@ -226,7 +228,7 @@ source("r/ccc_issue_regex_list.R")
 
 dat$ClaimCodes <- claimcoder(dat$Claim)
 
-dat <- claimcoder_addendum("ClaimCodes", dat)
+dat <- claimcoder_addendum(dat)
 
 
 ### ARRANGING ###
@@ -272,7 +274,6 @@ dat <- dat %>%
          police_deaths,
          starts_with("source_"),
          notes = Misc,
-         final = Final,
          lat,
          lon,
          resolved_locality = locality,
@@ -301,3 +302,4 @@ write.csv(dat, "data_clean/ccc_compiled.csv", row.names = FALSE)
 write.csv(dat, "c:/users/ulfel/documents/ccc-data-dashboard/data/ccc_compiled.csv", row.names = FALSE)
 
 write.csv(dat, "c:/users/ulfel/documents/github/crowd-counting-consortium/ccc_compiled.csv", row.names = FALSE)
+ 
