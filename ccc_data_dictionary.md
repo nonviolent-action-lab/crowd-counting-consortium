@@ -73,8 +73,6 @@ This dictionary describes the compiled and cleaned version of the Crowd Counting
 
 - **notes**. Miscellaneous additional information about the event as noted by the coder. *Misc.* or *Misc* in the source data for 2017-2020; *notes* in source data for 2021-.
 
-- **final**. Binary indicator of whether or not CCC identifies the data for that month as "finalized." 1 = yes, 0 = no. Note that this does not necessarily mean the existing records will not be changed or no new records will be added.
-
 - **lat**. Latitude of locality in which the event took place, as resolved by Google Maps Geocoding API.
 
 - **lon**. Longitude of locality in which the event took place, as resolved by Google Maps Geocoding API.
