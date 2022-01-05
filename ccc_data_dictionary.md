@@ -7,11 +7,7 @@ This dictionary describes the compiled and cleaned version of the Crowd Counting
 
 - **state**. Two-letter U.S. postal abbreviation for the state or territory in which the event took place. *StateTerritory* in source data from 2017-2020; *state* in source data from 2021-.
 
-- **location**. Concatenation of locality and state strings. Used for geolocation.
-
 - **location_detail**. If known, details on the location within the city or town where the action took place. *Location* or *location* in the source data.
-
-- **county**. The name of the county (or similar administrative unit) in which the event's locality is situated, as recorded by human coder. *County* in the source data (2017-2020).
 
 - **online**. Binary indicator for online-only events. 1 = yes, 0 = no.
 
