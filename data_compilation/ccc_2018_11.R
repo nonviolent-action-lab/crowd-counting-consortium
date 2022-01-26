@@ -11,7 +11,6 @@ dat <- read_excel("data_raw/Crowd Estimates November 2018.xlsx", sheet = "Muelle
 
 dat_2 <- dat %>%
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
-  slice(1:885) %>%  # bottom of sheet has some summary rows and notes; get rid of them
   mutate(Date = datescrub(Date),
          MacroEvent = "20181108-mueller",
          Final = 1)

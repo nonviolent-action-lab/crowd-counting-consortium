@@ -6,8 +6,7 @@ dat_1 <- dat %>%
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
   select(-starts_with("...")) %>%
   mutate(Date = datescrub(Date),
-         Final = 1) %>%
-  slice(1:821)
+         Final = 1)
 
 dat <- read_excel("data_raw/Crowd Estimates March 2018.xlsx", sheet = "WalkoutMarch14")
 
@@ -25,9 +24,7 @@ dat_3 <- dat %>%
   select(-starts_with("...")) %>% 
   mutate(Date = datescrub(Date),
          MacroEvent = "20180324-marchforourlives",
-         Final = 1) %>%
-  # get rid of summary rows at bottom of tablea
-  slice(1:765)
+         Final = 1)
 
 # need to use data.table here to resolve issue with inconsistent col types
 dat <- data.table::rbindlist(list(dat_1, dat_2, dat_3), fill = TRUE)

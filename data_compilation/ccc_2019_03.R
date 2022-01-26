@@ -13,7 +13,6 @@ dat <- read_excel("data_raw/Crowd Estimates March 2019.xlsx", sheet = "FridaysFo
 dat_2 <- dat %>%
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
   select(-starts_with("...")) %>%
-  slice(1:223) %>%  # bottom of sheet has some summary rows and notes; get rid of them
   mutate(Date = datescrub(Date),
          MacroEvent = "20190315-climatestrike",
          Final = 1)

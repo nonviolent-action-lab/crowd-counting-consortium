@@ -16,6 +16,7 @@ dat_2 <- dat %>%
   mutate(Date = datescrub(Date),
          Claim = "for urgent action on climate change, for climate justice and equity",
          ClaimType = 1,
+         EventType = "demonstration",
          MacroEvent = "20190920-climatestrike",
          Final = 1)
 

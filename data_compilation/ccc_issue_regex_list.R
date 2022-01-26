@@ -64,6 +64,8 @@ ccc_issue_regex_list <- list(
 
   `sexual violence` = "sexual (?:violence|assault|ha[r]{1,2}assment)|\\brap(e|ists?)\\b|sex offender|sex(ual)? abuse|sex trafficking|vanessa guillen",
 
+  sports = "\\bsports?\\b|[[:alpha:]]{4,}ball|hockey|wrestling|cycling|cyclo-?cross|biking|track and field|swimming|diving|soccer|tennis|golf|cheerlead(?:ing|er)|skiing|snowboarding|rock climbing|bouldering|martial arts|equestrian|fishing|frisbee|gymnast|(?:figure|speed) skating|rodeo|(?:tri|bi|du)athlon|lacrosse|\\bpolo\\b|sailing|surfing|canoeing|kayaking",
+
   taxes = "\\btax\\b(?! return)|\\btaxes\\b",
 
   transportation = "\\btransport(ation)?\\b|subway|\\btransit\\b|bicycle|\\bbike\\b|bi?cyclist|pedestrian|highway|freeway|interstate|\\broad(way)?\\b|street|\\bcar\\b|\\bbus\\b|\\btrain\\b|railroad|tunnel|\\bbridge\\b|airport|airline|ferry|\\btram\\b|\\btoll\\b",

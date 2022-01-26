@@ -12,15 +12,14 @@ dat <- read_excel("data_raw/Crowd Estimates Jan 2018.xlsx", sheet = "WomensMarch
 
 dat_2 <- dat %>%
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
-  select(-...27, -`Women's?`) %>%
-  slice(1:413) %>%  # remove trailing rows with summary cells 
+  select(-`Women's?`) %>%
   mutate(Date = datescrub(Date),
          MacroEvent = "20180120-womensmarch",
          Final = 1)
 
-dat <- bind_rows(dat_1, dat_2)
+# need to use data.table here to resolve issue with inconsistent col types
+dat <- data.table::rbindlist(list(dat_1, dat_2), fill = TRUE)
 
 dat <- arrange(dat, Date, StateTerritory, CityTown)
               
 write.csv(dat, "data_clean/ccc_2018_01.csv", row.names = FALSE)
-

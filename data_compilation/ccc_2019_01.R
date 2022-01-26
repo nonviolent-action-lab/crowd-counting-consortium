@@ -14,7 +14,6 @@ dat_2 <- dat %>%
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
   select(-`1.12 Go`, -`1.12 Int`, -`time (EST)`, -`1.19 Go`, -`1.19 Int`, -`time (EST`) %>%
   select(-starts_with("...")) %>%
-  slice(1:339) %>%  # bottom of sheet has some summary rows and notes; get rid of them
   mutate(Date = datescrub(Date),
          MacroEvent = "20190119-womensmarch",
          Final = 1)

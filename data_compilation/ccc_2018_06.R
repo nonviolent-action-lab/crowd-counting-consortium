@@ -5,7 +5,6 @@ dat <- read_excel("data_raw/Crowd Estimates June 2018.xlsx", sheet = "Tally")
 dat_1 <- dat %>%
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
   select(-starts_with("...")) %>%
-  slice(1:998) %>%
   mutate(Date = datescrub(Date),
          Final = 1)
 
@@ -13,7 +12,6 @@ dat <- read_excel("data_raw/Crowd Estimates June 2018.xlsx", sheet = "FamiliesBe
 
 dat_2 <- dat %>%
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
-  slice(1:738) %>% 
   mutate(Date = datescrub(Date),
          MacroEvent = "20180630-familiesbelongtogether",
          Final = 1)
