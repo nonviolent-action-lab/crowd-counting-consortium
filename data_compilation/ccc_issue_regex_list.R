@@ -1,24 +1,24 @@
 ccc_issue_regex_list <- list(
 
-  `animal rights` = "\\banimal\\b|meat farm|\\bpeta\\b|\\bcircus|puppy mill|horse.drawn carriage|slaughterhouse|\\bfur\\b|factory farm",
+  `animal rights` = "\\banimal\\b|(?:factory|meat) farm|\\bpeta\\b|\\bcircus|puppy mill|horse.drawn carriage|slaughter ?house|\\bfur\\b",
 
   `civil rights` = "civil rights|free (?:speech|assembly|religion)|freedom of (?:speech|assembly|religion)|(?:first|1st) amendment|freedom|censor|anti.protest",
 
-  covid = "covid(-19)?|corona(virus)?|\\bmask\\b|anti.mask|fauci|pandemic|\\bcdc\\b|ventilator|personal protective equipment|\\bppe\\b|\\breopen",
+  covid = "covid(-19)?|corona(virus)?|\\bmask\\b|anti.mask|fauci|pandemic|\\bcdc\\b|ventilator|personal protective equipment|\\bppe\\b|\\breopen|ivermectin|remdisvir",
 
   corruption = "\\bcorrupt|\\bbribe|graft",
 
-  `criminal justice` = "criminal justice|prison|jail|carceral|(?:in|de)carcerat|parole|death (?:penalty|sentence)|capital punishment|\\bexecution|juvenile detention|\\binmate|wrongful conviction|clemency|\\bfelon|ex-felon|correctional|criminal violence",
+  `criminal justice` = "criminal justice|prison|jail|carceral|(?:in|de)carcerat|parole|death (?:penalty|sentence)|capital punishment|\\bexecution|juvenile detention|\\binmate|wrongful (?:conviction|prosecution)|clemency|\\bfelon|ex-felon|correctional",
 
   democracy = "democracy|voter|voting rights|election|ballot|redistrict|gerrymander|\\bfascis.|\\bmarxis.|\\bcommunis.|anarchis.|socialis.|\\bcoup\\b|dc statehood|Trump won",
 
   development = "development|zoning|\\brezon|gentrif|historic preservation|construction(?! worker)|nimby|yimby|displacement",
 
-  `disabled people's rights` = "disabilit|disable|otherly able|\\bada\\b|accessib|\\bblind\\b|\\bdeaf\\b|wheelchair|special needs|down(\'s)? syndrome|tourette|\\bautis.{1,}",
+  `disabled people's rights` = "disab(?:ilit|led?)|otherly abled?|\\bada\\b|accessib|\\bblind\\b|\\bdeaf\\b|wheelchair|special needs|down(\'s)? syndrome|tourette|\\bautis.{1,}",
 
   drugs = "\\bdrug|alcohol|marijuana|cannabis|\\bpot\\b|\\bcbd\\b|cocaine|opioid|opiate|narcotic|lsd|heroin|hemp|safe injection|overdose|oxycontin|\\bmeth\\b|methadone|methamphetamine|needle|syringe service|fentanyl",
 
-  economy = "economy|economic|inflation|business|industry|manufacturing|\\bfarm|agricultur|\\bjob\\b|employment|housing|\\bwage\\b|\\bsalar|recession|financ|wall street|stock market|monetary|interest rate|\\bbank|capitalis|\\brent\\b|eviction|hiring|tourism|basic income|\\bubi\\b|hunger|food insecurity|poverty|poor",
+  economy = "econom(?:y|ic)\\b|inflation|business|industry|manufacturing|\\bfarm|agricultur|\\bjob\\b|employment|\\bwage\\b|\\bsalar(?:y|ied)|recession|financ|wall street|stock market|monetary|interest rate|\\bbank|capitalis|\\brent\\b|eviction|hiring|tourism|basic income|\\bubi\\b|hunger|food insecurity|poverty|poor",
 
   education = "\\beducat(?:ion|or)|school|learning|student|pupil|\\bteach|faculty|universit(?:y|ies)|college|professor|principal|superintendent|classroom|\\bed\\b|campus|alumn|\\bpta\\b|\\btuition|betsy devos",
 
@@ -40,7 +40,7 @@ ccc_issue_regex_list <- list(
 
   labor = "\\blabor\\b|\\bworker|employee|lockout|shutout|\\bunion|collective bargain|\\bpay\\b|\\bjob\\b|layoff|furlough|pension|\\bwage|\\bcontract\\b|working|benefits|compensation|paid leave|sick leave|maternity leave|paternity leave|hazardous conditions|pink slip|hiring|may day|right.to.work|workplace|hazard pay|furlough|profession",
 
-  legislative = "legislat|\\blaw(?! enforcement)|\\bbills?\\b|lawmaker|\\bsenat|representative|congress|rep\\.|sen\\.|general assembly|\\bhb ?\\d{1,}|\\bsb ?\\d{1,}|\\bab ?\\d{1,}|Heroes Act|build back better",
+  legislative = "legislat|\\blaw(?! enforcement)\\b|\\bbills?\\b|lawmaker|\\bsenat|representative|congress|rep\\.|sen\\.|general assembly|\\bhb ?\\d{1,}|\\bsb ?\\d{1,}|\\bab ?\\d{1,}|heroes act|build back better",
 
   `lgbtq rights`= "lgbt|lesbian|\\bgay\\b|bisexual|transgender|trans (?!-)|queer|pride parade|pride march|same.sex|conversion therapy|bathroom bill|rainbow capitalism|two.spirit",
 
@@ -48,29 +48,29 @@ ccc_issue_regex_list <- list(
 
   military = "military|(?<!civil )\\bwar\\b(?! on )|antiwar|\\dod\\b|army|navy|air force|marines|space force|coast guard|(?<!confederate|union) soldier|veteran|us strike|air strike|airstrike|bombing|nuclear weapon|armed force|\\bva\\b|imperial|\\bvfw\\b|service member|fort hood",
 
-  `native peoples' rights` = "indigenous|native people|native american|\\btribal|\\btribe|\\bindians?\\b|land back|colon(?:ial|iz)",
+  `native peoples' rights` = "indigenous|native (?:people|american)|\\btrib(?:al|e)\\b|\\bindians?\\b|land back|leonard peltier",
 
   patriotism = "patriot",
 
-  policing = "polic(?:e|ing)|she[r]{1,2}iff|\\bdeput|law enforcement|\\bcops?\\b|(?:blue|black) lives matter|(?:back|defend) the blue|thin blue line|\\bblm\\b|school resource officer|\\bsro|\\bacab\\b",
+  policing = "polic(?:e|ing)|she[r]{1,2}iff|\\bdeput|law enforcement|\\bcops?\\b|(?:blue|black) lives matter|(?:back|defend) the blue|thin blue line|\\bblm\\b|school resource officer|\\bsro|\\bacab\\b|(?:ny|la|m)pd",
 
-  racism = "\\bracis|anti-?racis|\\bracial|bigot|\\bhate\\b|discriminat|\\bredlin|diversity|prejudice|of color|\\bbipoc\\b|\\bblack|african.american|white (?:supremac|nationalis.)|swastika|blm|(?:black|all|white|asian|native) lives matter|no white guilt|george floyd|breonna taylor|alt.right|confedera(?:te|cy)|kkk|klan|mlk|conquistador|christopher columbus|affirmative action|hispanic|\\blatin[a-z]{1,2}\\b|\\bchican[a-z]{1,2}\\b|minority|aapi|\\basian\\b|critical race theory|\\bcrt\\b|1619 project",
+  racism = "\\b(anti-?)?racis|\\bracial|bigot|\\bhate\\b|discriminat|\\bredlin|diversity|prejudice|of color|\\bbipoc\\b|\\bblack|african.american|white (?:supremac|nationalis.)|swastika|blm|(?:black|all|white|asian|native) lives matter|no white guilt|george floyd|breonna taylor|alt.right|confedera(?:te|cy)|kkk|klan|mlk|conquistador|christopher columbus|affirmative action|hispanic|\\blatin[a-z]{1,2}\\b|\\bchican[a-z]{1,2}\\b|minority|aapi|\\basian\\b|critical race theory|\\bcrt\\b|1619 project",
 
-  religion = "religio|evangeli|\\bgod\\b|\\bjesus\\b|christian|catholic|protestant|presbyterian|baptist|islam|muslim|buddhis|sikh|\\bhindu\\b|jewish|semiti|mormon|church|synagogue|temple|mosque|sharia|prayer|zionis.|judaism|hijab|pastor|reverend|priest|cleric|\\bimam\\b|\\brabbi\\b|monk|worship|\\bsatan|secular|atheis.|\\bfaith\\b",
+  religion = "religio|evangeli|\\bgod\\b|\\bjesus\\b|christian|catholic|protestant|presbyterian|baptist|islam|muslim|buddhis|sikh|\\bhindu\\b|jewish|semiti|mormon|church|synagogue|temple|mosque|sharia|pray(er)?|zionis.|judaism|hijab|pastor|reverend|priest|cleric|\\bimam\\b|\\brabbi\\b|monk|worship|\\bsatan|secular|atheis.|\\bfaith\\b",
 
   `reproductive rights` = "reproductive rights|abortion|planned parenthood|planed parenthood|pro.life|pro.choice|birth control|contracepti|condom|family planning",
 
-  science = "science|scientific|scientist|biology|astronomy|physics|chemistry|biologist|astronomer|physicist|\\bchemist",
+  science = "scien(?:ce|tist|tific)|biolog(?:y|ist)|astronom(?:y|er)|physic(?:s|ist)|chemist(ry)?|epidemiolog(?:y|ist)",
 
-  `sexual violence` = "sexual (?:violence|assault|ha[r]{1,2}assment)|\\brap(e|ists?)\\b|sex offender|sex(ual)? abuse|sex trafficking|vanessa guillen",
+  `sexual violence` = "sexual (?:violence|assault|ha[r]{1,2}assment|misconduct)|\\brap(e|ists?)\\b|sex(ual)? (?:offender|traffic|abuse)|vanessa guillen",
 
   sports = "\\bsports?\\b|[[:alpha:]]{4,}ball|hockey|wrestling|cycling|cyclo-?cross|biking|track and field|swimming|diving|soccer|tennis|golf|cheerlead(?:ing|er)|skiing|snowboarding|rock climbing|bouldering|martial arts|equestrian|fishing|frisbee|gymnast|(?:figure|speed) skating|rodeo|(?:tri|bi|du)athlon|lacrosse|\\bpolo\\b|sailing|surfing|canoeing|kayaking",
 
   taxes = "\\btax\\b(?! return)|\\btaxes\\b",
 
-  transportation = "\\btransport(ation)?\\b|subway|\\btransit\\b|bicycle|\\bbike\\b|bi?cyclist|pedestrian|highway|freeway|interstate|\\broad(way)?\\b|street|\\bcar\\b|\\bbus\\b|\\btrain\\b|railroad|tunnel|\\bbridge\\b|airport|airline|ferry|\\btram\\b|\\btoll\\b",
+  transportation = "\\btransport(ation)?\\b|subway|\\btransit\\b|bicycle|\\bbike\\b|bi?cyclist|pedestrian|(?:high|free)way|interstate|\\broad(way)?\\b|(?<!wall )street|\\bcar\\b|\\bbus\\b|\\btrain\\b|rail(?:road|way)|tunnel|\\bbridge\\b|air(?:port|line)|ferry|\\btram\\b|\\btoll\\b",
 
-  `women's rights` = "women|metoo|\\bsexis|patriarch|\\bgender\\b|domestic violence|femicide|equal rights amendment|take back the night|\\bmen\'?s rights|\\bmother|misogyn"
+  `women's rights` = "women|metoo|\\bsexis(?:t|m)|patriarch|\\bgender\\b|domestic violence|femicide|equal rights amendment|take back the night|\\bmen\'?s rights|\\bmother|misogyn"
 
 )
 
