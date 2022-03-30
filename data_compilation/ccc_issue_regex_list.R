@@ -2,13 +2,15 @@ ccc_issue_regex_list <- list(
 
   `animal rights` = "\\banimal\\b|(?:factory|meat) farm|\\bpeta\\b|\\bcircus|puppy mill|horse.drawn carriage|slaughter ?house|\\bfur\\b",
 
+  `banking and finance` = "(?<!west )bank|financ|wall street|\\bnyse\\b|nasdaq|wells fargo|jpmorgan|credit card|debt|loan|stock market|monetary|interest rate",
+
   `civil rights` = "civil rights|free (?:speech|assembly|religion)|freedom of (?:speech|assembly|religion)|(?:first|1st) amendment|freedom|censor|anti.protest",
 
-  covid = "covid(-19)?|corona(virus)?|\\bmask\\b|anti.mask|fauci|pandemic|\\bcdc\\b|ventilator|personal protective equipment|\\bppe\\b|\\breopen|ivermectin|remdisvir",
+  covid = "covid|corona(virus)?|\\b(anti.?)?mask\\b|fauci|pandemic|\\bcdc\\b|ventilator|personal protective equipment|\\bppe\\b|\\bre.?open|ivermectin|remdisvir|lockdown|(?:wuhan |china )flu|china.?virus",
 
   corruption = "\\bcorrupt|\\bbribe|graft",
 
-  `criminal justice` = "criminal justice|prison|jail|carceral|(?:in|de)carcerat|parole|death (?:penalty|sentence)|capital punishment|\\bexecution|juvenile detention|\\binmate|wrongful (?:conviction|prosecution)|clemency|\\bfelon|ex-felon|correctional",
+  `criminal justice` = "criminal justice|prison|jail|carceral|(?:in|de)carcerat|parole|death (?:penalty|sentence)|capital punishment|\\bexecution|juvenile detention|\\binmate|wrongful (?:conviction|prosecution)|clemency|\\bfelon|ex-felon|correctional|cash bail|bail reform",
 
   democracy = "democracy|voter|voting rights|election|ballot|redistrict|gerrymander|\\bfascis.|\\bmarxis.|\\bcommunis.|anarchis.|socialis.|\\bcoup\\b|dc statehood|Trump won",
 
@@ -18,7 +20,7 @@ ccc_issue_regex_list <- list(
 
   drugs = "\\bdrug|alcohol|marijuana|cannabis|\\bpot\\b|\\bcbd\\b|cocaine|opioid|opiate|narcotic|lsd|heroin|hemp|safe injection|overdose|oxycontin|\\bmeth\\b|methadone|methamphetamine|needle|syringe service|fentanyl",
 
-  economy = "econom(?:y|ic)\\b|inflation|business|industry|manufacturing|\\bfarm|agricultur|\\bjob\\b|employment|\\bwage\\b|\\bsalar(?:y|ied)|recession|financ|wall street|stock market|monetary|interest rate|\\bbank|capitalis|\\brent\\b|eviction|hiring|tourism|basic income|\\bubi\\b|hunger|food insecurity|poverty|poor",
+  economy = "econom(?:y|ic)\\b|inflation|business|industry|manufactur(?:er|ing)|\\bfarm|agricultur|\\bjobs?\\b|employment|\\bwage\\b|\\bsalar(?:y|ied)|recession|financ|wall street|stock market|monetary|fiscal|interest rate|\\bbank|capitalis|\\brent\\b|eviction|hiring|tourism|basic income|\\bubi\\b|hunger|food insecurity|poverty|\\bpoor|corporat(?:e|ion)",
 
   education = "\\beducat(?:ion|or)|school|learning|student|pupil|\\bteach|faculty|universit(?:y|ies)|college|professor|principal|superintendent|classroom|\\bed\\b|campus|alumn|\\bpta\\b|\\btuition|betsy devos",
 
@@ -34,23 +36,23 @@ ccc_issue_regex_list <- list(
 
   healthcare = "health|doctor|physician|nurse|nursing|hospital|\\bclinic\\b|\\bpatient|medical|medic(?:ine|are|aid)|prescription|\\brx\\b|obamacare|\\baca\\b|affordable care act|preexisting condition|vaccin|\\bjab\\b|\\bvax|disease|cancer|depression|suicide|maternal care|dhhr|\\bhiv\\b|\\baids\\b|hiv.aids|birthing|family act|\\bahca\\b|osteopath|chiropract|acupunctur|\\bhealer|\\bpharma",
 
-  housing = "\\bhous(?:e|ing|ed)\\b|(?:home|house)less|unhoused|\\beviction|\\brent\\b|mortgage|panhandl|\\btenant|home ?owner|(?:land|slum)lord|apartment|\\bcondo(minium)?\\b",
+  housing = "\\bhous(?:e|ing|ed)\\b|(?:home|house)less|unhoused|\\beviction|\\brent\\b|mortgage|panhandl|\\btenant|home ?owner|(?:land|slum)lord|apartment|\\bcondo(minium)?\\b|\\b421a\\b",
 
   judiciary = "judicia|judge|lawyer|prosecutor|attorney|\\bda\\b|public defender|\\btrial\\b|\\bcourt\\b|gorsuch|kavanaugh|ginsburg|\\brbg\\b|amy coney barrett|\\bscotus\\b",
 
-  labor = "\\blabor\\b|\\bworker|employee|lockout|shutout|\\bunion|collective bargain|\\bpay\\b|\\bjob\\b|layoff|furlough|pension|\\bwage|\\bcontract\\b|working|benefits|compensation|paid leave|sick leave|maternity leave|paternity leave|hazardous conditions|pink slip|hiring|may day|right.to.work|workplace|hazard pay|furlough|profession",
+  labor = "\\blabor(er)?\\b|\\b(farm.?)?worker|employee|lockout|shutout|\\bunion|collective bargain|\\bpay\\b|\\bjob\\b|layoff|furlough|pension|\\bwages?\\b|\\bcontract\\b|working|benefits|compensation|paid leave|sick leave|maternity leave|paternity leave|hazardous conditions|pink slip|hiring|may day|right.to.work|workplace|hazard pay|furlough|profession",
 
   legislative = "legislat|\\blaw(?! enforcement)\\b|\\bbills?\\b|lawmaker|\\bsenat|representative|congress|rep\\.|sen\\.|general assembly|\\bhb ?\\d{1,}|\\bsb ?\\d{1,}|\\bab ?\\d{1,}|heroes act|build back better",
 
-  `lgbtq rights`= "lgbt|lesbian|\\bgay\\b|bisexual|transgender|trans (?!-)|queer|pride parade|pride march|same.sex|conversion therapy|bathroom bill|rainbow capitalism|two.spirit",
+  `lgbtq rights`= "lgbt|lesbian|\\bgay\\b|bisexual|transgender|trans (?!-)|queer|pride (?:parade|march)|same.sex|conversion therapy|bathroom bill|rainbow capitalism|two.spirit",
 
   migration = "\\bimmigra|\\bmigrant|dreamers|daca|border|refugee|asylum|h-?1b|\\bvisa\\b|sanctuary cit|sanctuary state|illegal alien|undocumented|\\bice\\b|anti-ice|family separation|child separation|deportation|deportee|travel ban|travel eo|muslim ban|\\btps\\b|temporary protected status|\\bexile|\\bmigra\\b",
 
-  military = "military|(?<!civil )\\bwar\\b(?! on )|antiwar|\\dod\\b|army|navy|air force|marines|space force|coast guard|(?<!confederate|union) soldier|veteran|us strike|air strike|airstrike|bombing|nuclear weapon|armed force|\\bva\\b|imperial|\\bvfw\\b|service member|fort hood",
+  military = "military|(?<!civil )\\b(anti.?)?war\\b(?! on )|\\bdod\\b|army|navy|air force|marines|space force|coast guard|(?<!confederate|union) soldier|veteran|us strike|air strike|airstrike|bombing|nuclear (?:weapon|arms|missile)|armed force|\\bva\\b|imperial|\\bvfw\\b|service member|fort hood|\\bicbm|peace",
 
   `native peoples' rights` = "indigenous|native (?:people|american)|\\btrib(?:al|e)\\b|\\bindians?\\b|land back|leonard peltier",
 
-  patriotism = "patriot",
+  patriotism = "patriot(?! missile)",
 
   policing = "polic(?:e|ing)|she[r]{1,2}iff|\\bdeput|law enforcement|\\bcops?\\b|(?:blue|black) lives matter|(?:back|defend) the blue|thin blue line|\\bblm\\b|school resource officer|\\bsro|\\bacab\\b|(?:ny|la|m)pd|f(uck )?12",
 
