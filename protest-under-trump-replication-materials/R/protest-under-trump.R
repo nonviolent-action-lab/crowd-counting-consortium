@@ -12,7 +12,6 @@ library(tidycensus)
 
 options(stringsAsFactors = FALSE)
 
-setwd("~/nval/protest-under-trump")
 
 # DATA INGESTION AND PREP
 
