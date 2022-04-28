@@ -2,7 +2,7 @@ ccc_issue_regex_list <- list(
 
   `animal rights` = "\\banimal\\b|(?:factory|meat) farm|\\bpeta\\b|\\bcircus|puppy mill|horse.drawn carriage|slaughter ?house|\\bfur\\b",
 
-  `banking and finance` = "(?<!west )bank|financ|wall street|\\bnyse\\b|nasdaq|wells fargo|jpmorgan|credit card|debt|loan|stock market|monetary|interest rate",
+  `banking and finance` = "(?<!west )bank|financ|wall street|\\bnyse\\b|nasdaq|wells fargo|jpmorgan|credit card|debt|loan|stock market|monetary|interest rate|(?:in|di)vest",
 
   `civil rights` = "civil rights|free (?:speech|assembly|religion)|freedom of (?:speech|assembly|religion)|(?:first|1st) amendment|freedom|censor|anti.protest",
 
@@ -66,7 +66,7 @@ ccc_issue_regex_list <- list(
 
   `sexual violence` = "sexual (?:violence|assault|ha[r]{1,2}assment|misconduct)|\\brap(e|ists?)\\b|sex(ual)? (?:offender|traffic|abuse)|vanessa guillen",
 
-  sports = "\\bsports?\\b|[[:alpha:]]{4,}ball|hockey|wrestling|cycling|cyclo-?cross|biking|track and field|swimming|diving|soccer|tennis|golf|cheerlead(?:ing|er)|skiing|snowboarding|rock climbing|bouldering|martial arts|equestrian|fishing|frisbee|gymnast|(?:figure|speed) skating|rodeo|(?:tri|bi|du)athlon|lacrosse|\\bpolo\\b|sailing|surfing|canoeing|kayaking|olympic(?:s| games)",
+  sports = "\\bsports?\\b|[[:alpha:]]{4,}ball|hockey|wrestling|\\bcycling|cyclo-?cross|biking|bmx|track and field|swimming|diving|soccer|tennis|golf|cheerlead(?:ing|er)|skiing|snowboarding|rock climbing|bouldering|martial arts|equestrian|\\bfishing|frisbee|gymnast|(?:figure|speed) skating|rodeo|(?:tri|bi|du)athlon|lacrosse|\\bpolo\\b|sailing|surfing|canoeing|kayaking|olympic(?:s| games)",
 
   taxes = "\\btax\\b(?! return)|\\btaxes\\b",
 
