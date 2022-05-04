@@ -24,12 +24,28 @@ walk(script.names, ~source(paste0("r/", .)))
 # NOTE: this function depends on cols in all of these files having the same
 # number of cols in the same order, bc it prespecifies col types
 source("r/ccc_data_preprocessor.r")
-dateseq <- seq(from = as.Date("2021-01-01"), to = Sys.Date(), by = "month")
-purrr::walk(dateseq, ccc_prepro)
+
+date_seq <- seq(from = as.Date("2021-01-01"), to = Sys.Date(), by = "month")
+
+file_seq <- map_chr(date_seq, function(x) {
+
+  yr <- substr(x, 1, 4)
+
+  mo <- substr(x, 6, 7)
+
+  sprintf("data_raw/Crowd Estimates %s %s.xlsx", month.name[as.integer(mo)], yr)
+
+})
+
+purrr::walk(file_seq, ccc_prepro)
+
+# now preprocess raw file for super-repeater events
+ccc_prepro("data_raw/CCC Super Repeaters.xlsx")
 
 # compile all pre-processed monthly files into one table
-file.names <- grep("ccc_\\d{4}_\\d{2}", list.files("data_clean"), value = TRUE)
-clean_files <- map(paste0("data_clean/", file.names), read.csv)
+file_names <- grep("ccc_\\d{4}_\\d{2}", list.files("data_clean"), value = TRUE)
+file_names <- append(file_names, "ccc_super_repeaters.csv")
+clean_files <- map(paste0("data_clean/", file_names), read.csv)
 dat_raw <- data.table::rbindlist(clean_files, fill = TRUE)
 
 
