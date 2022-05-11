@@ -34,17 +34,17 @@ ccc_issue_regex_list <- list(
 
   guns = "\\bgun\\b|firearm|(?:second|2nd) amendment|\\b2a\\b|\\bnra\\b|national rifle association|concealed carry|open.carry|ar-15|(?:assault|automatic) rifle|bump stock|right to bear arms",
 
-  healthcare = "health|doctor|physician|nurse|nursing|hospital|\\bclinic\\b|\\bpatient|medical|medic(?:ine|are|aid)|prescription|\\brx\\b|obamacare|\\baca\\b|affordable care act|preexisting condition|vaccin|\\bjab\\b|\\bvax|disease|cancer|depression|suicide|maternal care|dhhr|\\bhiv\\b|\\baids\\b|hiv.aids|birthing|family act|\\bahca\\b|osteopath|chiropract|acupunctur|\\bhealer|\\bpharma",
+  healthcare = "\\bhealth( ?care)?\\b|doctor|physician|nurse|nursing|hospital|\\bclinic\\b|\\bpatient|medical|medic(?:ine|are|aid)|prescription|\\brx\\b|obamacare|\\baca\\b|affordable care act|preexisting condition|vaccin|\\bjab\\b|\\bvax|disease|cancer|depression|suicide|maternal care|dhhr|\\bhiv\\b|\\baids\\b|hiv.aids|birthing|family act|\\bahca\\b|osteopath|chiropract|acupunctur|\\bhealer|\\bpharma",
 
   housing = "\\bhous(?:e|ing|ed)\\b|(?:home|house)less|unhoused|\\beviction|\\brent\\b|mortgage|panhandl|\\btenant|home ?owner|(?:land|slum)lord|apartment|\\bcondo(minium)?\\b|\\b421a\\b",
 
-  judiciary = "judicia|judge|lawyer|prosecutor|attorney|\\bda\\b|public defender|\\btrial\\b|\\bcourt\\b|gorsuch|kavanaugh|ginsburg|\\brbg\\b|amy coney barrett|\\bscotus\\b",
+  judiciary = "judicia|judge|lawyer|prosecutor|attorney|\\bda\\b|public defender|\\btrial\\b|\\bcourt\\b|gorsuch|kavanaugh|ginsburg|\\brbg\\b|amy coney barrett|\\bscotus\\b|\\balito\\b",
 
   labor = "\\blabor(er)?\\b|\\b(farm.?)?worker|employee|lockout|shutout|\\bunion|collective bargain|\\bpay\\b|\\bjob\\b|layoff|furlough|pension|\\bwages?\\b|\\bcontract\\b|working|benefits|compensation|paid leave|sick leave|maternity leave|paternity leave|hazardous conditions|pink slip|hiring|may day|right.to.work|workplace|hazard pay|furlough|profession",
 
   legislative = "legislat|\\blaw(?! enforcement)\\b|\\bbills?\\b|lawmaker|\\bsenat|representative|congress|rep\\.|sen\\.|general assembly|\\bhb ?\\d{1,}|\\bsb ?\\d{1,}|\\bab ?\\d{1,}|heroes act|build back better",
 
-  `lgbtq rights`= "lgbt|lesbian|\\bgay\\b|bisexual|transgender|trans (?!-)|queer|pride (?:parade|march)|same.sex|conversion therapy|bathroom bill|rainbow capitalism|two.spirit",
+  `lgbtq rights`= "lgbt|lesbian|\\bgay\\b|bisexual|transgender|trans (?!-)|queer|pride (?:parade|march)|same.sex|conversion therapy|bathroom bill|rainbow capitalism|two.spirit|\\bhrt\\b",
 
   migration = "\\bimmigra|\\bmigrant|dreamers|daca|border|refugee|asylum|h-?1b|\\bvisa\\b|sanctuary cit|sanctuary state|illegal alien|undocumented|\\bice\\b|anti-ice|family separation|child separation|deportation|deportee|travel ban|travel eo|muslim ban|\\btps\\b|temporary protected status|\\bexile|\\bmigra\\b",
 
@@ -58,9 +58,9 @@ ccc_issue_regex_list <- list(
 
   racism = "\\b(anti-?)?racis|\\bracial|bigot|\\bhate\\b|discriminat|\\bredlin|diversity|prejudice|of color|\\bbipoc\\b|\\bblack|african.american|white (?:supremac|nationalis.)|swastika|blm|(?:black|all|white|asian|native) lives matter|no white guilt|george floyd|breonna taylor|alt.right|confedera(?:te|cy)|kkk|klan|mlk|conquistador|christopher columbus|affirmative action|hispanic|\\blatin[a-z]{1,2}\\b|\\bchican[a-z]{1,2}\\b|minority|aapi|\\basian\\b|critical race theory|\\bcrt\\b|1619 project",
 
-  religion = "religio|evangeli|\\bgod\\b|\\bjesus\\b|christian|catholic|protestant|presbyterian|baptist|islam|muslim|buddhis|sikh|\\bhindu\\b|jewish|semiti|mormon|church|synagogue|temple|mosque|sharia|pray(er)?|zionis.|judaism|hijab|pastor|reverend|priest|cleric|\\bimam\\b|\\brabbi\\b|monk|worship|\\bsatan|secular|atheis.|\\bfaith\\b|appeal to heaven",
+  religion = "religio|evangeli|\\bgod\\b|\\bjesus\\b|\\ballah|christian|catholic|protestant|presbyterian|baptist|islam|muslim|buddhis|sikh|\\bhindu\\b|jewish|semiti|mormon|church|synagogue|temple|mosque|sharia|pray(er)?|zionis.|judaism|hijab|pastor|reverend|priest|cleric|\\bimam\\b|\\brabbi\\b|monk|worship|\\bsatan|secular|atheis.|\\bfaith\\b|appeal to heaven|bible|rosar(?:y|ies)|theo(?:logy|cracy)",
 
-  `reproductive rights` = "reproductive rights|abortion|plann?ed parenthood|pro(?:\\s|-)(?:life|choice)|birth control|contracepti|condom|family planning|womb|uterus|\\bovaries",
+  `reproductive rights` = "reproductive rights|abortion|plann?ed parenthood|pro(?:\\s|-)(?:life|choice)|birth control|contracepti|condom|family planning|womb|uterus|\\bovar(?:y|ies)|roe v.? wade|\\brepro\\b|vasectomy",
 
   science = "scien(?:ce|tist|tific)|biolog(?:y|ist)|astronom(?:y|er)|physic(?:s|ist)|chemist(ry)?|epidemiolog(?:y|ist)",
 
@@ -72,7 +72,7 @@ ccc_issue_regex_list <- list(
 
   transportation = "\\btransport(ation)?\\b|subway|\\btransit\\b|bicycle|\\bbike\\b|bi?cyclist|pedestrian|(?:high|free)way|interstate|\\broad(way)?\\b|(?<!wall )street|\\bcar\\b|\\bbus\\b|\\btrain\\b|rail(?:road|way)|tunnel|\\bbridge\\b|air(?:port|line)|ferry|\\btram\\b|\\btoll\\b",
 
-  `women's rights` = "women|metoo|\\bsexis(?:t|m)|patriarch|\\bgender\\b|domestic violence|femicide|equal rights amendment|take back the night|\\bmen\'?s rights|\\bmother|misogyn"
+  `women's rights` = "women|metoo|\\bsexis(?:t|m)|patriarch|\\bgender\\b|domestic violence|femicide|equal rights amendment|\\bmen\'?s rights|\\bmother|misogyn|uterus|feminis|pussy"
 
 )
 
