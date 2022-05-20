@@ -38,13 +38,13 @@ ccc_issue_regex_list <- list(
 
   housing = "\\bhous(?:e|ing|ed)\\b|(?:home|house)less|unhoused|\\beviction|\\brent\\b|mortgage|panhandl|\\btenant|home ?owner|(?:land|slum)lord|apartment|\\bcondo(minium)?\\b|\\b421a\\b",
 
-  judiciary = "judicia|judge|lawyer|prosecutor|attorney|\\bda\\b|public defender|\\btrial\\b|\\bcourt\\b|gorsuch|kavanaugh|ginsburg|\\brbg\\b|amy coney barrett|\\bscotus\\b|\\balito\\b",
+  judiciary = "judicia|judge|lawyer|prosecutor|attorney|\\bda\\b|public defender|\\btrial\\b|\\bcourt\\b|gorsuch|kavanaugh|ginsburg|\\brbg\\b|amy coney barrett|\\bscotus\\b|\\balito\\b|roe v.? wade",
 
   labor = "\\blabor(er)?\\b|\\b(farm.?)?worker|employee|lockout|shutout|\\bunion|collective bargain|\\bpay\\b|\\bjob\\b|layoff|furlough|pension|\\bwages?\\b|\\bcontract\\b|working|benefits|compensation|paid leave|sick leave|maternity leave|paternity leave|hazardous conditions|pink slip|hiring|may day|right.to.work|workplace|hazard pay|furlough|profession",
 
   legislative = "legislat|\\blaw(?! enforcement)\\b|\\bbills?\\b|lawmaker|\\bsenat|representative|congress|rep\\.|sen\\.|general assembly|\\bhb ?\\d{1,}|\\bsb ?\\d{1,}|\\bab ?\\d{1,}|heroes act|build back better",
 
-  `lgbtq rights`= "lgbt|lesbian|\\bgay\\b|bisexual|transgender|trans (?!-)|queer|pride (?:parade|march)|same.sex|conversion therapy|bathroom bill|rainbow capitalism|two.spirit|\\bhrt\\b",
+  `lgbtq rights`= "lgbt|lesbian|\\bgay\\b|bisexual|transgender|trans (?!-)|queer|pride (?:parade|march)|same.sex|conversion therapy|bathroom bill|rainbow capitalism|two.spirit|\\bhrt\\b|\\bcissue\\b",
 
   migration = "\\bimmigra|\\bmigrant|dreamers|daca|border|refugee|asylum|h-?1b|\\bvisa\\b|sanctuary cit|sanctuary state|illegal alien|undocumented|\\bice\\b|anti-ice|family separation|child separation|deportation|deportee|travel ban|travel eo|muslim ban|\\btps\\b|temporary protected status|\\bexile|\\bmigra\\b",
 
@@ -60,7 +60,7 @@ ccc_issue_regex_list <- list(
 
   religion = "religio|evangeli|\\bgod\\b|\\bjesus\\b|\\ballah|christian|catholic|protestant|presbyterian|baptist|islam|muslim|buddhis|sikh|\\bhindu\\b|jewish|semiti|mormon|church|synagogue|temple|mosque|sharia|pray(er)?|zionis.|judaism|hijab|pastor|reverend|priest|cleric|\\bimam\\b|\\brabbi\\b|monk|worship|\\bsatan|secular|atheis.|\\bfaith\\b|appeal to heaven|bible|rosar(?:y|ies)|theo(?:logy|cracy)",
 
-  `reproductive rights` = "reproductive rights|abortion|plann?ed parenthood|pro(?:\\s|-)(?:life|choice)|birth control|contracepti|condom|family planning|womb|uterus|\\bovar(?:y|ies)|roe v.? wade|\\brepro\\b|vasectomy",
+  `reproductive rights` = "reproductive rights|abortion|plann?ed parenthood|pro(?:\\s|-)(?:life|choice)|birth control|contracepti|condom|family planning|womb|uterus|\\bovar(?:y|ies)|\\broe( v.? wade)?\\b|\\brepro\\b|vasectom(?:y|ies)",
 
   science = "scien(?:ce|tist|tific)|biolog(?:y|ist)|astronom(?:y|er)|physic(?:s|ist)|chemist(ry)?|epidemiolog(?:y|ist)",
 
