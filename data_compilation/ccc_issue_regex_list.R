@@ -54,7 +54,7 @@ ccc_issue_regex_list <- list(
 
   patriotism = "patriot(?! missile)",
 
-  policing = "polic(?:e|ing)|she[r]{1,2}iff|\\bdeput|law enforcement|\\bcops?\\b|(?:blue|black) lives matter|(?:back|defend) the blue|thin blue line|\\bblm\\b|school resource officer|\\bsro|\\bacab\\b|(?:ny|la|m)pd|f(uck )?12",
+  policing = "polic(?:e|ing)|she[r]{1,2}iff|\\bdeput|law enforcement|\\bcops?\\b|(?:blue|black) lives matter|(?:back|defend) the blue|thin blue line|\\bblm\\b|school resource officer|\\bsro|\\bacab\\b|(?:ny|la|m)pd|f(uck )?12|george floyd|breonna taylor",
 
   racism = "\\b(anti-?)?racis|\\bracial|bigot|\\bhate\\b|discriminat|\\bredlin|diversity|prejudice|of color|\\bbipoc\\b|\\bblack|african.american|white (?:supremac|nationalis.)|swastika|blm|(?:black|all|white|asian|native) lives matter|no white guilt|george floyd|breonna taylor|alt.right|confedera(?:te|cy)|kkk|klan|mlk|conquistador|christopher columbus|affirmative action|hispanic|\\blatin[a-z]{1,2}\\b|\\bchican[a-z]{1,2}\\b|minority|aapi|\\basian\\b|critical race theory|\\bcrt\\b|1619 project",
 
