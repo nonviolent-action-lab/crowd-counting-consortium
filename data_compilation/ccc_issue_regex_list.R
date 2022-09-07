@@ -10,7 +10,7 @@ ccc_issue_regex_list <- list(
 
   corruption = "\\bcorrupt|\\bbribe|graft",
 
-  `criminal justice` = "criminal justice|prison|jail|carceral|(?:in|de)carcerat|parole|death (?:penalty|sentence)|capital punishment|\\bexecution|juvenile detention|\\binmate|wrongful (?:conviction|prosecution)|clemency|\\bfelon|ex-felon|correctional|cash bail|bail reform",
+  `criminal justice` = "criminal justice|prison|jail|carceral|(?:in|de)carcerat|parole|death (?:penalty|sentence)|capital punishment|\\bexecution|juvenile detention|\\binmate|wrongful (?:conviction|prosecution)|clemency|\\bfelon|ex-felon|correctional|cash bail|bail reform|public defenders?",
 
   democracy = "democracy|voter|voting rights|election|ballot|redistrict|gerrymander|\\bfascis.|\\bmarxis.|\\bcommunis.|anarchis.|socialis.|\\bcoup\\b|dc statehood|Trump won",
 
