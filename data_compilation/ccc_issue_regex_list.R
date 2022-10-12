@@ -2,7 +2,7 @@ ccc_issue_regex_list <- list(
 
   `animal rights` = "\\banimal\\b|(?:factory|meat) farm|\\bpeta\\b|\\bcircus|puppy mill|horse.drawn carriage|slaughter ?house|\\bfur\\b",
 
-  `banking and finance` = "(?<!west )bank|financ|wall street|\\bnyse\\b|nasdaq|wells fargo|jpmorgan|credit card|debt|loan|stock market|monetary|interest rate|(?:in|di)vest|hedge fund|crypto(currenc)?|(?:bit|doge)coin|foreign exchange",
+  `banking and finance` = "(?<!west )bank|financ|wall street|\\bnyse\\b|nasdaq|wells fargo|jpmorgan|credit card|debt|loan|stock market|monetary|interest rate|(?:in|di)vest|hedge fund|crypto(currenc)?|(?:bit|doge)coin|foreign exchange|private equity|warren buffet",
 
   `civil rights` = "civil rights|free (?:speech|assembly|religion)|freedom of (?:speech|assembly|religion)|(?:first|1st) amendment|freedom|censor|anti.protest",
 
@@ -16,11 +16,11 @@ ccc_issue_regex_list <- list(
 
   development = "development|zoning|\\brezon|gentrif|historic preservation|construction(?! worker)|nimby|yimby|displacement",
 
-  `disabled people's rights` = "disab(?:ilit|led?)|otherly abled?|\\bada\\b|accessib|\\bblind\\b|\\bdeaf\\b|wheelchair|special needs|down(\'s)? syndrome|tourette|\\bautis.{1,}",
+  `disabled people's rights` = "disab(?:ilit|led?)|otherly abled?|\\bada\\b|accessibility|\\bblind\\b|\\bdeaf\\b|wheelchair|special needs|down(\'s)? syndrome|tourette|\\bautis.{1,}",
 
   drugs = "\\bdrug|alcohol|marijuana|cannabis|\\bpot\\b|\\bcbd\\b|cocaine|opioid|opiate|narcotic|lsd|heroin|hemp|safe injection|overdose|oxycontin|\\bmeth\\b|methadone|methamphetamine|needle|syringe service|fentanyl",
 
-  economy = "econom(?:y|ic)\\b|inflation|business|industry|manufactur(?:er|ing)|\\bfarm\\b|farm(?:ing|er)|agricultur|\\bjobs?\\b|employment|\\bwages?\\b|\\bsalar(?:y|ied)|recession|financ|wall street|stock market|monetary|fiscal|interest rate|\\bbank|capitalis|\\brent\\b|eviction|hiring|tourism|basic income|\\bubi\\b|hunger|food insecurity|poverty|\\bpoor|corporat(?:e|ion)",
+  economy = "econom(?:y|ic)\\b|inflation|business|industry|manufactur(?:er|ing)|\\bfarm\\b|farm(?:ing|er)|agricultur|\\bjobs?\\b|employment|\\bwages?\\b|\\bsalar(?:y|ied)|recession|financ|wall street|stock market|monetary|fiscal|interest rate|\\bbank|capitalis|\\brent\\b|eviction|hiring|tourism|basic income|\\bubi\\b|hunger|food insecurity|poverty|\\bpoor|corporat(?:e|ion)|class war(fare)?",
 
   education = "\\beducat(?:ion|or)|school|learning|student|pupil|\\bteach|faculty|universit(?:y|ies)|college|professor|principal|superintendent|classroom|\\bed\\b|campus|alumn|\\bpta\\b|\\btuition|betsy devos",
 
@@ -32,11 +32,11 @@ ccc_issue_regex_list <- list(
 
   guns = "(?<!water|bb )\\bguns?\\b|firearm|(?:second|2nd) amendment|\\b2a\\b|\\bnra\\b|national rifle association|concealed carry|open.carry|ar-15|ak-47|(?:assault|automatic) rifle|bump stock|right to bear arms|(?:school|mass) shooting|\\bbullets\\b|molon labe",
   
-  healthcare = "\\bhealth( ?care)?\\b|doctor|physician|nurse|nursing|hospital|\\bclinic\\b|\\bpatient|medical|medic(?:ine|are|aid)|prescription|\\brx\\b|obamacare|\\baca\\b|affordable care act|preexisting condition|vaccin|\\bjab\\b|\\bvax|disease|cancer|depression|suicide|maternal care|dhhr|\\bhiv\\b|\\baids\\b|hiv.aids|birthing|family act|\\bahca\\b|osteopath|chiropract|acupunctur|\\bhealer|\\bpharma|monkeypox",
+  healthcare = "\\bhealth( ?care)?\\b|doctor|physician|nurse|nursing|hospital|\\bclinic\\b|\\bpatient|medical|medic(?:ine|are|aid)|prescription|\\brx\\b|obamacare|\\baca\\b|affordable care act|preexisting condition|vaccin|\\bjab\\b|\\bvax|disease|cancer|depression|suicide|maternal care|dhhr|\\bhiv\\b|\\baids\\b|hiv.aids|birthing|family act|\\bahca\\b|osteopath|chiropract|acupunctur|\\bhealer|\\bpharma|monkeypox|circumcision",
 
   housing = "\\bhous(?:e|ing|ed)\\b|(?:home|house)less|unhoused|\\beviction|\\brent\\b|mortgage|panhandl|\\btenant|home ?owner|(?:land|slum)lord|apartment|\\bcondo(minium)?\\b|\\b421a\\b",
 
-  immigration = "\\bimmigra|\\bmigrant|dreamers|daca|border|refugee|asylum|h-?1b|\\bvisa\\b|sanctuary cit|sanctuary state|illegal alien|undocumented|\\bice\\b|anti-ice|family separation|child separation|deportation|deportee|travel ban|travel eo|muslim ban|\\btps\\b|temporary protected status|\\bexile|\\bmigra\\b",
+  immigration = "\\bimmigra|\\bmigrant|dreamers|\\bdaca\\b|border|refugee|asylum|h-?1b|\\bvisa\\b|sanctuary (?:cit|state)|illegal alien|undocumented|\\bice\\b|anti-ice|family separation|child separation|deport(?:ation|ee)|travel (?:ban|eo)|muslim ban|\\btps\\b|temporary protected status|\\bexile|\\bmigra\\b",
 
   `indigenous peoples' rights` = "indigenous|native (?:people|american)|\\btrib(?:al|e)\\b|\\bindians?\\b|land back|leonard peltier|stolen land",
 
@@ -46,7 +46,7 @@ ccc_issue_regex_list <- list(
 
   legislative = "legislat|\\blaw(?! enforcement)\\b|\\bbills?\\b|lawmaker|\\bsenat|representative|congress|rep\\.|sen\\.|general assembly|\\bhb ?\\d{1,}|\\bsb ?\\d{1,}|\\bab ?\\d{1,}|heroes act|build back better|codify",
 
-  `lgbtq rights`= "lgbt|lesbian|\\bgay\\b|(?:bi|pan|homo)sexual|transgender|trans (?!-)|queer|pride (?:parade|march)|same.sex|conversion therapy|bathroom bill|rainbow capitalism|two.spirit|\\bhrt\\b|\\bcissue\\b|non.?binary|Stonewall|drag (?:queen|show)",
+  `lgbtq rights`= "lgbt|lesbian|\\bgay\\b|(?:bi|pan|homo)sexual|transgender|trans (?!-)|queer|pride (?:parade|march)|same.sex|conversion therapy|bathroom bill|rainbow capitalism|two.spirit|\\bhrt\\b|\\bcissue\\b|non.?binary|Stonewall|drag (?:queen|show)|\\bgender.(?:affirming|transition)",
 
   military = "military|(?<!civil )\\b(anti.?)?war\\b(?! on )|\\bdod\\b|army|navy|air force|marines|space force|coast guard|(?<!confederate|union) soldier|veteran|us strike|air strike|airstrike|bombing|nuclear (?:weapon|arms|missile)|armed force|\\bva\\b|imperial|\\bvfw\\b|service member|fort hood|\\bicbm|peace",
 
