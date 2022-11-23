@@ -8,6 +8,8 @@ options(stringsAsFactors = FALSE)
 
 setwd("~/nval/ccc")
 
+memory.limit(size = 10000)
+
 
 ### DATA COMPILATION ###
 
@@ -247,6 +249,9 @@ if(nrow(new_locations) > 0) {
 # now join the lookup table to the data to add geo cols
 dat <- left_join(dat, location_lookup)
 
+# eyeball how many new locations were added to lookup table
+print(nrow(new_locations))
+
 
 ### ISSUE TAGGING ###
 
@@ -321,9 +326,9 @@ dat <- fips_for_county(dat)
 
 ### OUTPUT ###
 
-write.csv(dat, "data_clean/ccc_compiled.csv", row.names = FALSE)
+write.csv(dat, "data_clean/ccc_compiled.csv", row.names = FALSE, fileEncoding = "UTF-8")
 
-write.csv(dat, "c:/users/ulfel/documents/ccc-data-dashboard/data/ccc_compiled.csv", row.names = FALSE)
+write.csv(dat, "c:/users/ulfel/documents/github/crowd-counting-consortium/ccc_compiled.csv", row.names = FALSE, , fileEncoding = "UTF-8")
 
-write.csv(dat, "c:/users/ulfel/documents/github/crowd-counting-consortium/ccc_compiled.csv", row.names = FALSE)
- 
+# produce and store version with preprocessing and col dropping for CCC Data Dashboard
+source("r/ccc_dashboard_data_prep.r")

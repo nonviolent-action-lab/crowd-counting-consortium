@@ -46,7 +46,7 @@ ccc_issue_regex_list <- list(
 
   legislative = "legislat|\\blaw(?! enforcement)\\b|\\bbills?\\b|lawmaker|\\bsenat|representative|congress|rep\\.|sen\\.|general assembly|\\bhb ?\\d{1,}|\\bsb ?\\d{1,}|\\bab ?\\d{1,}|heroes act|build back better|codify",
 
-  `lgbtq rights`= "lgbt|lesbian|\\bgay\\b|(?:bi|pan|homo)sexual|transgender|trans (?!-)|queer|pride (?:parade|march)|same.sex|conversion therapy|bathroom bill|rainbow capitalism|two.spirit|\\bhrt\\b|\\bcissue\\b|non.?binary|Stonewall|drag (?:queen|show|brunch|bingo|story)|\\bgender.(?:affirming|transition)|intersex",
+  `lgbtq rights`= "lgbt|lesbian|\\bgay\\b|(?:bi|pan|homo)sexual|transgender|trans (?!-)|queer|pride (?:parade|march)|same.sex|conversion therapy|bathroom bill|rainbow capitalism|two.spirit|\\bhrt\\b|\\bcissue\\b|non.?binary|Stonewall|drag (?:queen|show|brunch|bingo|story)|\\bgender.(?:affirming|transition)|intersex|club q",
 
   military = "military|(?<!civil )\\b(anti.?)?war\\b(?! on )|\\bdod\\b|army|navy|air force|marines|space force|coast guard|(?<!confederate|union) soldier|veteran|us strike|air strike|airstrike|bombing|nuclear (?:weapon|arms|missile)|armed force|\\bva\\b|imperial|\\bvfw\\b|service member|fort hood|\\bicbm|peace",
 
@@ -66,7 +66,7 @@ ccc_issue_regex_list <- list(
 
   `sexual violence` = "sexual (?:violence|assault|ha[r]{1,2}assment|misconduct)|\\brap(e|ists?)\\b|sex(ual)? (?:offender|traffic|abuse)|vanessa guillen",
 
-  sports = "\\bsports?\\b|[[:alpha:]]{4,}ball|hockey|wrestling|\\bcycling|cyclo-?cross|biking|bmx|track and field|swimming|diving|soccer|tennis|golf|cheerlead(?:ing|er)|skiing|snowboarding|rock climbing|bouldering|martial arts|equestrian|\\bfishing|frisbee|gymnast|(?:figure|speed) skating|rodeo|(?:tri|bi|du)athlon|lacrosse|\\bpolo\\b|sailing|surfing|canoeing|kayaking|olympic(?:s| games)",
+  sports = "\\bsports?\\b|[[:alpha:]]{4,}ball|hockey|wrestling|\\bcycling|cyclo-?cross|biking|bmx|track and field|swimming|diving|soccer|tennis|golf|cheerlead(?:ing|er)|skiing|snowboarding|rock climbing|bouldering|martial arts|equestrian|\\bfishing|frisbee|gymnast|(?:figure|speed) skating|rodeo|(?:tri|bi|du)athlon|lacrosse|\\bpolo\\b|sailing|surfing|canoeing|kayaking|olympic(?:s| games)|\\bfifa\\b|world cup",
 
   taxes = "\\btax\\b(?! return)|\\btaxes\\b",
 
