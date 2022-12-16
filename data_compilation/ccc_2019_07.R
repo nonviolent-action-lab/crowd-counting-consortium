@@ -16,7 +16,7 @@ dat_2 <- dat %>%
   mutate(Date = datescrub(Date),
          Country = "US",  # not sure why, but links were in this col on this tab
          Claim = "end human detention camps, protest inhumane conditions faced by refugees",  # this col was left blank on this tab
-         MacroEvent = "20190712-lightsforliberty",
+         MacroEvent = "",
          Final = 0)
 
 # need to use data.table here to resolve issue with inconsistent col types

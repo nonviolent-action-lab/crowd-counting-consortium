@@ -13,7 +13,7 @@ dat <- read_excel("data_raw/Crowd Estimates January 2020.xlsx", sheet = "antiwar
 dat_2 <- dat %>%
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
   mutate(Date = datescrub(Date),
-         MacroEvent = "20200109-nowarwithiran",
+         MacroEvent = "",
          Final = 1)
 
 dat <- read_excel("data_raw/Crowd Estimates January 2020.xlsx", sheet = "WM20")
@@ -23,7 +23,7 @@ dat_3 <- dat %>%
   slice(1:268) %>%  # remove summary rows
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
   mutate(Date = datescrub(Date),
-         MacroEvent = "20200118-womensmarch",
+         MacroEvent = "",
          Final = 1)
 
 # need to use data.table here to resolve issue with inconsistent col types

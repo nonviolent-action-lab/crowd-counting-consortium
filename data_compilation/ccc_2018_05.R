@@ -14,7 +14,7 @@ dat_2 <- dat %>%
   select(-starts_with("...")) %>%
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
   mutate(Date = datescrub(Date),
-         MacroEvent = "20180502-standforthesecond",
+         MacroEvent = "",
          Final = 1)
 
 # need to use data.table here to resolve issue with inconsistent col types

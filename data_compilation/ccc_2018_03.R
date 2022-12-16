@@ -13,7 +13,7 @@ dat <- read_excel("data_raw/Crowd Estimates March 2018.xlsx", sheet = "WalkoutMa
 dat_2 <- dat %>%
   rename(ClaimType = Pro2Anti1) %>%
   select(-starts_with("...")) %>%
-  mutate(MacroEvent = "20180314-nationalschoolwalkout",
+  mutate(MacroEvent = "",
          Date = as.character(Date),
          Final = 1)
 
@@ -23,7 +23,7 @@ dat_3 <- dat %>%
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
   select(-starts_with("...")) %>% 
   mutate(Date = datescrub(Date),
-         MacroEvent = "20180324-marchforourlives",
+         MacroEvent = "",
          Final = 1)
 
 # need to use data.table here to resolve issue with inconsistent col types

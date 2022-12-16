@@ -13,7 +13,7 @@ dat <- read_excel("data_raw/Crowd Estimates June 2018.xlsx", sheet = "FamiliesBe
 dat_2 <- dat %>%
   rename(ClaimType = `Pro(2)/Anti(1)`, Misc = Misc.) %>%
   mutate(Date = datescrub(Date),
-         MacroEvent = "20180630-familiesbelongtogether",
+         MacroEvent = "",
          Final = 1)
 
 # 'Pride, June 24' tab not read b/c it is duplicated on Tally, according to note in sheet

@@ -15,7 +15,7 @@ dat_2 <- dat %>%
   select(-`1.12 Go`, -`1.12 Int`, -`time (EST)`, -`1.19 Go`, -`1.19 Int`, -`time (EST`) %>%
   select(-starts_with("...")) %>%
   mutate(Date = datescrub(Date),
-         MacroEvent = "20190119-womensmarch",
+         MacroEvent = "",
          Final = 1)
 
 # need to use data.table here to resolve issue with inconsistent col types

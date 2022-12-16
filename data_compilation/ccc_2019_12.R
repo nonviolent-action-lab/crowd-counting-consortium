@@ -13,7 +13,7 @@ dat_2 <- dat %>%
   select(-starts_with("...")) %>%
   rename(ClaimType = `Pro(2)/Anti(1)`) %>%
   mutate(Date = datescrub(Date),
-         MacroEvent = "20191206-climatestrike",
+         MacroEvent = "",
          Final = 1)
 
 dat <- read_excel("data_raw/Crowd Estimates December 2019.xlsx", sheet = "Impeach1217")
@@ -23,7 +23,7 @@ dat_3 <- dat %>%
   rename(ClaimType = `Pro(2)/Anti(1)`) %>%
   # date field is extra wack here, so gotta go manual
   mutate(Date = as.character(as.Date(Date, origin = "1899-12-30")),
-         MacroEvent = "20191217-impeachtrump",
+         MacroEvent = "",
          Final = 1)
 
 # need to use data.table here to resolve issue with inconsistent col types

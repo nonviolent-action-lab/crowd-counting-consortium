@@ -25,7 +25,7 @@ dat2 <- dat %>%
          EventType = "march",
          ClaimType = 1,
          Claim = "women's rights are human rights",
-         MacroEvent = "20170121-womensmarch",
+         MacroEvent = "",
          Final = 1) %>%
   select(-blank) %>%
   # drop international data and data for online events

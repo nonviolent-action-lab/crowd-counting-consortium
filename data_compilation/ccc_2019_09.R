@@ -17,7 +17,7 @@ dat_2 <- dat %>%
          Claim = "for urgent action on climate change, for climate justice and equity",
          ClaimType = 1,
          EventType = "demonstration",
-         MacroEvent = "20190920-climatestrike",
+         MacroEvent = "",
          Final = 1)
 
 # need to use data.table here to resolve issue with inconsistent col types
