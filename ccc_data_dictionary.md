@@ -23,7 +23,7 @@ This dictionary describes the compiled and cleaned version of the Crowd Counting
 
 - **participants**. Descriptors of participants in the event. *participants* in source data (2021- only).
 
-- **claims**. The claim(s) the participants make (e.g. for women's rights, anti-Muslim Ban, against racism, etc.). *Claim* or *claims* in the source data.
+- **claims**. The claim(s) the participants make (e.g. for women's rights, anti-Muslim Ban, against racism, etc.), as summarized by coders. *Claim* or *claims* in the source data. Distinct claims are separated by semicolons or commas through 2020, then only commas from 2021 onward. Starting in spring 2022, the strings in this field also include verbatim phrases from protesters' placards, banners, chants, and the like (see the [Coding Guidelines](https://docs.google.com/document/d/1oaOf9s72FQnzQA8sbE8h0PwMIZLP6p0EDUV2ya065is/edit?usp=sharing) for details). All coder-summarized claims have a distinct syntax, so they can be recognized by the following regular expression: ```"^(?:for|against) |^in [[:alpha:]]{3,} (?:of|with)"```. To isolate verbatim claim phrases, split the 'claims' strings by the commas, trim leading and trailing white space, then filter out all results recognized by that regex. What's left will be the verbatim claim phrases.
 
 - **valence**. Political valence of the event, broadly construed. 2 = pro-Trump (during Trump presidency)/right wing (after Trump presidency), 1 = anti-Trump (during Trump presidency)/left wing (after Trump presidency), 0 = neither. *Pro(2)/Anti(1)* in the source data from 2017-2020; *valence* in source data for 2021-.
 

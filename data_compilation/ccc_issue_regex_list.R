@@ -16,7 +16,7 @@ ccc_issue_regex_list <- list(
 
   development = "development|zoning|\\brezon|gentrif|historic preservation|construction(?! worker)|nimby|yimby|displacement",
 
-  `disabled people's rights` = "disab(?:ilit|led?)|otherly abled?|\\bada\\b|accessibility|\\bblind\\b|\\bdeaf\\b|wheelchair|special needs|down(\'s)? syndrome|tourette|\\bautis.{1,}",
+  `disability rights` = "disab(?:ilit|led?)|otherly abled?|\\bada\\b|accessibility|\\bblind\\b|\\bdeaf\\b|wheelchair|special needs|down(\'s)? syndrome|tourette|\\bautis.{1,}",
 
   drugs = "\\bdrug|alcohol|marijuana|cannabis|\\bpot\\b|\\bcbd\\b|cocaine|opioid|opiate|narcotic|lsd|heroin|hemp|safe injection|overdose|oxycontin|\\bmeth\\b|methadone|methamphetamine|needle|syringe service|fentanyl",
 
@@ -46,7 +46,7 @@ ccc_issue_regex_list <- list(
 
   legislative = "legislat|\\blaw(?! enforcement)\\b|\\bbills?\\b|lawmaker|\\bsenat|representative|congress|rep\\.|sen\\.|general assembly|\\bhb ?\\d{1,}|\\bsb ?\\d{1,}|\\bab ?\\d{1,}|heroes act|build back better|codify",
 
-  `lgbtq rights`= "lgbt|lesbian|\\bgay\\b|(?:bi|pan|homo)sexual|transgender|trans (?!-)|queer|pride (?:parade|march)|same.sex|conversion therapy|bathroom bill|rainbow capitalism|two.spirit|\\bhrt\\b|\\bcissue\\b|non.?binary|Stonewall|drag (?:queen|show|brunch|bingo|story)|\\bgender.(?:affirming|transition)|detransition|intersex|club q|gender theory",
+  `lgbtq+ rights`= "lgbt|lesbian|\\bgay\\b|(?:bi|pan|homo)sexual|transgender|trans (?!-)|queer|pride (?:parade|march)|same.sex|conversion therapy|bathroom bill|rainbow capitalism|two.spirit|\\bhrt\\b|\\bcissue\\b|non.?binary|Stonewall|drag (?:queen|show|brunch|bingo|story)|\\bgender.(?:affirming|transition)|detransition|intersex|club q|gender theory",
 
   military = "military|(?<!civil )\\b(anti.?)?war\\b(?! on )|\\bdod\\b|army|navy|air force|marines|space force|coast guard|(?<!confederate|union) soldier|veteran|us strike|air strike|airstrike|bombing|nuclear (?:weapon|arms|missile)|armed force|\\bva\\b|imperial|\\bvfw\\b|service member|fort hood|\\bicbm|peace",
 
