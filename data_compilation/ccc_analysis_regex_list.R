@@ -23,7 +23,7 @@ regex_groups_farright <- list(
 
   `Three Percenters` = "three percenters|\\biii|threeper",
 
-  `Boogaloo Bois` = "boog(aloo)?",
+  `Boogaloo Bois` = "boog(aloo)?|kekoas|wolverine watchmen|citizens liberty|redacted republic",
 
   `Patriot Front` = "patriot front",
 
