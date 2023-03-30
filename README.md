@@ -1,5 +1,5 @@
 # Crowd Counting Consortium Dataset
-This repository is home to a compiled and augmented version of the [Crowd Counting Consortium](https://sites.google.com/view/crowdcountingconsortium/home)'s data on political crowds in the United States, including marches, protests, rallies, demonstrations, strikes, and similar actions.
+This repository is home to a compiled and augmented version of the [Crowd Counting Consortium](https://sites.google.com/view/crowdcountingconsortium/home)'s data on political protest events in the United States. We use a broad definition of "protest," so the dataset includes protests, rallies, demonstrations, marches, strikes, and similar actions.
 
 - The latest version of the full dataset is stored in csv format in this repository ([here](https://github.com/nonviolent-action-lab/crowd-counting-consortium/blob/master/ccc_compiled.csv)).
 
@@ -25,7 +25,7 @@ If you have suggestions on how to improve this repository or the compiled versio
 ## Academic Research Using CCC Data
 Curious how these data are getting used? Here, in reverse chronological order, are peer-reviewed published studies that have used CCC's work. If you are aware of any published articles or monographs that cite the data that aren't listed here, please let us know.
 
-* Cassy Dorff, G. Adcox, and A. Konet. "Data innovations on protests in the United States." *Journal of Peace Research* Vol. 60, No. 1 (2023): 172-189. [link](https://doi.org/10.1177/00223433221143808)
+* Cassy Dorff, Grace Adcox, and Amanda Konet. "Data innovations on protests in the United States." *Journal of Peace Research* Vol. 60, No. 1 (2023): 172-189. [link](https://doi.org/10.1177/00223433221143808)
 
 * Daniel Karell, Andrew Linke, Edward C. Holland, and Edward Hendrickson. "Hard-Right Social Media and Civil Unrest." *American Sociological Review* Vol. 88, No. 2 (2023) [link](https://osf.io/preprints/socarxiv/pna5u/)
 
