@@ -1,7 +1,15 @@
 # Crowd Counting Consortium Dataset
-This repository stores a compiled and augmented version of the [Crowd Counting Consortium](https://sites.google.com/view/crowdcountingconsortium/home)'s data on political crowds in the United States, including marches, protests, rallies, demonstrations, strikes, and similar actions. The data are stored in csv format ([here](https://github.com/nonviolent-action-lab/crowd-counting-consortium/blob/master/ccc_compiled.csv)), and the [data dictionary](https://github.com/nonviolent-action-lab/crowd-counting-consortium/blob/master/ccc_data_dictionary.md) describes the columns in that file.
+This repository is home to a compiled and augmented version of the [Crowd Counting Consortium](https://sites.google.com/view/crowdcountingconsortium/home)'s data on political crowds in the United States, including marches, protests, rallies, demonstrations, strikes, and similar actions.
+
+- The latest version of the full dataset is stored in csv format in this repository ([here](https://github.com/nonviolent-action-lab/crowd-counting-consortium/blob/master/ccc_compiled.csv)).
+
+- The [data dictionary](https://github.com/nonviolent-action-lab/crowd-counting-consortium/blob/master/ccc_data_dictionary.md) describes the columns in that file.
+
+- The [coding guidelines](https://docs.google.com/document/d/1oaOf9s72FQnzQA8sbE8h0PwMIZLP6p0EDUV2ya065is/edit?usp=sharing) describe the processes we use to find and encode information about relevant events.
 
 If you use these data, please cite "Crowd Counting Consortium" as the source.
+
+If you have questions about the dataset, please email Jay Ulfelder, Ph.D., at julfelder@hks.harvard.edu.
 
 ## General Information
 We strive to update this data set weekly, on Wednesdays not later than 4 PM Eastern time, with exceptions around holidays and ends of months. Please note that, while the raw data are updated on a rolling basis, there is some lag between the appearance of a news story or social-media post about an event (or the submission of a form to CCC) and the addition of a complete record to [CCC's Google Sheets](https://sites.google.com/view/crowdcountingconsortium/view-download-the-data). CCC strives to keep that interval as short as possible, but the project operates on a shoestring budget, so periods of higher protest activity can make for longer delays.
@@ -17,9 +25,9 @@ If you have suggestions on how to improve this repository or the compiled versio
 ## Academic Research Using CCC Data
 Curious how these data are getting used? Here, in reverse chronological order, are peer-reviewed published studies that have used CCC's work. If you are aware of any published articles or monographs that cite the data that aren't listed here, please let us know.
 
-* Daniel Karell, Andrew Linke, Edward C. Holland, and Edward Hendrickson. "Hard-Right Social Media and Civil Unrest." *American Sociological Review* Vol. 88, No. 2 (2023) [link](https://osf.io/preprints/socarxiv/pna5u/)
-
 * Cassy Dorff, G. Adcox, and A. Konet. "Data innovations on protests in the United States." *Journal of Peace Research* Vol. 60, No. 1 (2023): 172-189. [link](https://doi.org/10.1177/00223433221143808)
+
+* Daniel Karell, Andrew Linke, Edward C. Holland, and Edward Hendrickson. "Hard-Right Social Media and Civil Unrest." *American Sociological Review* Vol. 88, No. 2 (2023) [link](https://osf.io/preprints/socarxiv/pna5u/)
 
 * Jeremy Pressman, Erica Chenoweth, Tommy Leung, L. Nathan Perkins, and Jay Ulfelder. "Protests Under Trump, 2017-2021." *Mobilization* Vol. 27, No. 1 (2022): 13-26. [link](https://doi.org/10.17813/1086-671X-27-1-13)
 
