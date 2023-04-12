@@ -1,7 +1,10 @@
 # Crowd Counting Consortium Dataset
 This repository is home to a compiled and augmented version of the [Crowd Counting Consortium](https://sites.google.com/view/crowdcountingconsortium/home)'s data on political protest events in the United States. We use a broad definition of "protest," so the dataset includes protests, rallies, demonstrations, marches, strikes, and similar actions.
 
-- The latest version of the full dataset is stored in csv format in this repository ([here](https://github.com/nonviolent-action-lab/crowd-counting-consortium/blob/master/ccc_compiled.csv)).
+- The latest version of the full dataset is stored in csv format in this repository ([here](https://raw.githubusercontent.com/nonviolent-action-lab/crowd-counting-consortium/master/ccc_compiled.csv)). The easiest way to access it is to read it directly into your statistical software. If you prefer to download it to a local directory, though, you'll need to:
+    1) Open [this page](https://github.com/nonviolent-action-lab/crowd-counting-consortium/blob/master/ccc_compiled.csv) in your browser;
+    2) Right-click on the "View raw" linkin the center of the lower tile; and
+    3) Choose a name and local destination for the file.
 
 - The [data dictionary](https://github.com/nonviolent-action-lab/crowd-counting-consortium/blob/master/ccc_data_dictionary.md) describes the columns in that file.
 
