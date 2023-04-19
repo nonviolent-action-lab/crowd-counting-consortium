@@ -34,7 +34,7 @@ ccc_issue_regex_list <- list(
   
   healthcare = "\\bhealth( ?care)?\\b|doctor|physician|nurse|nursing|hospital|\\bclinic\\b|\\bpatient|medical|medic(?:ine|are|aid)|prescription|\\brx\\b|obamacare|\\baca\\b|affordable care act|preexisting condition|vaccin|\\bjab\\b|\\bvax|disease|cancer|depression|suicide|maternal care|dhhr|\\bhiv\\b|\\baids\\b|hiv.aids|birthing|family act|\\bahca\\b|osteopath|chiropract|acupunctur|\\bhealer|\\bpharma|monkeypox|circumcision",
 
-  housing = "\\bhous(?:e|ing|ed)\\b|(?:home|house)less|unhoused|\\beviction|\\brent\\b|mortgage|panhandl|\\btenant|home ?owner|(?:land|slum)lord|apartment|\\bcondo(minium)?\\b|\\b421a\\b",
+  housing = "\\b(un)?hous(?:es?|ing|ed)\\b|(?:home|house)less|\\beviction|\\brent\\b|mortgage|panhandl|\\btenant|home ?owner|(?:land|slum)lord|apartment|\\bcondo(minium)?s?\\b|\\b421a\\b",
 
   immigration = "\\bimmigra|\\bmigrant|dreamers|\\bdaca\\b|border|refugee|asylum|h-?1b|\\bvisa\\b|sanctuary (?:cit|state)|illegal alien|undocumented|\\bice\\b|anti-ice|family separation|child separation|deport(?:ation|ee)|travel (?:ban|eo)|muslim ban|\\btps\\b|temporary protected status|\\bexile|\\bmigra\\b|great replacement",
 
@@ -46,7 +46,7 @@ ccc_issue_regex_list <- list(
 
   legislative = "legislat|\\blaw(?! enforcement)\\b|\\bbills?\\b|lawmaker|\\bsenat|representative|congress|rep\\.|sen\\.|general assembly|\\bhb ?\\d{1,}|\\bsb ?\\d{1,}|\\bab ?\\d{1,}|heroes act|build back better|codify",
 
-  `lgbtq rights`= "lgbt|lesbian|\\bgay\\b|(?:bi|pan|homo)sexual|transgender|trans (?!-)|queer|pride (?:parade|march)|same.sex|conversion therapy|bathroom bill|rainbow capitalism|two.spirit|\\bhrt\\b|\\bcissue\\b|non.?binary|Stonewall|drag (?:queen|show|brunch|bingo|story)|\\bgender.(?:affirming|transition)|detransition|intersex|club q|gender theory",
+  `lgbtq rights`= "lgbt|lesbian|\\bgay\\b|(?:bi|pan|homo)sexual|transgender|trans (?!-)|queer|pride (?:parade|march)|same.sex|conversion therapy|bathroom bill|rainbow capitalism|two.spirit|\\bhrt\\b|\\bcissue\\b|non.?binary|stonewall|(anti-)?drag(?: queen| show| brunch| bingo| story)?\\b|\\bgender.(?:affirming|transition)|detransition|intersex|club q|gender (?:theory|dysphoria)",
 
   military = "military|(?<!civil )\\b(anti.?)?war\\b(?! on )|\\bdod\\b|army|navy|air force|marines|space force|coast guard|(?<!confederate|union) soldier|veteran|us strike|air strike|airstrike|bombing|nuclear (?:weapon|arms|missile)|armed force|\\bva\\b|imperial|\\bvfw\\b|service member|fort hood|\\bicbm|peace",
 
