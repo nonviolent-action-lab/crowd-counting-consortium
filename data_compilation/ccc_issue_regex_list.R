@@ -4,7 +4,7 @@ ccc_issue_regex_list <- list(
 
   `banking and finance` = "(?<!west )bank|financ|wall street|\\bnyse\\b|nasdaq|wells fargo|jpmorgan|credit card|debt|loan|stock market|monetary|interest rate|(?:in|di)vest|hedge fund|crypto(currenc)?|(?:bit|doge)coin|foreign exchange|private equity|warren buffet",
 
-  `civil rights` = "civil rights|free (?:speech|assembly|religion)|freedom of (?:speech|assembly|religion)|(?:first|1st) amendment|freedom|censor|anti.protest|gadsden flag",
+  `civil rights` = "civil rights|free (?:speech|assembly|religion)|freedom of (?:speech|assembly|religion)|(?:first|1st) amendment|freedom|censor|anti.protest",
 
   covid = "covid|corona(virus)?|\\b(anti.?)?mask\\b|fauci|pandemic|\\bcdc\\b|ventilator|personal protective equipment|\\bppe\\b|\\bre.?open|ivermectin|remdisvir|lockdown|(?:wuhan |china )flu|china.?virus",
 
@@ -30,7 +30,9 @@ ccc_issue_regex_list <- list(
 
   `foreign affairs` = "\\bAfghanistan\\b|\\bAlbania\\b|\\bAlgeria\\b|\\bAndorra\\b|\\bAngola\\b|\\bAntigua and Barbuda\\b|\\bArgentina\\b|\\bArmenia\\b|\\bAustralia\\b|\\bAustria\\b|\\bAzerbaijan\\b|\\bBahamas\\b|\\bBahrain\\b|\\bBangladesh\\b|\\bBarbados\\b|\\bBelarus\\b|\\bBelgium\\b|\\bBelize\\b|\\bBenin\\b|\\bBhutan\\b|\\bBolivia\\b|\\bBosnia\\b|\\bBotswana\\b|\\bBrazil\\b|\\bBrunei\\b|\\bBulgaria\\b|\\bBurkina Faso\\b|\\bBurundi\\b|\\bCabo Verde\\b|\\bCambodia\\b|\\bCameroon\\b|\\bCanada\\b|\\bCentral African Republic\\b|\\bChad\\b|\\bChile\\b|\\bChina(?!town)\\b|\\bTibet\\b|\\bXinjiang\\b|\\bUighur\\b|\\bColombia\\b|\\bComoros\\b|\\bCongo\\b|\\bRepublic of Congo\\b|\\bCosta Rica\\b|\\bCote D'Ivoire\\b|\\bIvory Coast\\b|\\bCroatia\\b|\\bCuba\\b|\\bCyprus\\b|\\bCzech Republic\\b|\\bCzechia\\b|\\bDemocratic People's Republic of Korea\\b|\\bDPRK\\b|\\bNorth Korea\\b|\\bDemocratic Republic of the Congo\\b|\\bDROC\\b|\\bDenmark\\b|\\bDjibouti\\b|\\bDominica\\b|\\bDominican Republic\\b|\\bEcuador\\b|\\bEgypt\\b|\\bEl Salvador\\b|\\bEquatorial Guinea\\b|\\bEritrea\\b|\\bEstonia\\b|\\bEthiopia\\b|\\bFiji\\b|\\bFinland\\b|\\bFrance\\b|\\bGabon\\b|\\bGambia\\b|\\bGeorgia\\b|\\bGermany\\b|\\bGhana\\b|\\bGreece\\b|\\bGrenada\\b|\\bGuatemala\\b|\\bGuinea\\b|\\bGuinea Bissau\\b|\\bGuyana\\b|\\bHaiti\\b|\\bHonduras\\b|\\bHungary\\b|\\bIceland\\b|\\bIndia\\b|\\bKashmir\\b|\\bIndonesia\\b|\\bIran\\b|\\bIraq\\b|\\bKurdistan\\b|\\bIreland\\b|\\bIsrael|(?<!East )\\bPalestin(?:e|ian)\\b|\\bWest Bank\\b|\\bGaza Strip\\b|\\bItaly\\b|\\bJamaica\\b|\\bJapan\\b|\\bJordan\\b|\\bKazakhstan\\b|\\bKenya\\b|\\bKiribati\\b|\\bKuwait\\b|\\bKyrgyzstan\\b|\\bLaos\\b|\\bLatvia\\b|\\bLebanon\\b|\\bLesotho\\b|\\bLiberia\\b|\\bLibya\\b|\\bLiechtenstein\\b|\\bLithuania\\b|\\bLuxembourg\\b|\\bMadagascar\\b|\\bMalawi\\b|\\bMalaysia\\b|\\bMaldives\\b|\\bMali\\b|\\bMalta\\b|\\bMarshall Islands\\b|\\bMauritania\\b|\\bMauritius\\b|\\bMexico\\b|\\bMicronesia\\b|\\bMonaco\\b|\\bMongolia\\b|\\bMontenegro\\b|\\bMorocco\\b|\\bWestern Sahara\\b|\\bMozambique\\b|\\bMyanmar\\b|\\bBurma\\b|\\bNamibia\\b|\\bNauru\\b|\\bNepal\\b|\\bNetherlands\\b|\\bNew Zealand\\b|\\bNicaragua\\b|\\bNiger\\b|\\bNigeria\\b|\\bNorway\\b|\\bOman\\b|\\bPakistan\\b|\\bPalau\\b|\\bPanama\\b|\\bPapua New Guinea\\b|\\bParaguay\\b|\\bPeru\\b|\\bPhilippines\\b|\\bPoland\\b|\\bPortugal\\b|\\bQatar\\b|\\bRepublic of Korea\\b|\\bSouth Korea\\b|\\bMoldova\\b|\\bRomania\\b|\\b\\bRussia\\b|\\bRwanda\\b|\\bSaint Kitts and Nevis\\b|\\bSaint Lucia\\b|\\bSaint Vincent and the Grenadines\\b|\\bSamoa\\b|\\bSan Marino\\b|\\bSao Tome and Principe\\b|\\bSaudi\\b|\\bSenegal\\b|\\bSerbia\\b|\\bSeychelles\\b|\\bSierra Leone\\b|\\bSingapore\\b|\\bSlovakia\\b|\\bSlovenia\\b|\\bSolomon Islands\\b|\\bSomalia\\b|\\bSomaliland\\b|\\bPuntland\\b|\\bSouth Africa\\b|\\bSouth Sudan\\b|\\bSpain\\b|\\bSri Lanka\\b|\\bSudan\\b|\\bSuriname\\b|\\bEswatini\\b|\\bSwaziland\\b|\\bSweden\\b|\\bSwitzerland\\b|\\bSyria\\b|\\bTajikistan\\b|\\bThailand\\b|\\bMacedonia\\b|\\bTimor.Leste\\b|\\bEast Timor\\b|\\bTogo\\b|\\bTonga\\b|\\bTrinidad and Tobago\\b|\\bTunisia\\b|\\bTurkey\\b|\\bTurkmenistan\\b|\\bTuvalu\\b|\\bUganda\\b|\\bUkraine\\b|\\bUnited Arab Emirates\\b|\\bUAE\\b|\\bUnited Kingdom\\b|\\bUK\\b|\\bBritain\\b|\\bNorthern Ireland\\b|\\bTanzania\\b|\\bZanzibar\\b|\\bUruguay\\b|\\bUzbekistan\\b|\\bVanuatu\\b|\\bVenezuela\\b|\\bViet Nam\\b|\\bVietnam\\b|\\bYemen\\b|\\bZambia\\b|\\bZimbabwe\\b|\\bUnited Nations\\b|\\bUN\\b|\\bNATO\\b|\\bAfrica\\b|\\bAsia\\b|World Trade Organization|\\bWTO\\b|\\bG[0-9]{1}\\b|\\bWorld Bank\\b|International Monetary Fund|\\bIMF\\b|foreign policy|diplomacy",
 
-  guns = "(?<!water|bb )\\bguns?\\b|firearm|(?:second|2nd) amendment|\\b2a\\b|\\bnra\\b|national rifle association|concealed carry|open.carry|ar-15|ak-47|(?:assault|automatic) rifle|bump stock|right to bear arms|(?:school|mass) shooting|\\bbullets\\b|molon labe|come and take it flag",
+  `free speech` = "free(dom of)? speech|(?:first|1st) amendment|censor(ship)?",
+
+  guns = "(?<!water|bb )\\bguns?\\b|firearm|(?:second|2nd) amendment|\\b2a\\b|\\bnra\\b|national rifle association|concealed carry|open.carry|ar-15|ak-47|(?:assault|automatic) rifle|bump stock|right to bear arms|(?:school|mass) shooting|\\bbullets\\b|molon labe|come and take it",
   
   healthcare = "\\bhealth( ?care)?\\b|doctor|physician|nurse|nursing|hospital|\\bclinic\\b|\\bpatient|medical|medic(?:ine|are|aid)|prescription|\\brx\\b|obamacare|\\baca\\b|affordable care act|preexisting condition|vaccin|\\bjab\\b|\\bvax|disease|cancer|depression|suicide|maternal care|dhhr|\\bhiv\\b|\\baids\\b|hiv.aids|birthing|family act|\\bahca\\b|osteopath|chiropract|acupunctur|\\bhealer|\\bpharma|monkeypox|circumcision",
 
@@ -38,7 +40,7 @@ ccc_issue_regex_list <- list(
 
   immigration = "\\bimmigra|\\bmigrant|dreamers|\\bdaca\\b|border|refugee|asylum|h-?1b|\\bvisa\\b|sanctuary (?:cit|state)|illegal alien|undocumented|\\bice\\b|anti-ice|family separation|child separation|deport(?:ation|ee)|travel (?:ban|eo)|muslim ban|\\btps\\b|temporary protected status|\\bexile|\\bmigra\\b|great replacement",
 
-  `indigenous peoples' rights` = "indigenous|native (?:people|american)|\\btrib(?:al|e)\\b|\\bindians?\\b|land back|leonard peltier|stolen land|\\bicwa\\b|\\bwiphala\\b",
+  `indigenous peoples` = "indigenous|native (?:people|american)|\\btrib(?:al|e)\\b|\\bindians?\\b|land back|leonard peltier|stolen land|\\bicwa\\b|\\bwiphala\\b",
 
   judiciary = "judicia|judge|lawyer|prosecutor|attorney|\\bda\\b|public defender|\\btrial\\b|\\bcourt\\b|gorsuch|kavanaugh|ginsburg|\\brbg\\b|amy coney barrett|\\bscotus\\b|\\balito\\b|roe v.? wade",
 
@@ -46,7 +48,7 @@ ccc_issue_regex_list <- list(
 
   legislative = "legislat|\\blaw(?! enforcement)\\b|\\bbills?\\b|lawmaker|\\bsenat|representative|congress|rep\\.|sen\\.|general assembly|\\bhb ?\\d{1,}|\\bsb ?\\d{1,}|\\bab ?\\d{1,}|heroes act|build back better|codify",
 
-  `lgbtq rights`= "lgbt|lesbian|\\bgay\\b|(?:bi|pan|homo)sexual|transgender|trans (?!-)|queer|pride (?:parade|march)|same.sex|conversion therapy|bathroom bill|rainbow capitalism|two.spirit|\\bhrt\\b|\\bcissue\\b|non.?binary|stonewall|(anti-)?drag(?: queen| show| brunch| bingo| story)?\\b|\\bgender.(?:affirming|transition)|detransition|intersex|club q|gender (?:theory|dysphoria)",
+  `lgbtqia`= "lgbt|lesbian|\\bgay\\b|(?:bi|pan|homo)sexual|transgender|trans (?!-)|queer|pride (?:parade|march)|same.sex|conversion therapy|bathroom bill|rainbow capitalism|two.spirit|\\bhrt\\b|\\bcissue\\b|non.?binary|stonewall|(anti-)?drag(?: queen| show| brunch| bingo| story| culture| convention| make.?up| performance)?\\b|\\bgender.(?:affirming|transition)|detransition|intersex|club q|gender (?:theory|dysphoria)",
 
   military = "military|(?<!civil )\\b(anti.?)?war\\b(?! on )|\\bdod\\b|army|navy|air force|marines|space force|coast guard|(?<!confederate|union) soldier|veteran|us strike|air strike|airstrike|bombing|nuclear (?:weapon|arms|missile)|armed force|\\bva\\b|imperial|\\bvfw\\b|service member|fort hood|\\bicbm|peace",
 
@@ -70,7 +72,7 @@ ccc_issue_regex_list <- list(
 
   taxes = "\\btax\\b(?! return)|\\btaxes\\b",
 
-  transportation = "\\btransport(ation)?\\b|subway|\\btransit\\b|bicycl(?:e|ist|ing)|\\bbike\\b|pedestrian|(?:high|free)way|interstate|\\broad(way)?\\b|(?<!wall )street|\\bcar\\b|\\bbus\\b|\\btrain\\b|rail(?:road|way)|tunnel|\\bbridge\\b|air(?:port|line)|ferry|\\btram\\b|\\btoll\\b|scooter|hov lane",
+  transportation = "\\btransport(ation)?\\b|subway|\\btransit\\b|bicycl(?:e|ist|ing)|\\bbike\\b|pedestrian|(?:high|free|express)way|interstate|\\broad(way)?\\b|(?<!wall )street|\\bcar\\b|\\bbus\\b|\\btrain\\b|rail(?:road|way)|light rail|tunnel|\\bbridge\\b|air(?:port|line)|ferry|\\btram\\b|\\btoll\\b|scooter|hov lane|streetcar|turnpike",
 
   `women's rights` = "women|metoo|\\bsexis(?:t|m)|patriarch|\\bgender\\b|domestic violence|femicide|equal rights amendment|\\bmen\'?s rights|\\bmother|misogyn|uterus|feminis|pussy"
 
