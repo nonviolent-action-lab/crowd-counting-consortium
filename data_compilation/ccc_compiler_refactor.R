@@ -190,8 +190,8 @@ if(nrow(new_locations) > 0) {
   # pull() fails and throws an error
   X <- DF %>% 
     mutate(latlon = map(gw_res, purrr::pluck, "results", "geometry", "location")) %>%
-    mutate(lat = map_chr(latlon, ~ifelse(is.null(.), NA, pull(., lat))),
-           lon = map_chr(latlon, ~ifelse(is.null(.), NA, pull(., lng)))) %>%
+    mutate(lat = map_chr(latlon, ~ifelse(is.null(.), NA, as.character(pull(., lat)))),
+           lon = map_chr(latlon, ~ifelse(is.null(.), NA, as.character(pull(., lng))))) %>%
     select(CityTown, StateTerritory, Location, lat, lon)
 
   # extract the county and other resolved elements of address
@@ -332,3 +332,5 @@ write.csv(dat, "c:/users/ulfel/documents/github/crowd-counting-consortium/ccc_co
 
 # produce and store version with preprocessing and col dropping for CCC Data Dashboard
 source("r/ccc_dashboard_data_prep.r")
+
+nrow(dat)
