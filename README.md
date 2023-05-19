@@ -65,6 +65,10 @@ Journalists also use CCC data, often to document trends or provide context in st
 
 * "Mass Shooting at Gay Nightclub in Colorado Follows Surge of Right-Wing Rhetoric and Threats Targeting LGBTQ Community," *The Americano* (November 22, 2022) [link](https://theamericanonews.com/2022/11/22/mass-shooting-at-gay-nightclub-in-colorado-follows-surge-of-right-wing-rhetoric-and-threats-targeting-lgbtq-community/)
 
+* "Hateful rhetoric, demonstrations targeting LGBTQ+ community on the rise, experts say", *WWMT.com* (November 21, 2022) [link](https://wwmt.com/news/state/hateful-rhetoric-demonstrations-targeting-lgbtq-community-club-q-colorado-springs-homophobia-transphobia-far-right-campaign-politics-legislation)
+
+* "Clear spike in anti-trans rhetoric sets stage for violence like Colorado Springs shooting, experts say", *The Colorado Sun* (November 20, 2022) [link](https://coloradosun.com/2022/11/20/colorado-springs-club-q-lgbtq-trans/)
+
 * "Club Q shooting follows year of bomb threats, drag protests, anti-trans bills," *The Washington Post* (November 20, 2022) [link](https://www.washingtonpost.com/dc-md-va/2022/11/20/club-q-shooting-lgbtq-harassment/)
 
 * "Where Is the Anti-Biden Tea Party?", *The New York Times* (August 24, 2021) [link](https://www.nytimes.com/2021/08/24/upshot/where-is-the-anti-biden-tea-party.html)
