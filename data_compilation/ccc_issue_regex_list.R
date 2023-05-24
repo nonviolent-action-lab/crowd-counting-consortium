@@ -8,7 +8,7 @@ ccc_issue_regex_list <- list(
 
   covid = "covid|corona(virus)?|\\b(anti.?)?mask\\b|fauci|pandemic|\\bcdc\\b|ventilator|personal protective equipment|\\bppe\\b|\\bre.?open|ivermectin|remdisvir|lockdown|(?:wuhan |china )flu|china.?virus",
 
-  corruption = "\\bcorrupt|\\bbribe|graft",
+  corruption = "\\bcorrupt|\\bbribe|graft|nepotis",
 
   `criminal justice` = "criminal justice|prison|jail|carceral|(?:in|de)carcerat|parole|death (?:penalty|sentence)|capital punishment|\\bexecution|juvenile detention|\\binmate|wrongful (?:conviction|prosecution)|clemency|\\bfelon|ex-felon|correctional|cash bail|bail reform|public defenders?",
 
@@ -32,11 +32,11 @@ ccc_issue_regex_list <- list(
 
   `free speech` = "free(dom of)? speech|(?:first|1st) amendment|censor(ship)?",
 
-  guns = "(?<!water|bb )\\bguns?\\b|firearm|(?:second|2nd) amendment|\\b2a\\b|\\bnra\\b|national rifle association|concealed carry|open.carry|ar-15|ak-47|(?:assault|automatic) rifle|bump stock|right to bear arms|(?:school|mass) shooting|\\bbullets\\b|molon labe|come and take it",
+  guns = "(?<!water|bb )\\bguns?\\b|firearm|(?:second|2nd) amendment|\\b2a\\b|(?<!other )\\bnra\\b|national rifle association|concealed carry|open.carry|\\bar-15|\\bak-47|(?:assault|automatic) (?:rifle|weapon)|bump stock|right to bear arms|(?:school|mass) shooting|\\bbullets\\b|molon labe|come and take it",
   
   healthcare = "\\bhealth( ?care)?\\b|doctor|physician|nurse|nursing|hospital|\\bclinic\\b|\\bpatient|medical|medic(?:ine|are|aid)|prescription|\\brx\\b|obamacare|\\baca\\b|affordable care act|preexisting condition|vaccin|\\bjab\\b|\\bvax|disease|cancer|depression|suicide|maternal care|dhhr|\\bhiv\\b|\\baids\\b|hiv.aids|birthing|family act|\\bahca\\b|osteopath|chiropract|acupunctur|\\bhealer|\\bpharma|monkeypox|circumcision",
 
-  housing = "\\b(un)?hous(?:es?|ing|ed)\\b|(?:home|house)less|\\beviction|\\brent\\b|mortgage|panhandl|\\btenant|home ?owner|(?:land|slum)lord|apartment|\\bcondo(minium)?s?\\b|\\b421a\\b",
+  housing = "\\b(un)?hous(?:es?|ing|ed)\\b|(?:home|house)less|\\beviction|\\brent\\b|mortgage|panhandl|\\btenant|home ?owner|(?:land|slum)lord|apartment|\\bcondo(minium)?s?\\b|\\b421a\\b|mobile home|trailer park",
 
   immigration = "\\bimmigra|\\bmigrant|dreamers|\\bdaca\\b|border|refugee|asylum|h-?1b|\\bvisa\\b|sanctuary (?:cit|state)|illegal alien|undocumented|\\bice\\b|anti-ice|family separation|child separation|deport(?:ation|ee)|travel (?:ban|eo)|muslim ban|\\btps\\b|temporary protected status|\\bexile|\\bmigra\\b|great replacement",
 

@@ -10,6 +10,8 @@ setwd("~/nval/ccc")
 
 memory.limit(size = 10000)
 
+edge_date <- Sys.Date() - 3
+
 
 ### DATA COMPILATION ###
 
@@ -326,7 +328,13 @@ dat <- fips_for_county(dat)
 
 ### OUTPUT ###
 
+nrow(dat)
+
+# store local version with all events from all sheets
 write.csv(dat, "data_clean/ccc_compiled.csv", row.names = FALSE, fileEncoding = "UTF-8")
+
+# now drop past few days and all future days for posted version
+dat <- filter(dat, date <= edge_date)
 
 write.csv(dat, "c:/users/ulfel/documents/github/crowd-counting-consortium/ccc_compiled.csv", row.names = FALSE, , fileEncoding = "UTF-8")
 
