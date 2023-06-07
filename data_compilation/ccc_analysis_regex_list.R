@@ -39,3 +39,51 @@ regex_groups_farright <- list(
 
 )
 
+regex_groups_white <- list(
+
+  `Proud Boys` = "proud boys",
+
+  `Patriot Front` = "patriot front",
+
+  `White Lives Matter` = "white lives matter|\\bwlm\\b",
+
+  `Goyim Defense League` = "g(oyim )?d(efense )?l(eague)?",
+
+  `National Socialists` = "national socialist(?: club| movement)?|\\bnsc|natsoc",
+
+  `Aryan Freedom Network` = "a(ryan )?f(reedom )?n(etwork)?",
+
+  `Active Clubs` = "active club",
+
+  `National Justice Party` = "national justice party",
+
+  `ACTBAC` = "actbac",
+
+  `Rose City Nationalists` = "rose city nationalist",
+
+  `Sunshine State Nationalists` = "sunshine state nationalist",
+
+  `Folksfront` = "folksfront",
+
+  `League of the South` = "league of the south",
+
+  `Sons of Confederate Veterans` = "sons of confederate veterans",
+
+  `Russian Imperial Movement` = "russian imperial movement",
+
+  `New Jersey European Heritage Association` = "n(ew )?j(ersey )?e(uropean )?h(eritage )?a(ssociation)?",
+
+  `Ku Klux Klan` = "\\bkkk\\b|klan",
+
+  `American Nationalist Initiative` = "\\ba(merican )?n(ationalist )?i(nitiative)?\\b",
+
+  `Patriotic Alternative` = "patriotic alternative",
+
+  `Blood Tribe` = "blood tribe",
+
+  `Empire State Stormers` = "empire state stormers",
+
+  `Crew 319` = "\\bcrew 319"
+
+)
+
