@@ -259,9 +259,46 @@ print(nrow(new_locations))
 
 source("r/ccc_issue_regex_list.R")
 
-dat$ClaimCodes <- claimcoder(dat$Claim)
+# run issue tagging functions over claims fields
 
+dat$ClaimCodes <- claimcoder(dat$Claim)
 dat <- claimcoder_addendum(dat)
+
+# now do for coder-generated only
+
+# generate column of only coder-generated claim summaries, no verbatim
+dat$claims_major <- map_chr(dat$Claim, function(x) {
+
+  # regex to select coder-generated claim summaries
+  regex_verbatim <- "^(?:for|against) |^in [[:alpha:]]{3,} (?:of|with)"
+
+  # split the claims field at the commas into vector of strings
+  if(!is.na(x)) { 
+
+    y <- str_split_1(x, ",") }
+
+  else { 
+
+    y <- "for unspecified"
+
+  }
+
+  # trim whitespace from ends of strings
+  y <- str_trim(y)
+
+  # use regex to filter down to coder-generated claim summaries
+  z <- y[grepl(regex_verbatim, y, ignore.case = TRUE)]
+
+  # recombine remaining elements into a single string
+  z <- paste(z, collapse = ", ")
+
+  return(z)
+
+})
+
+dat$ClaimCodesMajor <- claimcoder(dat$claims_major)
+
+dat$ClaimCodesMajor <- with(dat, ifelse(Date < "2021-01-01", NA, ClaimCodesMajor))
 
 
 ### ARRANGING ###
@@ -285,6 +322,7 @@ dat <- dat %>%
          claims = Claim,
          valence = ClaimType,
          issues = ClaimCodes,
+         issues_major = ClaimCodesMajor,
          size_text = EstimateText,
          size_low = EstimateLow,
          size_high = EstimateHigh,

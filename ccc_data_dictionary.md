@@ -27,7 +27,9 @@ This dictionary describes the compiled and cleaned version of the Crowd Counting
 
 - **valence**. Political valence of the event, broadly construed. 2 = pro-Trump (during Trump presidency)/right wing (after Trump presidency), 1 = anti-Trump (during Trump presidency)/left wing (after Trump presidency), 0 = neither. *Pro(2)/Anti(1)* in the source data from 2017-2020; *valence* in source data for 2021-.
 
-- **issues**. String of semicolon-separated tags identifying political issues associated with the event (e.g., "democracy; women's rights" for events associated with the 2017 Women's March). These tags are encoded by applying keyword- and keyphrase-based regular expressions to the participant claims recorded in the *claims* field.
+- **issues**. String of semicolon-separated tags identifying political issues (or themes) associated with the event (e.g., "democracy; women's rights" for events associated with the 2017 Women's March). These tags are encoded by applying keyword- and keyphrase-based regular expressions to the participant claims recorded in the *claims* field.
+
+- **issues_major**. For events since 2021 only, and most reliably for events since spring 2022: string of semicolon-separated tags identifying the main political issues (or themes) associated with the event, as judged by the human coder or coders. These tags are encoded by applying keyword- and keyphrase-based regular expressions to only the coder-summarized claims in the *claims* field; the verbatim elements of that field are omitted. These are a subset of the issue tags that appear in the *issues* column. This column is NA for all events before 2021, but the *issues* field is essentially the same thing for that period (before we started including verbatim claims).
 
 - **size_low**. Lowest reported participation count. Often (not always) the number cited by police or public officials. Vague estimates are interpreted as follows: "hundreds" = 200; "thousands" =2000; "tens of thousands" = 20000; "hundreds of thousands" = 200000. *EstimateLow* in source data from 2017-2020; *size_low* in source data from 2021-.
 

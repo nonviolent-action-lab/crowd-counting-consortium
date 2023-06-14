@@ -57,27 +57,29 @@ And here are some working papers we've seen that use the dataset. Again, please 
 ## Journalism Using CCC Data
 Journalists also use CCC data, often to document trends or provide context in stories on specific events. Here are some examples.
 
-* "Montgomery police to patrol Drag Story Hours after Proud Boys protest," *Washington Post* (February 21, 2023) [link](https://www.washingtonpost.com/dc-md-va/2023/02/21/maryland-drag-queen-story-hour-proud-boys/)
+* "LGBTQ community celebrates pride in the face of online and offline attacks", *Reuters* (June 11, 2023) [link](https://www.reuters.com/world/us/lgbtq-community-celebrates-pride-face-online-offline-attacks-2023-06-11/)
 
-* "Drag Story Hour protest in NYC caps a year of anti-drag attacks," *NBC Out* (December 30, 2022) [link](https://www.nbcnews.com/nbc-out/out-news/drag-story-hour-protest-nyc-caps-year-anti-drag-attacks-rcna63737)
+* "Montgomery police to patrol Drag Story Hours after Proud Boys protest", *Washington Post* (February 21, 2023) [link](https://www.washingtonpost.com/dc-md-va/2023/02/21/maryland-drag-queen-story-hour-proud-boys/)
 
-* "2021 was supposed to be the 'worst year' for LGBTQ rights — then came 2022," *NBC Out* (December 29, 2022) [link](https://www.nbcnews.com/nbc-out/out-news/2021-was-supposed-worst-year-lgbtq-rights-came-2022-rcna63334)
+* "Drag Story Hour protest in NYC caps a year of anti-drag attacks", *NBC Out* (December 30, 2022) [link](https://www.nbcnews.com/nbc-out/out-news/drag-story-hour-protest-nyc-caps-year-anti-drag-attacks-rcna63737)
 
-* "Mass Shooting at Gay Nightclub in Colorado Follows Surge of Right-Wing Rhetoric and Threats Targeting LGBTQ Community," *The Americano* (November 22, 2022) [link](https://theamericanonews.com/2022/11/22/mass-shooting-at-gay-nightclub-in-colorado-follows-surge-of-right-wing-rhetoric-and-threats-targeting-lgbtq-community/)
+* "2021 was supposed to be the 'worst year' for LGBTQ rights — then came 2022", *NBC Out* (December 29, 2022) [link](https://www.nbcnews.com/nbc-out/out-news/2021-was-supposed-worst-year-lgbtq-rights-came-2022-rcna63334)
+
+* "Mass Shooting at Gay Nightclub in Colorado Follows Surge of Right-Wing Rhetoric and Threats Targeting LGBTQ Community", *The Americano* (November 22, 2022) [link](https://theamericanonews.com/2022/11/22/mass-shooting-at-gay-nightclub-in-colorado-follows-surge-of-right-wing-rhetoric-and-threats-targeting-lgbtq-community/)
 
 * "Hateful rhetoric, demonstrations targeting LGBTQ+ community on the rise, experts say", *WWMT.com* (November 21, 2022) [link](https://wwmt.com/news/state/hateful-rhetoric-demonstrations-targeting-lgbtq-community-club-q-colorado-springs-homophobia-transphobia-far-right-campaign-politics-legislation)
 
 * "Clear spike in anti-trans rhetoric sets stage for violence like Colorado Springs shooting, experts say", *The Colorado Sun* (November 20, 2022) [link](https://coloradosun.com/2022/11/20/colorado-springs-club-q-lgbtq-trans/)
 
-* "Club Q shooting follows year of bomb threats, drag protests, anti-trans bills," *The Washington Post* (November 20, 2022) [link](https://www.washingtonpost.com/dc-md-va/2022/11/20/club-q-shooting-lgbtq-harassment/)
+* "Club Q shooting follows year of bomb threats, drag protests, anti-trans bills", *The Washington Post* (November 20, 2022) [link](https://www.washingtonpost.com/dc-md-va/2022/11/20/club-q-shooting-lgbtq-harassment/)
 
 * "Where Is the Anti-Biden Tea Party?", *The New York Times* (August 24, 2021) [link](https://www.nytimes.com/2021/08/24/upshot/where-is-the-anti-biden-tea-party.html)
 
-* "BLM and Floyd protests were largely peaceful, data confirms," *Christian Science Monitor* (July 8, 2021) [link](https://www.csmonitor.com/USA/Politics/2021/0708/BLM-and-Floyd-protests-were-largely-peaceful-data-confirms)
+* "BLM and Floyd protests were largely peaceful, data confirms", *Christian Science Monitor* (July 8, 2021) [link](https://www.csmonitor.com/USA/Politics/2021/0708/BLM-and-Floyd-protests-were-largely-peaceful-data-confirms)
 
-* "Protests for Black lives are still happening," *Vox* (July 16, 2020) [link](https://www.vox.com/2020/7/16/21325275/black-lives-matter-protests-are-still-happening)
+* "Protests for Black lives are still happening", *Vox* (July 16, 2020) [link](https://www.vox.com/2020/7/16/21325275/black-lives-matter-protests-are-still-happening)
 
-* "Black Lives Matter may be the largest movement in U.S. history," *The New York Times* (July 3, 2020) [link](https://www.nytimes.com/interactive/2020/07/03/us/george-floyd-protests-crowd-size.html)
+* "Black Lives Matter may be the largest movement in U.S. history", *The New York Times* (July 3, 2020) [link](https://www.nytimes.com/interactive/2020/07/03/us/george-floyd-protests-crowd-size.html)
 
 * "Maps: How Protests Evolved in the Wake of George Floyd's Killing", *The Wall Street Journal* (June 12, 2020) [link](https://www.wsj.com/articles/maps-how-protests-evolved-in-the-wake-of-george-floyds-killing-11591984846)
 
