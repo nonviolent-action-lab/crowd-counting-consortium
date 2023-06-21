@@ -15,14 +15,8 @@ edge_date <- Sys.Date() - 3
 
 ### DATA COMPILATION ###
 
-# NOTE: This assumes that current versions of all CCC Google Sheets have been 
-# downloaded as .xls files into a local directory called ~/nval/ccc/data_raw
-
-# preprocess all raw monthly files from 2017-2020
-# NOTE: can't standardize for this period bc months have different numbers of
-# sheets and differences in cols used
-script.names <- grep("^ccc_\\d{4}_\\d{2}", list.files("r"), value = TRUE)
-walk(script.names, ~source(paste0("r/", .)))
+# NOTE: This assumes that current versions of all relevant CCC Google Sheets have
+# been downloaded as .xls files into a local directory called ~/nval/ccc/data_raw
 
 # preprocess all raw monthly files from Jan 2021 to current month
 # NOTE: this function depends on cols in all of these files having the same
@@ -48,50 +42,22 @@ ccc_prepro("data_raw/CCC Super Repeaters.xlsx")
 
 # compile all pre-processed monthly files into one table
 file_names <- grep("ccc_\\d{4}_\\d{2}", list.files("data_clean"), value = TRUE)
-file_names <- append(file_names, "ccc_super_repeaters.csv")
+file_names <- file_names[as.numeric(substr(file_names, 5, 8)) >= 2021]  # reduce to 2021-
+file_names <- append(file_names, "ccc_super_repeaters.csv")  # add super-repeaters
 clean_files <- map(paste0("data_clean/", file_names), read.csv)
 dat_raw <- data.table::rbindlist(clean_files, fill = TRUE)
+dat_raw <- dat_raw[date(dat_raw$Date) >= "2021-01-01",]  # drop super-repeaters from before 2021
 
 
 ### DATA CLEANING ###
 
 dat <- dat_raw
 
-# get rid of events outside US and then remove country col (will get replaced in
-# merge with geoloc data below)
-valid_country_strings <- c("US", "USA", "Us", "USa", "us", "UA", "US and 26 others", "US`", "PR", "DC", "UD", "IA", "NV", "UW", "YS", "0.0", "1.0")
-dat <- filter(dat, Country %in% valid_country_strings)
+# remove country col
 dat <- select(dat, -Country)
 
-# standardize state labels based on hand checking of each oddity
-# table(dat$StateTerritory)
-# z <- filter(dat, StateTerritory == "CN")
-dat$StateTerritory[dat$StateTerritory=="CA/NV"] <- "CA"; dat$CityTown[dat$StateTerritory=="CA/NV"] <- "South Lake Tahoe"
-dat$StateTerritory[dat$StateTerritory=="Puerto Rico"] <- "PR"
-dat$StateTerritory[dat$StateTerritory=="Guam"] <- "GU"
-dat$StateTerritory[dat$StateTerritory=="GM"] <- "GU"
-dat$StateTerritory[dat$StateTerritory=="HA"] <- "HI"
-dat$StateTerritory[dat$StateTerritory=="IA/IL"] <- "IL"; dat$CityTown[dat$StateTerritory=="IA/IL"] <- "Rock Island"
-dat$StateTerritory[dat$StateTerritory=="KA"] <- "KS"
-dat$StateTerritory[dat$StateTerritory=="KN"] <- "KS"
-dat$StateTerritory[dat$StateTerritory=="NB"] <- "NE"
-dat$StateTerritory[dat$StateTerritory=="IO"] <- "IA"
-dat$StateTerritory[dat$StateTerritory=="T<U+03A7>"] <- "TX"
-dat$StateTerritory[dat$StateTerritory=="Texas"] <- "TX"
-dat$StateTerritory[dat$StateTerritory=="VY"] <- "VT"
-dat$StateTerritory[dat$StateTerritory=="CN"] <- "CT"
-dat$StateTerritory <- toupper(dat$StateTerritory)
-
-# deal with problem where recent town names include state code as well
-# z <- filter(dat, grepl(", [A-Z]{2}", CityTown))
-# fix(z)
-dat <- mutate(dat, State = StateTerritory, Town = CityTown)
-dat <- mutate(dat, Town = ifelse(grepl(", [A-Z]{2}", CityTown), str_split(CityTown, ",")[[1]][1], CityTown))
-dat <- mutate(dat, State = ifelse(grepl(", [A-Z]{2}", CityTown), str_split(CityTown, ",")[[1]][2], State))
 # create dummy for online/virtual events
 dat <- mutate(dat, Online = ifelse(StateTerritory == "VIRTUAL" | tolower(CityTown) == "online", 1, 0))
-dat <- select(dat, -CityTown, -StateTerritory)
-dat <- rename(dat, CityTown = Town, StateTerritory = State)
 
 # clean up crowd estimates, convert to numeric, and create average and ordered factor for orders of magnitude
 dat$EstimateLow <- as.integer(dat$EstimateLow)
@@ -140,9 +106,6 @@ dat$ClaimType <- with(dat, case_when(
   ClaimType %in% c("2", "2.0") ~ 2,
   TRUE ~ NA_real_
 ))
-
-# filter out non-events identified by 0 (and, apparently, other things) in the Events col
-dat <- filter(dat, !(Events %in% c("0", "cancelled", "postponed", "DEAD LINK", "DEADLINK")))
 
 # clean up the TearGas col
 dat$TearGas <- with(dat, case_when(
@@ -298,8 +261,6 @@ dat$claims_major <- map_chr(dat$Claim, function(x) {
 
 dat$ClaimCodesMajor <- claimcoder(dat$claims_major)
 
-dat$ClaimCodesMajor <- with(dat, ifelse(Date < "2021-01-01", NA, ClaimCodesMajor))
-
 
 ### ARRANGING ###
 
@@ -368,18 +329,24 @@ dat <- fips_for_county(dat)
 
 nrow(dat)
 
+# load archived pre-2021 data
+dat_2017 <- read.csv("data_clean/ccc_compiled_2017.csv") %>%
+  mutate(date = lubridate::date(date),
+         fips_code = ifelse(nchar(fips_code) == 4, paste0("0", fips_code), fips_code))
+
+# merge pre- and post-2021 data
+dat <- rbindlist(list(dat_2017, dat))
+
 # store local version with all events from all sheets
 write.csv(dat, "data_clean/ccc_compiled.csv", row.names = FALSE, fileEncoding = "UTF-8")
 
 # now drop past few days and all future days for posted version
 dat <- filter(dat, date <= edge_date)
+nrow(dat)
 
+# store version for GitGub
 write.csv(dat, "c:/users/ulfel/documents/github/crowd-counting-consortium/ccc_compiled.csv", row.names = FALSE, , fileEncoding = "UTF-8")
 
 # produce and store version with preprocessing and col dropping for CCC Data Dashboard
 source("r/ccc_dashboard_data_prep.r")
 
-nrow(dat)
-
-# store version for pre-2021 only
-write.csv(dat[dat$date < "2021-01-01",], "data_clean/ccc_compiled_2017.csv", row.names = FALSE)
