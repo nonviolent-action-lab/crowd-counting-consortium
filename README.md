@@ -28,6 +28,8 @@ If you have suggestions on how to improve this repository or the compiled versio
 ## Academic Research Using CCC Data
 Curious how these data are getting used? Here, in reverse chronological order, are peer-reviewed published studies that have used CCC's work. If you are aware of any published articles or monographs that cite the data that aren't listed here, please let us know.
 
+* Neal Caren. "Right-Wing Protest in the United States, 2017 to 2022." *Socius: Sociological Research for a Dynamic World* (July 5, 2023). [link](https://journals.sagepub.com/doi/10.1177/23780231231181900)
+
 * Cassy Dorff, Grace Adcox, and Amanda Konet. "Data innovations on protests in the United States." *Journal of Peace Research* Vol. 60, No. 1 (2023): 172-189. [link](https://doi.org/10.1177/00223433221143808)
 
 * Daniel Karell, Andrew Linke, Edward C. Holland, and Edward Hendrickson. "Hard-Right Social Media and Civil Unrest." *American Sociological Review* Vol. 88, No. 2 (2023) [link](https://osf.io/preprints/socarxiv/pna5u/)
