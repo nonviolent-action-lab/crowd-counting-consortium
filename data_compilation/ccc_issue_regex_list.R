@@ -56,11 +56,11 @@ ccc_issue_regex_list <- list(
 
   policing = "(?<!coochie )polic(?:e|ing)|she[r]{1,2}iff|\\bdeput|law enforcement|\\bcops?\\b|(?:blue|black) lives matter|(?:back|defend) the blue|thin blue line|\\bblm\\b|school resource officer|\\bsro|\\bacab\\b|(?:ny|la|m)pd|f(uck )?12|george floyd|breonna taylor",
 
-  presidency = "presiden(?:t|cy)|impeach|electoral college|\\btrump\\b|\\bobama\\b|\\bbiden\\b|\\bsanders\\b|\\bclinton\\b|\\bwarren\\b|mueller|russia investigation|\\bpence\\b|kamala harris|executive order|let\'s go brandon",
+  presidency = "presiden(?:t|cy)|impeach|electoral college|\\btrump\\b|\\bobama\\b|\\bbiden\\b|\\bsanders\\b|\\bclinton\\b|\\bwarren\\b|mueller|russia investigation|\\bpence\\b|kamala harris|executive order|let\'s go brandon|fjb",
 
   racism = "\\b(anti-?)?racis|\\bracial|bigot|\\bhate\\b|discriminat|\\bredlin|prejudice|of color|\\bbipoc\\b|\\bblack(?! friday| (american )?flag| ?rock)|african.american|white (?:supremac|nationalis.)|swastika|blm|(?:black|all|white|asian|native) lives matter|no white guilt|george floyd|breonna taylor|alt.right|confedera(?:te|cy)|kkk|klan|mlk|conquistador|christopher columbus|affirmative action|hispanic|\\blatin[a-z]{1,2}\\b|\\bchican[a-z]{1,2}\\b|minority|aapi|\\basian\\b|critical race theory|\\bcrt\\b|1619 project|\\bdei\\b|diversity equity (?:and|&) inclusion",
 
-  religion = "religio|evangeli|\\bgod\\b|\\bjesus\\b|\\ballah|christian|catholic|protestant|presbyterian|baptist|islam|muslim|buddhis|sikh|\\bhindu\\b|jewish|semiti|mormon|church|synagogue|temple|mosque|\\bsharia\\b|pray(er)?|zionis.|judaism|hijab|pastor|reverend|priest|cleric|\\bimam\\b|\\brabbi\\b|\\bmonk\\b|worship|\\bsatan(?:ic|is.)?\\b|secular|atheis.|\\bfaith\\b|appeal to heaven|bible|rosar(?:y|ies)|theo(?:logy|cracy)|christo.?fascis",
+  religion = "religio|evangeli|\\bgod\\b|\\bjesus\\b|\\ballah|christian|catholic|protestant|presbyterian|baptist|islam|muslim|buddhis|sikh|\\bhindu\\b|jewish|semiti|mormon|church|synagogue|temple|mosque|\\bsharia\\b|pray(er)?|zionis.|judaism|hijab|pastor|reverend|priest|cleric|\\bimam\\b|\\brabbi\\b|\\bmonk\\b|worship|\\bsatan(?:ic|is.)?\\b|secular|atheis.|\\bpagan(is)?|\\bfaith\\b|appeal to heaven|bible|rosar(?:y|ies)|theo(?:logy|cracy)|christo.?fascis",
 
   `reproductive rights` = "reproductive rights|abortion|plann?ed parenthood|pro(?:\\s|-)(?:life|choice)|birth control|contracepti|condom|family planning|womb|uterus|\\bovar(?:y|ies)|\\broe( v.? wade)?\\b|\\brepro\\b|vasectom(?:y|ies)|mifepristone",
 
@@ -70,7 +70,7 @@ ccc_issue_regex_list <- list(
 
   sports = "\\bsports?\\b|[[:alpha:]]{4,}ball|hockey|wrestling|\\bcycling|cyclo-?cross|biking|bmx|track and field|swimm(?:ing|er)|diving|soccer|tennis|golf|cheerlead(?:ing|er)|skiing|snowboarding|rock climbing|bouldering|martial arts|equestrian|\\bfishing|frisbee|gymnast|(?:figure|speed) skating|rodeo|(?:tri|bi|du)athlon|lacrosse|\\bpolo\\b|sailing|surfing|canoeing|kayaking|olympic(?:s| games)|\\bfifa\\b|world cup",
 
-  taxes = "\\btax\\b(?! return)|\\btaxes\\b",
+  taxes = "\\btax\\b(?! return)|\\btaxes\\b|taxation",
 
   transportation = "\\btransport(ation)?\\b|subway|\\btransit\\b|bicycl(?:e|ist|ing)|\\bbike\\b|pedestrian|(?:high|free|express)way|interstate|\\broad(way)?\\b|(?<!wall )street|\\bcar\\b|\\bbus\\b|\\btrain\\b|rail(?:road|way)|light rail|tunnel|\\bbridge\\b|air(?:port|line)|ferry|\\btram\\b|\\btoll\\b|scooter|hov lane|streetcar|turnpike",
 
