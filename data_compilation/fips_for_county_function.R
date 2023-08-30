@@ -46,7 +46,7 @@ fips_for_county <- function(data,
      # otherwise, use lookup_code() from 'tigris' to get fips code
      } else {
 
-       y <- tigris::lookup_code(j[resolved_state_col], j[resolved_county_col])
+       y <- tigris::lookup_code(j[resolved_state_col], iconv(j[resolved_county_col], from = 'UTF-8', to = 'ASCII//TRANSLIT'))
 
        state <- stringr::str_extract(y, "\\d{2}")
 
@@ -66,7 +66,7 @@ fips_for_county <- function(data,
 
      if(isTRUE(j[resolved_state_col] == "MO" & j[city_col] == "St. Louis")) { z <- "29510" }
 
-     if(isTRUE(j[resolved_state_col] == "NM" & j[resolved_county_col] == "Doña Ana County")) { z <- "35013" }
+     if(isTRUE(j[resolved_state_col] == "NM" & j[resolved_county_col] == "DoÃ±a Ana County")) { z <- "35013" }
 
      if(isTRUE(j[resolved_state_col] == "VA" & j[city_col] %in% va_independent_cities)) {
 
