@@ -61,7 +61,11 @@ fips_for_county <- function(data,
      if(isTRUE(j[resolved_state_col] == "DC")) { z <- "11001" }
 
      if(isTRUE(j[resolved_state_col] == "MD" & j[city_col] == "Baltimore")) { z <- "24510" }
+    
+     if(isTRUE(j[resolved_state_col] == "IL" & j[city_col] == "Canton")) { z <- "17057" }
 
+     if(isTRUE(j[resolved_state_col] == "TX" & j[city_col] == "DFW Airport")) { z <- "48439" }
+    
      if(isTRUE(j[resolved_state_col] == "AK" & j[resolved_county_col] == "Petersburg Borough")) { z <- "02195" }
 
      if(isTRUE(j[resolved_state_col] == "MO" & j[city_col] == "St. Louis")) { z <- "29510" }
