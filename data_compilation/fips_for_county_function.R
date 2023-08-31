@@ -46,7 +46,7 @@ fips_for_county <- function(data,
      # otherwise, use lookup_code() from 'tigris' to get fips code
      } else {
 
-       y <- tigris::lookup_code(j[resolved_state_col], j[resolved_county_col])
+       y <- tigris::lookup_code(j[resolved_state_col], iconv(j[resolved_county_col], from = 'UTF-8', to = 'ASCII//TRANSLIT'))
 
        state <- stringr::str_extract(y, "\\d{2}")
 
@@ -61,12 +61,16 @@ fips_for_county <- function(data,
      if(isTRUE(j[resolved_state_col] == "DC")) { z <- "11001" }
 
      if(isTRUE(j[resolved_state_col] == "MD" & j[city_col] == "Baltimore")) { z <- "24510" }
+         
+     if(isTRUE(j[resolved_state_col] == "IL" & j[city_col] == "Canton")) { z <- "17057" }
+
+     if(isTRUE(j[resolved_state_col] == "TX" & j[city_col] == "DFW Airport")) { z <- "48439" }
 
      if(isTRUE(j[resolved_state_col] == "AK" & j[resolved_county_col] == "Petersburg Borough")) { z <- "02195" }
 
      if(isTRUE(j[resolved_state_col] == "MO" & j[city_col] == "St. Louis")) { z <- "29510" }
 
-     if(isTRUE(j[resolved_state_col] == "NM" & j[resolved_county_col] == "Doña Ana County")) { z <- "35013" }
+     if(isTRUE(j[resolved_state_col] == "NM" & j[resolved_county_col] == "Do\xf1a Ana County")) { z <- "35013" }
 
      if(isTRUE(j[resolved_state_col] == "VA" & j[city_col] %in% va_independent_cities)) {
 

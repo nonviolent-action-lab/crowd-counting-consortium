@@ -8,8 +8,6 @@ options(stringsAsFactors = FALSE)
 
 setwd("~/nval/ccc")
 
-memory.limit(size = 10000)
-
 edge_date <- Sys.Date() - 3
 
 
@@ -50,12 +48,12 @@ ccc_prepro("data_raw/CCC Super Repeaters.xlsx")
 file_names <- grep("ccc_\\d{4}_\\d{2}", list.files("data_clean"), value = TRUE)
 file_names <- append(file_names, "ccc_super_repeaters.csv")
 clean_files <- map(paste0("data_clean/", file_names), read.csv)
-dat_raw <- data.table::rbindlist(clean_files, fill = TRUE)
+dat <- data.table::rbindlist(clean_files, fill = TRUE)
+
+print(nrow(dat))
 
 
 ### DATA CLEANING ###
-
-dat <- dat_raw
 
 # get rid of events outside US and then remove country col (will get replaced in
 # merge with geoloc data below)
@@ -249,7 +247,7 @@ if(nrow(new_locations) > 0) {
 }
 
 # now join the lookup table to the data to add geo cols
-dat <- left_join(dat, location_lookup)
+dat <- left_join(dat, location_lookup, relationship = "many-to-many")
 
 # eyeball how many new locations were added to lookup table
 print(nrow(new_locations))
@@ -350,11 +348,12 @@ dat <- dat %>%
          resolved_state = state)
                    
 dat <- dat %>%
-  mutate(date = as.Date(date)) %>%
+  mutate(date = lubridate::date(date)) %>%
   arrange(date, state, locality)
 
+# deprecated with update to R 4.3.1
 # may solve problem with stray carriage returns and other oddities from GS
-dat <- mutate_if(dat, is.character, str_trim)
+# dat <- mutate_if(dat, is.character, str_trim)
 
 
 ### ADD FIPS CODES ###
@@ -366,20 +365,22 @@ dat <- fips_for_county(dat)
 
 ### OUTPUT ###
 
-nrow(dat)
+print(nrow(dat))
 
 # store local version with all events from all sheets
-write.csv(dat, "data_clean/ccc_compiled.csv", row.names = FALSE, fileEncoding = "UTF-8")
+write.csv(dat, "data_clean/ccc_compiled.csv", row.names = FALSE)
+# temporarily deprecated version that encodes as UTF-8 after updating to 4.3.1,
+# b/c it is killing ~80K rows in the csv output
+# write.csv(dat, "data_clean/ccc_compiled.csv", row.names = FALSE, fileEncoding = "UTF-8")
 
 # now drop past few days and all future days for posted version
-dat <- filter(dat, date <= edge_date)
-
-write.csv(dat, "c:/users/ulfel/documents/github/crowd-counting-consortium/ccc_compiled.csv", row.names = FALSE, , fileEncoding = "UTF-8")
+dat_truncated <- filter(dat, date <= edge_date)
+print(nrow(dat_truncated))
+write.csv(dat_truncated, "c:/users/ulfel/documents/github/crowd-counting-consortium/ccc_compiled.csv", row.names = FALSE)
+# same deal with UTF-8 encoding
 
 # produce and store version with preprocessing and col dropping for CCC Data Dashboard
 source("r/ccc_dashboard_data_prep.r")
-
-nrow(dat)
 
 # store version for pre-2021 only
 write.csv(dat[dat$date < "2021-01-01",], "data_clean/ccc_compiled_2017.csv", row.names = FALSE)
