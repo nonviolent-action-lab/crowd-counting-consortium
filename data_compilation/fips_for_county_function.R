@@ -66,7 +66,7 @@ fips_for_county <- function(data,
 
      if(isTRUE(j[resolved_state_col] == "MO" & j[city_col] == "St. Louis")) { z <- "29510" }
 
-     if(isTRUE(j[resolved_state_col] == "NM" & j[resolved_county_col] == "Doña Ana County")) { z <- "35013" }
+     if(isTRUE(j[resolved_state_col] == "NM" & j[resolved_county_col] == "Do\xf1a Ana County")) { z <- "35013" }
 
      if(isTRUE(j[resolved_state_col] == "VA" & j[city_col] %in% va_independent_cities)) {
 
