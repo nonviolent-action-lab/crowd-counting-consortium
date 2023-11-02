@@ -376,11 +376,11 @@ write.csv(dat, "data_clean/ccc_compiled.csv", row.names = FALSE)
 # now drop past few days and all future days for posted version
 dat_truncated <- filter(dat, date <= edge_date)
 print(nrow(dat_truncated))
-write.csv(dat_truncated, "c:/users/ulfel/documents/github/crowd-counting-consortium/ccc_compiled.csv", row.names = FALSE)
-# same deal with UTF-8 encoding
+
+# split and save for github
+write.csv(dat_truncated[dat_truncated$date < "2021-01-01",], "c:/users/ulfel/documents/github/crowd-counting-consortium/ccc_compiled_2017-2020.csv", row.names = FALSE)
+write.csv(dat_truncated[dat_truncated$date >= "2021-01-01",], "c:/users/ulfel/documents/github/crowd-counting-consortium/ccc_compiled_2021-present.csv", row.names = FALSE)
 
 # produce and store version with preprocessing and col dropping for CCC Data Dashboard
 source("r/ccc_dashboard_data_prep.r")
 
-# store version for pre-2021 only
-write.csv(dat[dat$date < "2021-01-01",], "data_clean/ccc_compiled_2017.csv", row.names = FALSE)

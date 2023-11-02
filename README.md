@@ -1,7 +1,7 @@
 # Crowd Counting Consortium Dataset
 This repository is home to a compiled and augmented version of the [Crowd Counting Consortium](https://sites.google.com/view/crowdcountingconsortium/home)'s data on political protest events in the United States. We use a broad definition of "protest," so the dataset includes protests, rallies, demonstrations, marches, strikes, and similar actions.
 
-- The latest version of the full dataset is stored in csv format in this repository ([here](https://raw.githubusercontent.com/nonviolent-action-lab/crowd-counting-consortium/master/ccc_compiled.csv)). The easiest way to access it is to read it directly into your statistical software. If you prefer to download it to a local directory, though, you'll need to:
+- The latest version of the full dataset is stored in csv format in this repository in two separate files, [one covering the period 2017-2020](https://raw.githubusercontent.com/nonviolent-action-lab/crowd-counting-consortium/master/ccc_compiled_2017-2020.csv) and [the other covering the period 2021-present](https://raw.githubusercontent.com/nonviolent-action-lab/crowd-counting-consortium/master/ccc_compiled_2021-present.csv). The two files have identical column names and formates and can be merged into a single, large file covering the project's entire scope if desired. The easiest way to access them is to read them directly into your statistical software. If you prefer to download them to a local directory, though, you'll need to:
     1) Open [this page](https://github.com/nonviolent-action-lab/crowd-counting-consortium/blob/master/ccc_compiled.csv) in your browser;
     2) Right-click on the "View raw" linkin the center of the lower tile; and
     3) Choose a name and local destination for the file.
@@ -58,6 +58,8 @@ And here are some working papers we've seen that use the dataset. Again, please 
 
 ## Journalism Using CCC Data
 Journalists also use CCC data, often to document trends or provide context in stories on specific events. Here are some examples.
+
+* "Will protests over the Israel-Hamas war shift U.S. policy?", *Good Authority* (October 27, 2023) [link](https://goodauthority.org/news/us-protests-gaza-israel-hamas-war/)
 
 * "LGBTQ community celebrates pride in the face of online and offline attacks", *Reuters* (June 11, 2023) [link](https://www.reuters.com/world/us/lgbtq-community-celebrates-pride-face-online-offline-attacks-2023-06-11/)
 
