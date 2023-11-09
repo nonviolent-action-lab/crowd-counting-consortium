@@ -11,8 +11,8 @@ library(usmap)
 library(tidycensus)
 
 options(stringsAsFactors = FALSE)
-
-
+getwd()
+setwd("/Users/fifiteklemedhin/Desktop/Research Fall 2023/Fall 2023/crowd-counting-consortium/protest-under-trump-replication-materials")
 # DATA INGESTION AND PREP
 
 ccc <- read.csv("data/ccc_compiled_20211229.csv")
@@ -331,7 +331,7 @@ round((100 * table(george_floyd$arrests_any)[2]/sum(table(george_floyd$arrests_a
 ## FIGURES ##
 
 # journal specifies that TNR must be used in all figures
-windowsFonts(Times=windowsFont("Times New Roman"))
+#windowsFonts(Times=windowsFont("Times New Roman"))
 
 # Figure 1. Monthly counts of U.S. protest events, January 2017-January 2021
 ccc_mo_count_text_dates <- lubridate::date(c("2018-03-01", "2018-04-01", "2020-06-01"))
