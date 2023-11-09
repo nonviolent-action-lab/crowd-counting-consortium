@@ -10,6 +10,7 @@ library(patchwork)
 library(usmap)
 library(tidycensus)
 
+
 options(stringsAsFactors = FALSE)
 getwd()
 setwd("/Users/fifiteklemedhin/Desktop/Research Fall 2023/Fall 2023/crowd-counting-consortium/protest-under-trump-replication-materials")
@@ -422,6 +423,71 @@ plot_usmap(data = dplyr::select(ccc_fips, fips = fips_code, n_pc_cat),
                     name = "events per\n100,000 pop.")
 dev.off()
 
+# *************************** TODO ********************************************************
+# TODO: figure 5a; protests per capita on left and right; 'valence' is left v right
+ccc_compiled_present = read_csv("data/ccc_compiled_2021-present.csv")
+ccc_protests <- ccc %>% subset(grepl("protest", type, ignore.case = TRUE))
+
+fips_by_valence <- function(df, valence_num)
+{
+    df <- df %>% subset(valence == valence_num) %>%
+    group_by(fips_code) %>%
+    tally() %>% # tallies number of times each fip code (county code) shows up
+    left_join(county_pop,.) %>% # joins with another table that gets population according to fip code
+    mutate(n = ifelse(is.na(n), 0, n), # if count for fip code occurences is NA make it 0???
+           events_per_100k = n/(popsize/100000)) %>% # calculates events per 100k ppl
+    arrange(-n) %>%
+    mutate(n_cat = case_when(
+      n == 0 ~ "0",
+      n < 10 ~ "1s",
+      n < 100 ~ "10s",
+      n < 1000 ~ "100s",
+      TRUE ~ "1,000+" )) %>%
+    mutate(n_cat = fct_relevel(n_cat, "0", "1s", "10s", "100s", "1,000+")) %>%
+    mutate(n_pc_cat = case_when(
+      events_per_100k == 0 ~ "0",
+      events_per_100k < 10 ~ "< 10",
+      events_per_100k >= 10 & events_per_100k < 20 ~ "10-20",
+      events_per_100k >= 20 & events_per_100k < 30 ~ "20-30",
+      TRUE ~ "30+" )) %>%
+    mutate(n_pc_cat = fct_relevel(n_pc_cat, "0", "< 10", "10-20", "20-30", "30+"))
+  
+}
+
+plot_flips_map <- function(df, file_name, map_title, color, palette)
+{
+  png(paste("figs/", file_name, "per-county-per-capita.png"), res = 300, width = 7, height = 5, units = "in")
+  plot_usmap(data = dplyr::select(df, fips = fips_code, n_pc_cat),
+             regions = "counties",
+             values = "n_pc_cat",
+             color = color,
+             size = 0.05) +
+    theme(legend.position = "right",
+          text=element_text(family="Times")) +
+    scale_fill_brewer(palette = palette,
+                      guide = "legend",
+                      name = paste(map_title, "per\n100,000 pop."))
+  
+}
+
+left_protest_fips <- ccc_protests 
+left_protest_fips <- fips_by_valence(left_protest_fips, 1)
+plot_flips_map(left_protest_fips, "fig-5test-left-protests", "Left/anti-Trump protests", "grey75", "Blues")
+dev.off()
+
+
+png("figs/fig-5test-left-protests-per-county-per-capita.png", res = 300, width = 7, height = 5, units = "in")
+plot_usmap(data = dplyr::select(left_protest_fips, fips = fips_code, n_pc_cat),
+           regions = "counties",
+           values = "n_pc_cat",
+           color = "grey75",
+           size = 0.05) +
+  theme(legend.position = "right",
+        text=element_text(family="Times")) +
+  scale_fill_brewer(palette = "Blues",
+                    guide = "legend",
+                    name = "Left/anti-Trump protests per\n100,000 pop.")
+dev.off()
 # Figure 6. Incidences of arrests, protester injuries, police injuries, and property damage at U.S. protests by year, 2017-2020
 p_arrests <- ccc %>%
   mutate(year = lubridate::year(date)) %>%
