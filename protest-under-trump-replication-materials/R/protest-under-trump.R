@@ -470,24 +470,17 @@ plot_flips_map <- function(df, file_name, map_title, color, palette)
   
 }
 
-left_protest_fips <- ccc_protests 
-left_protest_fips <- fips_by_valence(left_protest_fips, 1)
-plot_flips_map(left_protest_fips, "fig-5test-left-protests", "Left/anti-Trump protests", "grey75", "Blues")
+left_protest_fips <- fips_by_valence(ccc_protests, 1)
+plot_flips_map(left_protest_fips, "fig-5atest-left-protests", "Left/anti-Trump protests", "grey75", "Blues")
+dev.off()
+
+right_protest_fips <- fips_by_valence(ccc_protests, 2)
+plot_flips_map(right_protest_fips, "fig-5btest-left-protests", "Right/pro-Trump protests", "grey75", "Reds")
 dev.off()
 
 
-png("figs/fig-5test-left-protests-per-county-per-capita.png", res = 300, width = 7, height = 5, units = "in")
-plot_usmap(data = dplyr::select(left_protest_fips, fips = fips_code, n_pc_cat),
-           regions = "counties",
-           values = "n_pc_cat",
-           color = "grey75",
-           size = 0.05) +
-  theme(legend.position = "right",
-        text=element_text(family="Times")) +
-  scale_fill_brewer(palette = "Blues",
-                    guide = "legend",
-                    name = "Left/anti-Trump protests per\n100,000 pop.")
-dev.off()
+
+
 # Figure 6. Incidences of arrests, protester injuries, police injuries, and property damage at U.S. protests by year, 2017-2020
 p_arrests <- ccc %>%
   mutate(year = lubridate::year(date)) %>%
