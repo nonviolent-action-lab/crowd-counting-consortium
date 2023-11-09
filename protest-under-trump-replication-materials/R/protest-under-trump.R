@@ -470,13 +470,15 @@ plot_flips_map <- function(df, file_name, map_title, color, palette)
   
 }
 
-left_protest_fips <- fips_by_valence(ccc_protests, 1)
-plot_flips_map(left_protest_fips, "fig-5atest-left-protests", "Left/anti-Trump protests", "grey75", "Blues")
+left_protest_fips <- fips_by_valence(df = ccc_protests, valence_num = 1)
+plot_flips_map(left_protest_fips, file_name ="fig-5a-left-protests", map_title = "Left/anti-Trump protests", color = "grey75", palette = "Blues")
 dev.off()
 
-right_protest_fips <- fips_by_valence(ccc_protests, 2)
-plot_flips_map(right_protest_fips, "fig-5btest-left-protests", "Right/pro-Trump protests", "grey75", "Reds")
+right_protest_fips <- fips_by_valence(df = ccc_protests, valence_num = 2)
+plot_flips_map(right_protest_fips, file_name = "fig-5b-right-protests", map_title = "Right/pro-Trump protests", "grey75", palette = "Reds")
 dev.off()
+
+
 
 
 
