@@ -460,7 +460,7 @@ events_per_100k_by_fips_and_valence <- function(df, valence_num)
 
 plot_flips_map <- function(df, file_name, map_title, color, palette)
 {
-  png(paste("figs/", file_name, " per-county-per-capita"), res = 300, width = 7, height = 5, units = "in") # specifies where to output file
+  png(paste("figs/", file_name, ".png"), res = 300, width = 7, height = 5, units = "in") # specifies where to output file
   plot_usmap(data = dplyr::select(df, fips = fips_code, n_pc_cat), # selects fips and n_pc_cat data to plot on map
              regions = "counties",
              values = "n_pc_cat", # says that n_pc_cat denotes counties
@@ -541,9 +541,9 @@ ccc_right_protestors <- ccc %>% filter(valence == 2)
 ccc_fips_right_protestors <- protestors_per_100k_by_fips_and_valence(ccc_right_protestors, 2)
 ccc_fips_left_protestors <- protestors_per_100k_by_fips_and_valence(ccc_right_protestors, 1)
 
-plot_flips_map(ccc_fips_left_protestors, file_name ="", map_title = "Left/anti-Trump protestors per county", color = "grey75", palette = "Blues")
+plot_flips_map(ccc_fips_left_protestors, file_name ="fig-5c-left-protestors-per-county", map_title = "Left/anti-Trump protestors per county", color = "grey75", palette = "Blues")
 dev.off()
-plot_flips_map(ccc_fips_right_protestors, file_name = "fig-5b-right-protestors-per-county", map_title = "Right/pro-Trump protests per county", "grey75", palette = "Reds")
+plot_flips_map(ccc_fips_right_protestors, file_name = "fig-5d-right-protestors-per-county", map_title = "Right/pro-Trump protests per county", "grey75", palette = "Reds")
 dev.off()
 # ccc_fips_right_protestors <- ccc_right_protestors %>%
 #   group_by(fips_code) %>%
