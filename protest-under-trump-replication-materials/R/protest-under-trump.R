@@ -430,7 +430,7 @@ dev.off()
 ccc_compiled_present = read_csv("data/ccc_compiled_2021-present.csv")
 ccc_protests <- ccc %>% subset(grepl("protest", type, ignore.case = TRUE))
 
-fips_by_valence <- function(df, valence_num)
+events_per_100k_by_fips_and_valence <- function(df, valence_num)
 {
     df <- df %>% subset(valence == valence_num) %>%
     group_by(fips_code) %>%
@@ -460,7 +460,7 @@ fips_by_valence <- function(df, valence_num)
 
 plot_flips_map <- function(df, file_name, map_title, color, palette)
 {
-  png(paste("figs/", file_name, "per-county-per-capita.png"), res = 300, width = 7, height = 5, units = "in") # specifies where to output file
+  png(paste("figs/", file_name, " per-county-per-capita"), res = 300, width = 7, height = 5, units = "in") # specifies where to output file
   plot_usmap(data = dplyr::select(df, fips = fips_code, n_pc_cat), # selects fips and n_pc_cat data to plot on map
              regions = "counties",
              values = "n_pc_cat", # says that n_pc_cat denotes counties
@@ -495,31 +495,95 @@ unique(event_types_list)
 events_nonunique_list <- unique(events_nonunique_list)
 
 
-
-
-
 index_1 <- events_nonunique_list[[1]]
 c("hello", index_1)
-index_1[[2]]
+index_1[[1]]
 typeof(index_1)
 
-left_protest_fips <- fips_by_valence(df = ccc_protests, valence_num = 1)
-plot_flips_map(left_protest_fips, file_name ="fig-5a-left-protests", map_title = "Left/anti-Trump protests", color = "grey75", palette = "Blues")
+left_protests_per_fips <- events_per_100k_by_fips_and_valence(df = ccc_protests, valence_num = 1)
+plot_flips_map(left_protests_per_fips, file_name ="fig-5a-right-protests-per-county-per-capita", map_title = "Left/anti-Trump protests", color = "grey75", palette = "Blues")
 dev.off()
 
-right_protest_fips <- fips_by_valence(df = ccc_protests, valence_num = 2)
-plot_flips_map(right_protest_fips, file_name = "fig-5b-right-protests", map_title = "Right/pro-Trump protests", "grey75", palette = "Reds")
+right_protests_per_fips <- events_per_100k_by_fips_and_valence(df = ccc_protests, valence_num = 2)
+plot_flips_map(right_protests_per_fips, file_name = "fig-5b-right-protests-per-county-per-capita", map_title = "Right/pro-Trump protests", "grey75", palette = "Reds")
 dev.off()
 
-sum(left_protest_fips$n)
 
-sum(right_protest_fips$n)
+# TODO # ********************************  Try with number of protesters instead of number of protests  # ********************************  
+
+###### PASTED FROM CAT FOR THE PROTESTORS PER CAPITA COUNT
+
+
+protestors_per_100k_by_fips_and_valence <- function(df, valence_num)
+{
+  df <- df %>%  group_by(fips_code) %>%
+    summarise(protestors_right = sum(size_mean, na.rm = TRUE)) %>%
+    left_join(county_pop, .) %>%
+    mutate(protestors_right = ifelse(is.na(protestors_right), 0, protestors_right),
+           protestors_per_100k = protestors_right/(popsize/100000)) %>%
+    arrange(-protestors_per_100k) %>%
+    mutate(n_pc_cat = case_when(
+      protestors_per_100k == 0 ~ "0",
+      protestors_per_100k >= 0 & protestors_per_100k < 1 ~ "0-1",
+      protestors_per_100k >= 1 & protestors_per_100k < 3 ~ "1-3",
+      protestors_per_100k >= 3 & protestors_per_100k < 5 ~ "3-5",
+      protestors_per_100k >= 5 & protestors_per_100k < 10 ~ "5-10",
+      protestors_per_100k >= 10 & protestors_per_100k < 15 ~ "10-15",
+      protestors_per_100k >= 15 & protestors_per_100k < 20 ~ "15-20",
+      protestors_per_100k >= 20 & protestors_per_100k < 25 ~ "20-25",
+      TRUE ~ "35+" )) %>%
+    mutate(n_pc_cat = fct_relevel(n_pc_cat, "0", "0-1", "1-3", "3-5", "5-10", "10-15","15-20","20-25","25+"))
+  
+  
+}
+
+ccc_right_protestors <- ccc %>% filter(valence == 2)
+ccc_fips_right_protestors <- protestors_per_100k_by_fips_and_valence(ccc_right_protestors, 2)
+ccc_fips_left_protestors <- protestors_per_100k_by_fips_and_valence(ccc_right_protestors, 1)
+
+plot_flips_map(ccc_fips_left_protestors, file_name ="", map_title = "Left/anti-Trump protestors per county", color = "grey75", palette = "Blues")
+dev.off()
+plot_flips_map(ccc_fips_right_protestors, file_name = "fig-5b-right-protestors-per-county", map_title = "Right/pro-Trump protests per county", "grey75", palette = "Reds")
+dev.off()
+# ccc_fips_right_protestors <- ccc_right_protestors %>%
+#   group_by(fips_code) %>%
+#   summarise(protestors_right = sum(size_mean, na.rm = TRUE)) %>%
+#   left_join(county_pop, .) %>%
+#   mutate(protestors_right = ifelse(is.na(protestors_right), 0, protestors_right),
+#          protestors_per_100k = protestors_right/(popsize/100000)) %>%
+#   arrange(-protestors_per_100k) %>%
+#   mutate(n_pc_cat = case_when(
+#     protestors_per_100k == 0 ~ "0",
+#     protestors_per_100k >= 0 & protestors_per_100k < 1 ~ "0-1",
+#     protestors_per_100k >= 1 & protestors_per_100k < 3 ~ "1-3",
+#     protestors_per_100k >= 3 & protestors_per_100k < 5 ~ "3-5",
+#     protestors_per_100k >= 5 & protestors_per_100k < 10 ~ "5-10",
+#     protestors_per_100k >= 10 & protestors_per_100k < 15 ~ "10-15",
+#     protestors_per_100k >= 15 & protestors_per_100k < 20 ~ "15-20",
+#     protestors_per_100k >= 20 & protestors_per_100k < 25 ~ "20-25",
+#     TRUE ~ "35+" )) %>%
+#   mutate(n_pc_cat = fct_relevel(n_pc_cat, "0", "0-1", "1-3", "3-5", "5-10", "10-15","15-20","20-25","25+"))
+
+
+
+
+# TODO # ********************************  Plot raw_count_right_wing_protests/raw_count_left_wing_protests protests for each county # ******************************** 
+
+
+
+sum(left_protests_per_fips$n)
+
+sum(right_protests_per_fips$n)
 
 
 print(19897 + 2224) #
 
-right_protests <- 
+#right_protests <- 
 print(2224/22121) # proportion of right-wing protests to total 
+
+
+
+
 
 # if rawcountrightwingprotests/rawcountleftwing protests for each county
 # national midpoint will be 2224/22121; proprotion of right-wing protests to total
