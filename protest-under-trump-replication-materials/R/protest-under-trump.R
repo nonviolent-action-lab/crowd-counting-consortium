@@ -537,9 +537,10 @@ protestors_per_100k_by_fips_and_valence <- function(df, valence_num)
   
 }
 
-ccc_right_protestors <- ccc %>% filter(valence == 2)
-ccc_fips_right_protestors <- protestors_per_100k_by_fips_and_valence(ccc_right_protestors, 2)
-ccc_fips_left_protestors <- protestors_per_100k_by_fips_and_valence(ccc_right_protestors, 1)
+# ccc_right_protestors <- ccc %>% filter(valence == 2)
+# ccc_left_protestors <- ccc %>% filter(valence == 1)
+ccc_fips_right_protestors <- protestors_per_100k_by_fips_and_valence(df = ccc_protests, valence_num = 2)
+ccc_fips_left_protestors <- protestors_per_100k_by_fips_and_valence(df = ccc_protests, valence_num = 1)
 
 plot_flips_map(ccc_fips_left_protestors, file_name ="fig-5c-left-protestors-per-county", map_title = "Left/anti-Trump protestors per county", color = "grey75", palette = "Blues")
 dev.off()
