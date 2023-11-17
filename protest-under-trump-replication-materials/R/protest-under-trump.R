@@ -516,7 +516,8 @@ dev.off()
 
 protestors_per_100k_by_fips_and_valence <- function(df, valence_num)
 {
-  df <- df %>%  group_by(fips_code) %>%
+  df <- df %>% subset(valence==valence_num) %>%
+    group_by(fips_code) %>%
     summarise(protestors_right = sum(size_mean, na.rm = TRUE)) %>%
     left_join(county_pop, .) %>%
     mutate(protestors_right = ifelse(is.na(protestors_right), 0, protestors_right),
