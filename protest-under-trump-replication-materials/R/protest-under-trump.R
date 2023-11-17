@@ -518,10 +518,10 @@ protestors_per_100k_by_fips_and_valence <- function(df, valence_num)
 {
   df <- df %>% subset(valence==valence_num) %>%
     group_by(fips_code) %>%
-    summarise(protestors_right = sum(size_mean, na.rm = TRUE)) %>%
+    summarise(protestors = sum(size_mean, na.rm = TRUE)) %>%
     left_join(county_pop, .) %>%
-    mutate(protestors_right = ifelse(is.na(protestors_right), 0, protestors_right),
-           protestors_per_100k = protestors_right/(popsize/100000)) %>%
+    mutate(protestors = ifelse(is.na(protestors), 0, protestors),
+           protestors_per_100k = protestors/(popsize/100000)) %>%
     arrange(-protestors_per_100k) %>%
     mutate(n_pc_cat = case_when(
       protestors_per_100k == 0 ~ "0",
@@ -538,8 +538,7 @@ protestors_per_100k_by_fips_and_valence <- function(df, valence_num)
   
 }
 
-# ccc_right_protestors <- ccc %>% filter(valence == 2)
-# ccc_left_protestors <- ccc %>% filter(valence == 1)
+
 ccc_fips_right_protestors <- protestors_per_100k_by_fips_and_valence(df = ccc_protests, valence_num = 2)
 ccc_fips_left_protestors <- protestors_per_100k_by_fips_and_valence(df = ccc_protests, valence_num = 1)
 
@@ -547,35 +546,75 @@ plot_flips_map(ccc_fips_left_protestors, file_name ="fig-5c-left-protestors-per-
 dev.off()
 plot_flips_map(ccc_fips_right_protestors, file_name = "fig-5d-right-protestors-per-county", map_title = "Right/pro-Trump protests per county", "grey75", palette = "Reds")
 dev.off()
-# ccc_fips_right_protestors <- ccc_right_protestors %>%
-#   group_by(fips_code) %>%
-#   summarise(protestors_right = sum(size_mean, na.rm = TRUE)) %>%
-#   left_join(county_pop, .) %>%
-#   mutate(protestors_right = ifelse(is.na(protestors_right), 0, protestors_right),
-#          protestors_per_100k = protestors_right/(popsize/100000)) %>%
-#   arrange(-protestors_per_100k) %>%
-#   mutate(n_pc_cat = case_when(
-#     protestors_per_100k == 0 ~ "0",
-#     protestors_per_100k >= 0 & protestors_per_100k < 1 ~ "0-1",
-#     protestors_per_100k >= 1 & protestors_per_100k < 3 ~ "1-3",
-#     protestors_per_100k >= 3 & protestors_per_100k < 5 ~ "3-5",
-#     protestors_per_100k >= 5 & protestors_per_100k < 10 ~ "5-10",
-#     protestors_per_100k >= 10 & protestors_per_100k < 15 ~ "10-15",
-#     protestors_per_100k >= 15 & protestors_per_100k < 20 ~ "15-20",
-#     protestors_per_100k >= 20 & protestors_per_100k < 25 ~ "20-25",
-#     TRUE ~ "35+" )) %>%
-#   mutate(n_pc_cat = fct_relevel(n_pc_cat, "0", "0-1", "1-3", "3-5", "5-10", "10-15","15-20","20-25","25+"))
 
-
-
-
+tester <- ccc_fips_right_protestors %>% subset(protestors==0)
 # TODO # ********************************  Plot raw_count_right_wing_protests/raw_count_left_wing_protests protests for each county # ******************************** 
 
 
 
-sum(left_protests_per_fips$n)
+national_total_left_protests <- sum(left_protests_per_fips$n)
+national_total_right_protests <- sum(right_protests_per_fips$n)
+national_percent_right_protests <- national_total_right_protests / (national_total_left_protests + national_total_right_protests) # national proportion of right-wing protests to total protests with valence 1 or 2
+print(national_total_left_protests + national_total_right_protests)
+print(national_proportion_right_left_protests)
 
-sum(right_protests_per_fips$n)
+cc_fips_protests <- right_protests_per_fips %>%
+  inner_join(left_protests_per_fips, by = "fips_code", suffix = c("_right", "_left"))%>%
+  rename(protests_right = n_right,
+         protests_left = n_left)%>%
+  mutate(total_protests = protests_right + protests_left) %>%
+  mutate(percent_right_protests = 100 * protests_right / total_protests) %>%
+  mutate(percent_left_protests = 100 *protests_left / total_protests) 
+
+cc_fips_protests <- cc_fips_protests %>%
+  mutate(percent_right_protests = ifelse(is.na(percent_right_protests), 0, percent_right_protests)) %>%
+  mutate(percent_left_protests = ifelse(is.na(percent_left_protests), 0, percent_left_protests)) 
+  
+cc_fips_protests <- cc_fips_protests %>%
+  select(fips_code, percent_right_protests, protests_right, protests_left, total_protests, everything())
+
+
+colors_proportion_valence_protestors<- function(df, valence_num, percent_protests, national_percent)
+{
+  df <- df %>% 
+    arrange(-percent_protests) %>%
+    mutate(n_pc_cat = case_when(
+      percent_protestors == 0 ~ "0",
+      percent_protestors >= 0 & percent_protestors < 1 ~ "0-1",
+      percent_protestors >= 1 & percent_protestors < 3 ~ "1-3",
+      percent_protestors >= 3 & percent_protestors < national_percent ~ paste0("3-",national_percent),
+      percent_protestors >= national_percent  ~  paste0("national proportion of ideology's protests to total protests: ", national_percent_right_protests),
+      percent_protestors >= 5 & percent_protestors < 15 ~ "10-15",
+      percent_protestors >= 15 & percent_protestors < 20 ~ "15-20",
+      percent_protestors >= 20 & percent_protestors < 25 ~ "20-25",
+      TRUE ~ "35+" )) %>%
+    mutate(n_pc_cat = fct_relevel(n_pc_cat, "0", "0-1", "1-3", "3-5", "5-10", "10-15","15-20","20-25","25+"))
+  
+  
+}
+
+#cc_fips_protestors <- proportion_valence_protestors_per_fips(df, valence_num, percent_protests = cc_fips_protestors$percent_right_protests, national_percent)
+
+
+cc_fips_protests <- cc_fips_protests %>% 
+  arrange(-percent_right_protests) %>%
+  mutate(n_pc_cat = case_when(
+    percent_right_protests == 0 ~ "0",
+    percent_right_protests >= 0 & percent_right_protests < 1 ~ "0-1",
+    percent_right_protests >= 1 & percent_right_protests < 3 ~ "1-3",
+    percent_right_protests >= 3 & percent_right_protests < national_percent_right_protests ~ paste0("3-",national_percent_right_protests),
+    percent_right_protests >= national_percent_right_protests  ~  paste0("national proportion: ", national_percent_right_protests*100),
+    percent_right_protests >= 5 & percent_right_protests < 15 ~ "10-15",
+    percent_right_protests >= 15 & percent_right_protests < 20 ~ "15-20",
+    percent_right_protests >= 20 & percent_right_protests < 25 ~ "20-25",
+    TRUE ~ "35+" )) %>%
+  mutate(n_pc_cat = fct_relevel(n_pc_cat, "0", "0-1", "1-3", "3-5", "5-10", "10-15","15-20","20-25","25+"))
+
+
+
+plot_flips_map(cc_fips_protests, file_name ="fig-5e-national proportion of right-wing protests to total protests with valence 1 or 2", map_title = "national proportion of right-wing protests to total protests with valence 1 or 2", color = "grey75", palette = "Blues")
+dev.off()
+
 
 
 print(19897 + 2224) #
