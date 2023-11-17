@@ -423,6 +423,8 @@ plot_usmap(data = dplyr::select(ccc_fips, fips = fips_code, n_pc_cat),
                     name = "events per\n100,000 pop.")
 dev.off()
 
+
+
 # *************************** TODO ********************************************************
 # TODO: figure 5a; protests per capita on left and right; 'valence' is left v right
 ccc_compiled_present = read_csv("data/ccc_compiled_2021-present.csv")
@@ -454,21 +456,52 @@ fips_by_valence <- function(df, valence_num)
   
 }
 
+
+
 plot_flips_map <- function(df, file_name, map_title, color, palette)
 {
-  png(paste("figs/", file_name, "per-county-per-capita.png"), res = 300, width = 7, height = 5, units = "in")
-  plot_usmap(data = dplyr::select(df, fips = fips_code, n_pc_cat),
+  png(paste("figs/", file_name, "per-county-per-capita.png"), res = 300, width = 7, height = 5, units = "in") # specifies where to output file
+  plot_usmap(data = dplyr::select(df, fips = fips_code, n_pc_cat), # selects fips and n_pc_cat data to plot on map
              regions = "counties",
-             values = "n_pc_cat",
+             values = "n_pc_cat", # says that n_pc_cat denotes counties
              color = color,
              size = 0.05) +
     theme(legend.position = "right",
           text=element_text(family="Times")) +
     scale_fill_brewer(palette = palette,
                       guide = "legend",
-                      name = paste(map_title, "per\n100,000 pop."))
+                      name = paste(map_title, "per\n100,000 pop.")) # labels graph
   
 }
+
+
+# ******************************** TODO generate graphs for each ideology and type of event
+# TODO: get each unique type of event in the events column; can't find a designated list of types online
+
+ccc_event <- ccc %>% subset(grepl("protest", type, ignore.case = TRUE))
+events_nonunique_list = c()
+
+append_delimited_events <- function(str){
+  delimited <- unlist(strsplit(as.character(tolower(str)), split = "; "))#[[1]]
+  print("delimited:" )
+  print(delimited)
+  print("")
+  events_nonunique_list <<- c(events_nonunique_list, delimited)
+}
+
+event_types <- as.data.frame(ccc$type)
+event_types_list <- apply(event_types, MARGIN = 2, FUN= append_delimited_events)
+unique(event_types_list)
+events_nonunique_list <- unique(events_nonunique_list)
+
+
+
+
+
+index_1 <- events_nonunique_list[[1]]
+c("hello", index_1)
+index_1[[2]]
+typeof(index_1)
 
 left_protest_fips <- fips_by_valence(df = ccc_protests, valence_num = 1)
 plot_flips_map(left_protest_fips, file_name ="fig-5a-left-protests", map_title = "Left/anti-Trump protests", color = "grey75", palette = "Blues")
@@ -478,7 +511,21 @@ right_protest_fips <- fips_by_valence(df = ccc_protests, valence_num = 2)
 plot_flips_map(right_protest_fips, file_name = "fig-5b-right-protests", map_title = "Right/pro-Trump protests", "grey75", palette = "Reds")
 dev.off()
 
+sum(left_protest_fips$n)
 
+sum(right_protest_fips$n)
+
+
+print(19897 + 2224) #
+
+right_protests <- 
+print(2224/22121) # proportion of right-wing protests to total 
+
+# if rawcountrightwingprotests/rawcountleftwing protests for each county
+# national midpoint will be 2224/22121; proprotion of right-wing protests to total
+# counties that are higher than national midpoint are right-wing
+
+# for coloring use a gradient: get min non-0 proportion = blue and max proportion = red, national midpoint = purple, 0 is white 
 
 
 
