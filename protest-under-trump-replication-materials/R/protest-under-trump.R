@@ -472,6 +472,8 @@ plot_flips_map <- function(df, file_name, map_title, color, palette)
                       guide = "legend",
                       name = paste(map_title, "per\n100,000 pop.")) # labels graph
   
+  scale_fill_gradient(low = "lightblue", high = "darkred")
+  
 }
 
 
@@ -556,7 +558,7 @@ national_total_left_protests <- sum(left_protests_per_fips$n)
 national_total_right_protests <- sum(right_protests_per_fips$n)
 national_percent_right_protests <- national_total_right_protests / (national_total_left_protests + national_total_right_protests) # national proportion of right-wing protests to total protests with valence 1 or 2
 print(national_total_left_protests + national_total_right_protests)
-print(national_proportion_right_left_protests)
+print(national_percent_right_protests)
 
 cc_fips_protests <- right_protests_per_fips %>%
   inner_join(left_protests_per_fips, by = "fips_code", suffix = c("_right", "_left"))%>%
@@ -617,7 +619,7 @@ cc_fips_protests <- cc_fips_protests %>%
   #mutate(n_pc_cat = case_when(percent_right_protests >= 0 & percent_right_protests < 110 ~ "0-10", final_color_cases, TRUE ~ "80+"  )) %>%
   mutate(n_pc_cat_right = case_when(percent_right_protests == 0 ~ "0",
                               percent_right_protests >= 0 & percent_right_protests < 10 ~ "0-10",
-                              percent_right_protests >= national_proportion_right_left_protests & percent_right_protests < national_proportion_right_left_protests + 10 ~ "10-20",
+                              percent_right_protests >= national_percent_right_protests & percent_right_protests < national_percent_right_protests + 10 ~ "10-20",
                               percent_right_protests >= 20 & percent_right_protests < 30 ~ "20-30",
                               percent_right_protests >= 30 & percent_right_protests < 40 ~ "30-40",
                               percent_right_protests >= 40 & percent_right_protests < 50 ~ "40-50",
@@ -630,23 +632,42 @@ cc_fips_protests <- cc_fips_protests %>%
   mutate(n_pc_cat_right = fct_relevel(n_pc_cat_right, "0", num_ranges, "90+"))
 
   
-  
-as.formula(unlist(color_cases))
+# Define start and end colors
+start_color <- "lightblue"
+end_color <- "darkred"
 
-# percent_right_protests == 0 ~ "0",
-# percent_right_protests >= 0 & percent_right_protests < 1 ~ "0-1",
-# percent_right_protests >= 1 & percent_right_protests < 3 ~ "1-3",
-# percent_right_protests >= 3 & percent_right_protests < national_percent_right_protests ~ paste0("3-",national_percent_right_protests),
-# percent_right_protests >= national_percent_right_protests  ~  paste0("national proportion: ", national_percent_right_protests*100),
-# percent_right_protests >= 5 & percent_right_protests < 15 ~ "10-15",
-# percent_right_protests >= 15 & percent_right_protests < 20 ~ "15-20",
-# percent_right_protests >= 20 & percent_right_protests < 25 ~ "20-25",
-# TRUE ~ "35+" 
+# Create a color gradient function
+color_gradient <- colorRampPalette(c(start_color, end_color))
 
-plot_flips_map(cc_fips_protests, file_name ="fig-5e-national proportion of right-wing protests to total protests with valence 1 or 2", map_title = "national proportion of right-wing to total protests", color = "grey75", palette = "Blues")
+# Generate a sequence of colors using the gradient function
+num_colors <-2  # Number of colors in the gradient
+colors <- color_gradient(num_colors)
+
+
+percent_right_fips_protests <- cc_fips_protests %>% 
+  select(fips_code, n_pc_cat_right) 
+colnames(percent_right_fips_protests)[2] <- "n_pc_cat"
+
+plot_flips_map(percent_right_fips_protests, file_name ="fig-5e-national proportion of right-wing protests to total protests with valence 1 or 2", map_title = "national proportion of right-wing to total protests", color = "grey75", palette = 'Greys')
 dev.off()
 
 
+png(paste("figs/", "fig-5e-national proportion of right-wing protests to total protests with valence 1 or 2", ".png"), res = 300, width = 7, height = 5, units = "in") # specifies where to output file
+plot_usmap(data = dplyr::select(percent_right_fips_protests, fips = fips_code, n_pc_cat), # selects fips and n_pc_cat data to plot on map
+           regions = "counties",
+           values = "n_pc_cat", # says that n_pc_cat denotes counties
+           color = 'grey75',
+           size = 0.05) +
+  theme(legend.position = "right",
+        text=element_text(family="Times")) +
+  scale_fill_brewer(palette = 'Grays',
+                    guide = "legend",
+                    name = paste("national proportion of right-wing to total protests per county")) # labels graph
+
+
+dev.off()
+
+scale_fill_gradient(low = "lightblue", high = "darkred")
 
 print(19897 + 2224) #
 
