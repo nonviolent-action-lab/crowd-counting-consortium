@@ -461,7 +461,8 @@ events_per_100k_by_fips_and_valence <- function(df, valence_num)
 plot_flips_map <- function(df, file_name, map_title, color, palette)
 {
   png(paste("figs/", file_name, ".png"), res = 300, width = 7, height = 5, units = "in") # specifies where to output file
-  plot_usmap(data = dplyr::select(df, fips = fips_code, n_pc_cat), # selects fips and n_pc_cat data to plot on map
+  print({
+    plot_usmap(data = dplyr::select(df, fips = fips_code, n_pc_cat), # selects fips and n_pc_cat data to plot on map
              regions = "counties",
              values = "n_pc_cat", # says that n_pc_cat denotes counties
              color = color,
@@ -470,10 +471,10 @@ plot_flips_map <- function(df, file_name, map_title, color, palette)
           text=element_text(family="Times")) +
     scale_fill_brewer(palette = palette,
                       guide = "legend",
-                      name = paste(map_title, "per\n100,000 pop.")) # labels graph
-  
+                      name = paste(map_title)) # labels graph
   scale_fill_gradient(low = "lightblue", high = "darkred")
-  
+  })
+  dev.off()
 }
 
 
@@ -648,7 +649,7 @@ percent_right_fips_protests <- cc_fips_protests %>%
   select(fips_code, n_pc_cat_right) 
 colnames(percent_right_fips_protests)[2] <- "n_pc_cat"
 
-plot_flips_map(percent_right_fips_protests, file_name ="fig-5e-national proportion of right-wing protests to total protests with valence 1 or 2", map_title = "national proportion of right-wing to total protests", color = "grey75", palette = 'Greys')
+plot_flips_map(percent_right_fips_protests, file_name ="fig-5e-national proportion of right-wing protests to total protests with valence 1 or 2", map_title = "national proportion of right-wing to total protests", color = "grey75", palette = 'Blues')
 dev.off()
 
 
@@ -660,14 +661,14 @@ plot_usmap(data = dplyr::select(percent_right_fips_protests, fips = fips_code, n
            size = 0.05) +
   theme(legend.position = "right",
         text=element_text(family="Times")) +
-  scale_fill_brewer(palette = 'Grays',
+  scale_fill_brewer(palette = 'Greys',
                     guide = "legend",
                     name = paste("national proportion of right-wing to total protests per county")) # labels graph
-
+scale_fill_gradient(low = "lightblue", high = "darkred")
 
 dev.off()
 
-scale_fill_gradient(low = "lightblue", high = "darkred")
+
 
 print(19897 + 2224) #
 
