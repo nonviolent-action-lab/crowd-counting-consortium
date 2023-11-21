@@ -576,38 +576,14 @@ cc_fips_protests <- cc_fips_protests %>%
   select(fips_code, percent_right_protests, protests_right, protests_left, total_protests, everything())
 
 
-colors_proportion_valence_protestors<- function(df, valence_num, percent_protests, national_percent)
-{
-  
-  df <- df %>% 
-    arrange(-percent_protests) %>%
-    mutate(n_pc_cat = case_when(
-      percent_protestors == 0 ~ "0",
-      percent_protestors >= 0 & percent_protestors < 1 ~ "0-1",
-      percent_protestors >= 1 & percent_protestors < 3 ~ "1-3",
-      percent_protestors >= 3 & percent_protestors < national_percent ~ paste0("3-",national_percent),
-      percent_protestors >= national_percent  ~  paste0("national proportion of ideology's protests to total protests: ", national_percent_right_protests),
-      percent_protestors >= 5 & percent_protestors < 15 ~ "10-15",
-      percent_protestors >= 15 & percent_protestors < 20 ~ "15-20",
-      percent_protestors >= 20 & percent_protestors < 25 ~ "20-25",
-      TRUE ~ "35+" )) %>%
-    mutate(n_pc_cat = fct_relevel(n_pc_cat, "0", "0-1", "1-3", "3-5", "5-10", "10-15","15-20","20-25","25+"))
-  
-  
-}
-
-#cc_fips_protestors <- proportion_valence_protestors_per_fips(df, valence_num, percent_protests = cc_fips_protestors$percent_right_protests, national_percent)
-
-
-
 
 color_cases = c()
 num_ranges = c("0")
 gradient_requirements = c()
-
-for (i in seq(0, 90, by = 5)) {
-  new_num_range = paste0(i, "-", i+5)
-  new_case = substitute(percent_right_protests >= i & percent_right_protests < i_plus_10 ~ new_num_range, list(i=i, i_plus_10=i+10, new_num_range = new_num_range))
+step = 5
+for (i in seq(1, 90, by = step)) {
+  new_num_range = paste0(i-1, "-", i+step-1)
+  new_case = substitute(percent_right_protests >= i & percent_right_protests < i_plus_step ~ new_num_range, list(i=i, i_plus_step=i+step-1, new_num_range = new_num_range))
   
   num_ranges <- append(num_ranges, new_num_range)
   color_cases <- append(color_cases, new_case)
@@ -616,19 +592,21 @@ for (i in seq(0, 90, by = 5)) {
 # Combine the formulas into a single formula string
 final_color_cases <- as.formula((paste(color_cases, collapse = " + ")))
 
-
+# used CHATGPT:
 # Define the color range
-colors <- c("#4B6D88", "#A030A0", "#FFB6C1")  # Blue, Purple, Red in hex format
+colors <- c("#4282eb", "#A030A0", "#eb4255")  # Blue, Purple, Red in hex format
 
 # Create a function to generate the gradient colors
 generate_gradient <- colorRampPalette(colors)
 
 # Generate 10 colors in the gradient
-gradient_colors <- generate_gradient(length(num_ranges))
+gradient_colors <- c("#f7f8fa")
+gradient_colors <- append(gradient_colors, generate_gradient(length(num_ranges)-1)) # did -1 since already predefined a color for 0, which is white
 
 
 gradient_requirements <- setNames(gradient_colors, num_ranges)
-c(`0` = "#0000FF", `0-5` = "#0D00F1")
+
+
 
 
 plot_flips_map_gradient <- function(df, file_name, map_title, color, gradient_requirements)
@@ -651,22 +629,6 @@ plot_flips_map_gradient <- function(df, file_name, map_title, color, gradient_re
         values = gradient_requirements,
         na.value = "grey50"
       )
-    
-    # geom_bar(aes(x = df$fips_code, df$n_pc_cat, fill = 'purple'), stat = "identity") +
-    # scale_fill_gradient(low = "blue", high = "red", na.value = NA) 
-    # 
-    # scale_colour_gradient2(
-    #   low = muted("red"),
-    #   mid = "purple",
-    #   high = muted("blue"),
-    #   midpoint = 0,
-    #   space = "Lab",
-    #   na.value = "grey50",
-    #   guide = "legend",
-    #   aesthetics = "colour"
-    #)
-    
-    #scale_fill_gradient(low = "lightblue", high = "darkred", name = paste(map_title))
   )
 }
 
