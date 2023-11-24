@@ -581,9 +581,9 @@ color_cases = c()
 num_ranges = c("0")
 gradient_requirements = c()
 step = 5
-for (i in seq(1, 90, by = step)) {
-  new_num_range = paste0(i-1, "-", i+step-1)
-  new_case = substitute(percent_right_protests >= i & percent_right_protests < i_plus_step ~ new_num_range, list(i=i, i_plus_step=i+step-1, new_num_range = new_num_range))
+for (i in seq(0, 95, by = step)) {
+  new_num_range = paste0(i, "-", i+step)
+  new_case = substitute(percent_right_protests >= i & percent_right_protests < i_plus_step ~ new_num_range, list(i=i, i_plus_step=i+step, new_num_range = new_num_range))
   
   num_ranges <- append(num_ranges, new_num_range)
   color_cases <- append(color_cases, new_case)
@@ -594,7 +594,7 @@ final_color_cases <- as.formula((paste(color_cases, collapse = " + ")))
 
 # used CHATGPT:
 # Define the color range
-colors <- c("#4282eb", "#A030A0", "#eb4255")  # Blue, Purple, Red in hex format
+colors <- c("#4230eb", "#A030A0", "#eb4255","#D40032","#A60027")  # Blue, Purple, Red in hex format, "#4230eb", "#A00180", 
 
 # Create a function to generate the gradient colors
 generate_gradient <- colorRampPalette(colors)
@@ -639,38 +639,28 @@ cc_fips_protests <- cc_fips_protests %>%
   arrange(-percent_right_protests) %>%
   #mutate(n_pc_cat = case_when(percent_right_protests >= 0 & percent_right_protests < 110 ~ "0-10", final_color_cases, TRUE ~ "80+"  )) %>%
   mutate(n_pc_cat_right = case_when(
-      percent_right_protests >= 0 & percent_right_protests < 10 ~ "0-5",
-     # percent_right_protests >= national_percent_right_protests & percent_right_protests < national_percent_right_protests + 5 ~ paste(national_percent_right_protests, "-", national_percent_right_protests + 5),
-      percent_right_protests >= 5 & percent_right_protests < 15 ~ "5-10",
-      percent_right_protests >= 10 & percent_right_protests < 20 ~ "10-15",
-      percent_right_protests >= 15 & percent_right_protests <  25 ~ "15-20",
-      percent_right_protests >= 20 & percent_right_protests < 30 ~ "20-25",
-      percent_right_protests >= 25 & percent_right_protests < 35 ~ "25-30",
-      percent_right_protests >= 30 & percent_right_protests < 40 ~ "30-35",
-      percent_right_protests >= 35 & percent_right_protests < 45 ~ "35-40",
-      percent_right_protests >= 40 & percent_right_protests < 50 ~ "40-45",
-      percent_right_protests >= 45 & percent_right_protests < 55 ~ "45-50",
-      percent_right_protests >= 50 & percent_right_protests < 60 ~ "50-55" ,
-      percent_right_protests >= 55 & percent_right_protests < 65 ~ "55-60" ,
-      percent_right_protests >= 60 & percent_right_protests < 70 ~ "60-65" ,
-      percent_right_protests >= 65 & percent_right_protests < 75 ~ "65-70" ,
-      percent_right_protests >= 70 & percent_right_protests < 80 ~ "70-75" ,
-      percent_right_protests >= 75 & percent_right_protests < 85 ~ "75-80" ,
-      percent_right_protests >= 80 & percent_right_protests < 90 ~ "80-85" ,
-      percent_right_protests >= 85 & percent_right_protests < 95 ~ "85-90" ,
-      percent_right_protests >= 90 & percent_right_protests < 100 ~ "90-95",
-      TRUE ~ "95+"
-                              # percent_right_protests == 0 ~ "0",
-                              # percent_right_protests >= 0 & percent_right_protests < 10 ~ "0-10",
-                              # percent_right_protests >= national_percent_right_protests & percent_right_protests < national_percent_right_protests + 10 ~ "10-20",
-                              # percent_right_protests >= 20 & percent_right_protests < 30 ~ "20-30",
-                              # percent_right_protests >= 30 & percent_right_protests < 40 ~ "30-40",
-                              # percent_right_protests >= 40 & percent_right_protests < 50 ~ "40-50",
-                              # percent_right_protests >= 50 & percent_right_protests < 60 ~ "50-60",
-                              # percent_right_protests >= 60 & percent_right_protests < 70 ~ "60-70",
-                              # percent_right_protests >= 70 & percent_right_protests < 80 ~ "70-80",
-                              # percent_right_protests >= 80 & percent_right_protests < 90 ~ "80-90",
-                              # TRUE ~ "90+"
+    percent_right_protests > 0 & percent_right_protests < 5 ~ "0-5" , 
+      percent_right_protests >= 5 & percent_right_protests < 10 ~ 
+      "5-10" , percent_right_protests >= 10 & percent_right_protests < 
+      15 ~ "10-15" , percent_right_protests >= 15 & percent_right_protests < 
+      20 ~ "15-20" , percent_right_protests >= 20 & percent_right_protests < 
+      25 ~ "20-25" , percent_right_protests >= 25 & percent_right_protests < 
+      30 ~ "25-30" , percent_right_protests >= 30 & percent_right_protests < 
+      35 ~ "30-35" , percent_right_protests >= 35 & percent_right_protests < 
+      40 ~ "35-40" , percent_right_protests >= 40 & percent_right_protests < 
+      45 ~ "40-45" , percent_right_protests >= 45 & percent_right_protests < 
+      50 ~ "45-50" , percent_right_protests >= 50 & percent_right_protests < 
+      55 ~ "50-55" , percent_right_protests >= 55 & percent_right_protests < 
+      60 ~ "55-60" , percent_right_protests >= 60 & percent_right_protests < 
+      65 ~ "60-65" , percent_right_protests >= 65 & percent_right_protests < 
+      70 ~ "65-70" , percent_right_protests >= 70 & percent_right_protests < 
+      75 ~ "70-75" , percent_right_protests >= 75 & percent_right_protests < 
+      80 ~ "75-80" , percent_right_protests >= 80 & percent_right_protests < 
+      85 ~ "80-85" , percent_right_protests >= 85 & percent_right_protests < 
+      90 ~ "85-90" , percent_right_protests >= 90 & percent_right_protests < 
+      95 ~ "90-95" , percent_right_protests >= 95 & percent_right_protests <= 
+      100 ~ "95-100",
+    TRUE ~ "0"
   ))%>%
   mutate(n_pc_cat_right = fct_relevel(n_pc_cat_right, "0", num_ranges, "90+"))
 
@@ -685,7 +675,10 @@ dev.off()
 
 
 
-
+has_protests <- cc_fips_protests %>%
+  filter(total_protests > 0)
+fivenum(has_protests$percent_left_protests)
+fivenum(has_protests$percent_right_protests)
 print(19897 + 2224) #
 
 #right_protests <- 
