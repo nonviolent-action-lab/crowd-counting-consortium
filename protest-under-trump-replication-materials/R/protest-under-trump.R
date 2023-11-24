@@ -594,7 +594,7 @@ final_color_cases <- as.formula((paste(color_cases, collapse = " + ")))
 
 # used CHATGPT:
 # Define the color range
-colors <- c("#4230eb", "#A030A0", "#eb4255","#D40032","#A60027")  # Blue, Purple, Red in hex format, "#4230eb", "#A00180", 
+colors <- c("#4270eb", "#4290eb", "#A030A0", "#eb4255","#D40032","#A60027")  # Blue, Purple, Red in hex format, "#4282eb", "#4230eb", "#A00180", 
 
 # Create a function to generate the gradient colors
 generate_gradient <- colorRampPalette(colors)
@@ -612,7 +612,10 @@ gradient_requirements <- setNames(gradient_colors, num_ranges)
 plot_flips_map_gradient <- function(df, file_name, map_title, color, gradient_requirements)
 {
   z1 = 10
-  
+  # referenced https://stackoverflow.com/questions/59851823/plotting-both-state-and-county-boundaries-on-same-map-using-plot-usmap-from-usma
+  states <- plot_usmap("states", 
+                       color = "black",
+                       fill = alpha(0.01))
   # Display the gradient colors
   gradient_colors
   png(paste("figs/", file_name, ".png"), res = 300, width = 7, height = 5, units = "in") # specifies where to output file
@@ -628,7 +631,16 @@ plot_flips_map_gradient <- function(df, file_name, map_title, color, gradient_re
       scale_fill_manual(
         values = gradient_requirements,
         na.value = "grey50"
-      )
+      ) + 
+      # wanted state lines to appear over county ones: copied segments from https://stackoverflow.com/questions/59851823/plotting-both-state-and-county-boundaries-on-same-map-using-plot-usmap-from-usma
+      geom_polygon(data=states[[1]], 
+                     aes(x=x, 
+                         y=y, 
+                         group=group), 
+                     color = "black", 
+                     fill = alpha(0.01)) + 
+      coord_equal()
+      
   )
 }
 
