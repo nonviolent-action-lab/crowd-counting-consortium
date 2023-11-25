@@ -578,10 +578,17 @@ cc_fips_protests <- cc_fips_protests %>%
 
 
 color_cases = c()
-num_ranges = c("0")
+num_ranges = c("No Protests")
 gradient_requirements = c()
 step = 5
-for (i in seq(0, 95, by = step)) {
+for (i in seq(0, 4, by = 1)) {
+  new_num_range = paste0(i, "-", i+1)
+  new_case = substitute(percent_right_protests >= i & percent_right_protests < i_plus_step ~ new_num_range, list(i=i, i_plus_step=i+1, new_num_range = new_num_range))
+  
+  num_ranges <- append(num_ranges, new_num_range)
+  color_cases <- append(color_cases, new_case)
+}
+for (i in seq(5, 95, by = step)) {
   new_num_range = paste0(i, "-", i+step)
   new_case = substitute(percent_right_protests >= i & percent_right_protests < i_plus_step ~ new_num_range, list(i=i, i_plus_step=i+step, new_num_range = new_num_range))
   
@@ -596,23 +603,28 @@ final_color_cases <- as.formula((paste(color_cases, collapse = " + ")))
 # Define the color range
 colors <- c("#4270eb", "#4290eb", "#A030A0", "#eb4255","#D40032","#A60027")  # Blue, Purple, Red in hex format, "#4282eb", "#4230eb", "#A00180", 
 
+colors_blue <- c("#4270eb", "#eb4255")  # Blue, Purple, Red in hex format, "#4282eb", "#4230eb", "#A00180", 
+colors_red <- c("#eb4255","#A60027") 
 # Create a function to generate the gradient colors
 generate_gradient <- colorRampPalette(colors)
+generate_blue_gradient <- colorRampPalette(colors_blue)
+generate_red_gradient <- colorRampPalette(colors_red)
 
 # Generate 10 colors in the gradient
 gradient_colors <- c("#f7f8fa")
-gradient_colors <- append(gradient_colors, generate_gradient(length(num_ranges)-1)) # did -1 since already predefined a color for 0, which is white
-
-
+gradient_colors <- append(gradient_colors, generate_blue_gradient(3)) # did -1 since already predefined a color for 0, which is white
+gradient_colors <- append(gradient_colors, generate_red_gradient(length(num_ranges)-1 - 3)) 
+  
 gradient_requirements <- setNames(gradient_colors, num_ranges)
 
+print(length(gradient_colors))
 
 
 
 plot_flips_map_gradient <- function(df, file_name, map_title, color, gradient_requirements)
 {
   z1 = 10
-  # referenced https://stackoverflow.com/questions/59851823/plotting-both-state-and-county-boundaries-on-same-map-using-plot-usmap-from-usma
+  # want states to show up over county lines. referenced https://stackoverflow.com/questions/59851823/plotting-both-state-and-county-boundaries-on-same-map-using-plot-usmap-from-usma
   states <- plot_usmap("states", 
                        color = "black",
                        fill = alpha(0.01))
@@ -637,7 +649,7 @@ plot_flips_map_gradient <- function(df, file_name, map_title, color, gradient_re
                      aes(x=x, 
                          y=y, 
                          group=group), 
-                     color = "black", 
+                     color = "#3A3B3B", 
                      fill = alpha(0.01)) + 
       coord_equal()
       
@@ -651,28 +663,32 @@ cc_fips_protests <- cc_fips_protests %>%
   arrange(-percent_right_protests) %>%
   #mutate(n_pc_cat = case_when(percent_right_protests >= 0 & percent_right_protests < 110 ~ "0-10", final_color_cases, TRUE ~ "80+"  )) %>%
   mutate(n_pc_cat_right = case_when(
-    percent_right_protests > 0 & percent_right_protests < 5 ~ "0-5" , 
-      percent_right_protests >= 5 & percent_right_protests < 10 ~ 
-      "5-10" , percent_right_protests >= 10 & percent_right_protests < 
-      15 ~ "10-15" , percent_right_protests >= 15 & percent_right_protests < 
-      20 ~ "15-20" , percent_right_protests >= 20 & percent_right_protests < 
-      25 ~ "20-25" , percent_right_protests >= 25 & percent_right_protests < 
-      30 ~ "25-30" , percent_right_protests >= 30 & percent_right_protests < 
-      35 ~ "30-35" , percent_right_protests >= 35 & percent_right_protests < 
-      40 ~ "35-40" , percent_right_protests >= 40 & percent_right_protests < 
-      45 ~ "40-45" , percent_right_protests >= 45 & percent_right_protests < 
-      50 ~ "45-50" , percent_right_protests >= 50 & percent_right_protests < 
-      55 ~ "50-55" , percent_right_protests >= 55 & percent_right_protests < 
-      60 ~ "55-60" , percent_right_protests >= 60 & percent_right_protests < 
-      65 ~ "60-65" , percent_right_protests >= 65 & percent_right_protests < 
-      70 ~ "65-70" , percent_right_protests >= 70 & percent_right_protests < 
-      75 ~ "70-75" , percent_right_protests >= 75 & percent_right_protests < 
-      80 ~ "75-80" , percent_right_protests >= 80 & percent_right_protests < 
-      85 ~ "80-85" , percent_right_protests >= 85 & percent_right_protests < 
-      90 ~ "85-90" , percent_right_protests >= 90 & percent_right_protests < 
-      95 ~ "90-95" , percent_right_protests >= 95 & percent_right_protests <= 
-      100 ~ "95-100",
-    TRUE ~ "0"
+    percent_right_protests == 0 & percent_left_protests == 0 ~ "No Protests",
+    percent_right_protests >= 0 & percent_right_protests < 1 ~ "0-1",
+    percent_right_protests >= 1 & percent_right_protests < 2 ~ "1-2",
+    percent_right_protests >= 2 & percent_right_protests < 3 ~ "2-3",
+    percent_right_protests >= 3 & percent_right_protests < 4 ~ "3-4",
+    percent_right_protests >= 4 & percent_right_protests < 5 ~ "4-5", 
+    percent_right_protests >= 5 & percent_right_protests < 10 ~ "5-10",
+    percent_right_protests >= 10 & percent_right_protests < 15 ~ "10-15" ,
+    percent_right_protests >= 15 & percent_right_protests < 20 ~ "15-20" ,
+    percent_right_protests >= 20 & percent_right_protests < 25 ~ "20-25" ,
+    percent_right_protests >= 25 & percent_right_protests < 30 ~ "25-30" ,
+    percent_right_protests >= 30 & percent_right_protests < 35 ~ "30-35" ,
+    percent_right_protests >= 35 & percent_right_protests < 40 ~ "35-40" ,
+    percent_right_protests >= 40 & percent_right_protests < 45 ~ "40-45" ,
+    percent_right_protests >= 45 & percent_right_protests < 50 ~ "45-50" ,
+    percent_right_protests >= 50 & percent_right_protests < 55 ~ "50-55" ,
+    percent_right_protests >= 55 & percent_right_protests < 60 ~ "55-60" ,
+    percent_right_protests >= 60 & percent_right_protests < 65 ~ "60-65" ,
+    percent_right_protests >= 65 & percent_right_protests < 70 ~ "65-70" ,
+    percent_right_protests >= 70 & percent_right_protests < 75 ~ "70-75" ,
+    percent_right_protests >= 75 & percent_right_protests < 80 ~ "75-80" ,
+    percent_right_protests >= 80 & percent_right_protests < 85 ~ "80-85" ,
+    percent_right_protests >= 85 & percent_right_protests < 90 ~ "85-90" ,
+    percent_right_protests >= 90 & percent_right_protests < 95 ~ "90-95" ,
+    percent_right_protests >= 95 & percent_right_protests <= 100 ~ "95-100",
+    TRUE ~ "No Protests"
   ))%>%
   mutate(n_pc_cat_right = fct_relevel(n_pc_cat_right, "0", num_ranges, "90+"))
 
