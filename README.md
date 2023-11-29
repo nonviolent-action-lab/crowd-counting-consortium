@@ -59,6 +59,10 @@ And here are some working papers we've seen that use the dataset. Again, please 
 ## Journalism Using CCC Data
 Journalists also use CCC data, often to document trends or provide context in stories on specific events. Here are some examples.
 
+* "Pro-Palestinian marches are far more frequent than pro-Israeli ones. How U.S. reaction to the Israel-Hamas war has changed", *Los Angeles Times* (November , 2023) [link](https://www.latimes.com/world-nation/story/2023-11-21/pro-palestinian-israeli-protests)
+
+* "Protesters say they wanted Congress's attention. Police saw a threat", *Washington Post* (November, 2023) [link](https://www.washingtonpost.com/dc-md-va/2023/11/16/dnc-protest-israel-gaza-ceasefire-police/)
+
 * "Will protests over the Israel-Hamas war shift U.S. policy?", *Good Authority* (October 27, 2023) [link](https://goodauthority.org/news/us-protests-gaza-israel-hamas-war/)
 
 * "LGBTQ community celebrates pride in the face of online and offline attacks", *Reuters* (June 11, 2023) [link](https://www.reuters.com/world/us/lgbtq-community-celebrates-pride-face-online-offline-attacks-2023-06-11/)
@@ -67,7 +71,7 @@ Journalists also use CCC data, often to document trends or provide context in st
 
 * "Drag Story Hour protest in NYC caps a year of anti-drag attacks", *NBC Out* (December 30, 2022) [link](https://www.nbcnews.com/nbc-out/out-news/drag-story-hour-protest-nyc-caps-year-anti-drag-attacks-rcna63737)
 
-* "2021 was supposed to be the 'worst year' for LGBTQ rights — then came 2022", *NBC Out* (December 29, 2022) [link](https://www.nbcnews.com/nbc-out/out-news/2021-was-supposed-worst-year-lgbtq-rights-came-2022-rcna63334)
+* "2021 was supposed to be the 'worst year' for LGBTQ rights - then came 2022", *NBC Out* (December 29, 2022) [link](https://www.nbcnews.com/nbc-out/out-news/2021-was-supposed-worst-year-lgbtq-rights-came-2022-rcna63334)
 
 * "Mass Shooting at Gay Nightclub in Colorado Follows Surge of Right-Wing Rhetoric and Threats Targeting LGBTQ Community", *The Americano* (November 22, 2022) [link](https://theamericanonews.com/2022/11/22/mass-shooting-at-gay-nightclub-in-colorado-follows-surge-of-right-wing-rhetoric-and-threats-targeting-lgbtq-community/)
 
