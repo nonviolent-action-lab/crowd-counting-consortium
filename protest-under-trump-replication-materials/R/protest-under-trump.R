@@ -603,8 +603,8 @@ final_color_cases <- as.formula((paste(color_cases, collapse = " + ")))
 # Define the color range
 colors <- c("#4270eb", "#4290eb", "#A030A0", "#eb4255","#D40032","#A60027")  # Blue, Purple, Red in hex format, "#4282eb", "#4230eb", "#A00180", 
 
-colors_blue <- c("#4270eb", "#eb4255")  # Blue, Purple, Red in hex format, "#4282eb", "#4230eb", "#A00180", 
-colors_red <- c("#eb4255","#A60027") 
+colors_blue <- c("#4270eb", "#d04255", )  # Blue, Purple, Red in hex format, "#4282eb", "#4230eb", "#A00180", 
+colors_red <- c("#D40032","#A60027") 
 # Create a function to generate the gradient colors
 generate_gradient <- colorRampPalette(colors)
 generate_blue_gradient <- colorRampPalette(colors_blue)
