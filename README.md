@@ -59,9 +59,15 @@ And here are some working papers we've seen that use the dataset. Again, please 
 ## Journalism Using CCC Data
 Journalists also use CCC data, often to document trends or provide context in stories on specific events. Here are some examples.
 
-* "Pro-Palestinian marches are far more frequent than pro-Israeli ones. How U.S. reaction to the Israel-Hamas war has changed", *Los Angeles Times* (November , 2023) [link](https://www.latimes.com/world-nation/story/2023-11-21/pro-palestinian-israeli-protests)
+* "Some young Black voters undecided about Biden over lack of support for Palestinians", *USA Today* (December 17, 2023) [link](https://www.usatoday.com/story/news/politics/elections/2023/12/17/young-black-voters-want-biden-to-speak-up-more-for-palestinians/71936147007/)
 
-* "Protesters say they wanted Congress's attention. Police saw a threat", *Washington Post* (November, 2023) [link](https://www.washingtonpost.com/dc-md-va/2023/11/16/dnc-protest-israel-gaza-ceasefire-police/)
+* "Tens of thousands have joined pro-Palestinian protests across the United States. Experts say they are growing", *PBS News Hour* (December 15, 2023) [link](https://www.pbs.org/newshour/politics/tens-of-thousands-have-joined-pro-palestinian-protests-across-the-united-states-experts-say-they-are-growing)
+
+* "'Largest pro-Palestinian Mobilization in U.S. History' | More Than 1 Million Americans Participated in Protests Since Hamas-Israel War Began on Oct 7" *Haaretz* (December 5, 2023) [link](https://www.haaretz.com/us-news/2023-12-05/ty-article/.premium/more-than-1-million-americans-participated-in-protests-since-oct-7/0000018c-3bda-d11b-a3bf-fffbed7b0000)
+
+* "Pro-Palestinian marches are far more frequent than pro-Israeli ones. How U.S. reaction to the Israel-Hamas war has changed", *Los Angeles Times* (November 21, 2023) [link](https://www.latimes.com/world-nation/story/2023-11-21/pro-palestinian-israeli-protests)
+
+* "Protesters say they wanted Congress's attention. Police saw a threat", *Washington Post* (November 16, 2023) [link](https://www.washingtonpost.com/dc-md-va/2023/11/16/dnc-protest-israel-gaza-ceasefire-police/)
 
 * "Will protests over the Israel-Hamas war shift U.S. policy?", *Good Authority* (October 27, 2023) [link](https://goodauthority.org/news/us-protests-gaza-israel-hamas-war/)
 
