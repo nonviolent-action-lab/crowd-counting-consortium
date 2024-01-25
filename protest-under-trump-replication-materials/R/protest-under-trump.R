@@ -459,7 +459,12 @@ events_per_100k_by_fips_and_valence <- function(df, valence_num)
 
 plot_flips_map <- function(df, file_name, map_title, color, palette)
 {
- 
+  z1 = 10
+  # want states to show up over county lines. referenced https://stackoverflow.com/questions/59851823/plotting-both-state-and-county-boundaries-on-same-map-using-plot-usmap-from-usma
+  states <- plot_usmap("states", 
+                       color = "black",
+                       fill = alpha(0.01))
+  
   png(paste("figs/", file_name, ".png"), res = 300, width = 7, height = 5, units = "in") # specifies where to output file
   print(
     plot_usmap(data = dplyr::select(df, fips = fips_code, n_pc_cat), # selects fips and n_pc_cat data to plot on map
@@ -472,7 +477,15 @@ plot_flips_map <- function(df, file_name, map_title, color, palette)
       scale_fill_brewer(palette = palette,
                         guide = "legend",
                         name = paste(map_title)) # labels graph
-  )
+  ) + 
+    # wanted state lines to appear over county ones: copied segments from https://stackoverflow.com/questions/59851823/plotting-both-state-and-county-boundaries-on-same-map-using-plot-usmap-from-usma
+    geom_polygon(data=states[[1]], 
+                 aes(x=x, 
+                     y=y, 
+                     group=group), 
+                 color = "#3A3B3B", 
+                 fill = alpha(0.01)) + 
+    coord_equal()
 }
 
 
@@ -503,11 +516,11 @@ index_1[[1]]
 typeof(index_1)
 
 left_protests_per_fips <- events_per_100k_by_fips_and_valence(df = ccc_protests, valence_num = 1)
-plot_flips_map(left_protests_per_fips, file_name ="fig-5a-right-protests-per-county-per-capita", map_title = "Left/anti-Trump protests", color = "grey75", palette = "Blues")
+plot_flips_map(left_protests_per_fips, file_name ="fig-5a-left-protests-per-county-per-capita-state-lines", map_title = "Left/anti-Trump protests", color = "grey75", palette = "Blues")
 dev.off()
 
 right_protests_per_fips <- events_per_100k_by_fips_and_valence(df = ccc_protests, valence_num = 2)
-plot_flips_map(right_protests_per_fips, file_name = "fig-5b-right-protests-per-county-per-capita", map_title = "Right/pro-Trump protests", "grey75", palette = "Reds")
+plot_flips_map(right_protests_per_fips, file_name = "fig-5b-right-protests-per-county-per-capita-state-lines", map_title = "Right/pro-Trump protests", "grey75", palette = "Reds")
 dev.off()
 
 
