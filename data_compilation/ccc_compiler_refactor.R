@@ -384,3 +384,8 @@ write.csv(dat_truncated[dat_truncated$date >= "2021-01-01",], "c:/users/ulfel/do
 # produce and store version with preprocessing and col dropping for CCC Data Dashboard
 source("r/ccc_dashboard_data_prep.r")
 
+# produce and store version with preprocessing and col dropping for Palestine Protest Dashboard
+source("r/palestine_dashboard_data_prep.r")
+
+# produce and store version with preprocessing and col dropping for Israel Protest Dashboard
+source("r/israel_dashboard_data_prep.r")
