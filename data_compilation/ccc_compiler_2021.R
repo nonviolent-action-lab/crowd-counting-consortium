@@ -8,8 +8,6 @@ options(stringsAsFactors = FALSE)
 
 setwd("~/nval/ccc")
 
-memory.limit(size = 10000)
-
 edge_date <- Sys.Date() - 3
 
 
@@ -212,7 +210,7 @@ if(nrow(new_locations) > 0) {
 }
 
 # now join the lookup table to the data to add geo cols
-dat <- left_join(dat, location_lookup)
+dat <- left_join(dat, location_lookup, relationship = "many-to-many")
 
 # eyeball how many new locations were added to lookup table
 print(nrow(new_locations))
@@ -314,9 +312,6 @@ dat <- dat %>%
   mutate(date = as.Date(date)) %>%
   arrange(date, state, locality)
 
-# may solve problem with stray carriage returns and other oddities from GS
-dat <- mutate_if(dat, is.character, str_trim)
-
 
 ### ADD FIPS CODES ###
 
@@ -327,26 +322,34 @@ dat <- fips_for_county(dat)
 
 ### OUTPUT ###
 
-nrow(dat)
+dat_2021 <- dat
+nrow(dat_2021)
+
+# store version of post-2020 data for GitGub with recent events trimmed
+write.csv(dat_2021[dat_2021$date <= edge_date,],
+          "c:/users/ulfel/documents/github/crowd-counting-consortium/ccc_compiled_2021-present.csv",
+          row.names = FALSE)
 
 # load archived pre-2021 data
-dat_2017 <- read.csv("data_clean/ccc_compiled_2017.csv") %>%
+dat_2017 <- read.csv("c:/users/ulfel/documents/github/crowd-counting-consortium/ccc_compiled_2017-2020.csv") %>%
   mutate(date = lubridate::date(date),
          fips_code = ifelse(nchar(fips_code) == 4, paste0("0", fips_code), fips_code))
 
 # merge pre- and post-2021 data
-dat <- rbindlist(list(dat_2017, dat))
+dat_full <- rbindlist(list(dat_2017, dat_2021))
 
 # store local version with all events from all sheets
-write.csv(dat, "data_clean/ccc_compiled.csv", row.names = FALSE, fileEncoding = "UTF-8")
+write.csv(dat_full, "data_clean/ccc_compiled.csv", row.names = FALSE)
 
 # now drop past few days and all future days for posted version
-dat <- filter(dat, date <= edge_date)
+dat <- dat_full[dat_full$date <= edge_date,]
 nrow(dat)
-
-# store version for GitGub
-write.csv(dat, "c:/users/ulfel/documents/github/crowd-counting-consortium/ccc_compiled.csv", row.names = FALSE, , fileEncoding = "UTF-8")
 
 # produce and store version with preprocessing and col dropping for CCC Data Dashboard
 source("r/ccc_dashboard_data_prep.r")
 
+# produce and store version with preprocessing and col dropping for Palestine Protest Dashboard
+source("r/palestine_dashboard_data_prep.r")
+
+# produce and store version with preprocessing and col dropping for Israel Protest Dashboard
+source("r/israel_dashboard_data_prep.r")

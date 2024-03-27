@@ -13,7 +13,6 @@
 ccc_prepro <- function(x, write_path = "data_clean/ccc_super_repeaters.csv") {
 
   require(tidyverse)
-  require(lubridate)
   require(readxl)
 
   options(stringsAsFactors = FALSE)
@@ -23,7 +22,6 @@ ccc_prepro <- function(x, write_path = "data_clean/ccc_super_repeaters.csv") {
   dat <- read_excel(x, sheet = "Tally", col_types = my_col_types)
 
   dat <- dat %>%
-    filter(state != "INT") %>%
     rename_at(vars(starts_with("source")), ~str_to_title(.)) %>% 
     mutate(Country = "US",
            date = as.character(date),
