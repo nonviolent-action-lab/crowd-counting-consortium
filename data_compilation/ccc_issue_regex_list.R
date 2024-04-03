@@ -40,7 +40,7 @@ ccc_issue_regex_list <- list(
 
   immigration = "\\bimmigra|\\bmigrant|dreamers|\\bdaca\\b|border|refugee|asylum|h-?1b|\\bvisa\\b|sanctuary (?:cit|state)|illegal alien|undocumented|\\bice\\b|anti-ice|family separation|child separation|deport(?:ation|ee)|travel (?:ban|eo)|muslim ban|\\btps\\b|temporary protected status|\\bexile|\\bmigra\\b|great replacement",
 
-  `indigenous peoples` = "indigenous|native (?:people|american)|\\btrib(?:al|e)\\b|\\bindians?\\b|land back|leonard peltier|stolen land|\\bicwa\\b|\\bwiphala\\b",
+  `indigenous peoples` = "indigenous|native (?:people|american)|\\btrib(?:al|e)\\b|\\bindians?\\b|land back|leonard peltier|stolen land|\\bicwa\\b|\\bwiphala\\b|turtle island",
 
   judiciary = "judicia|judge|lawyer|prosecutor|attorney|\\bda\\b|public defender|\\btrial\\b|\\bcourt\\b|gorsuch|kavanaugh|ginsburg|\\brbg\\b|amy coney barrett|\\bscotus\\b|\\balito\\b|roe v.? wade",
 
