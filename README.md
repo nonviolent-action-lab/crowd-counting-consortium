@@ -28,6 +28,8 @@ If you have suggestions on how to improve this repository or the compiled versio
 ## Academic Research Using CCC Data
 Curious how these data are getting used? Here, in reverse chronological order, are peer-reviewed published studies that have used CCC's work. If you are aware of any published articles or monographs that cite the data that aren't listed here, please let us know.
 
+* Amory Gethin and Vincent Pons. "Social Movements and Public Opinion in the United States." National Bureau of Economic Research Working Paper No. 32342 (April 2024) [link](https://www.nber.org/papers/w32342)
+
 * Neal Caren. "Right-Wing Protest in the United States, 2017 to 2022." *Socius: Sociological Research for a Dynamic World* (July 5, 2023). [link](https://journals.sagepub.com/doi/10.1177/23780231231181900)
 
 * Cassy Dorff, Grace Adcox, and Amanda Konet. "Data innovations on protests in the United States." *Journal of Peace Research* Vol. 60, No. 1 (2023): 172-189. [link](https://doi.org/10.1177/00223433221143808)
@@ -58,6 +60,8 @@ And here are some working papers we've seen that use the dataset. Again, please 
 
 ## Journalism Using CCC Data
 Journalists also use CCC data, often to document trends or provide context in stories on specific events. Here are some examples.
+
+* "The growing pro-Palestinian movement, visualized", *The Wall Street Journal* (April 24, 2024) [link](https://www.wsj.com/politics/college-campus-pro-palestinian-protests-64115768)
 
 * "The new movement for Palestine", Hadas Thier, *Hammer & Hope* (Spring 2024) [link](https://hammerandhope.org/article/palestine-mass-movement-gaza)
 

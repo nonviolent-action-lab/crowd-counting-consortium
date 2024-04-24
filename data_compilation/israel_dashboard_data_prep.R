@@ -71,7 +71,7 @@ ccc <- mutate(ccc, marker_radius = case_when(
 ccc$counterprotest <- with(ccc, ifelse(!is.na(macroevent), 1, 0))
 ccc$directaction <-  with(ccc, ifelse(grepl("direct action", type, ignore.case = TRUE), 1, 0))
 ccc$electeds <- with(ccc, ifelse(grepl("\\belected|lawmaker|legislator|council", participants, ignore.case = TRUE), 1, 0))
-ccc$schools <- with(ccc, ifelse(grepl("college|university|school|institute of technology", location_detail, ignore.case = TRUE), 1, 0))
+ccc$schools <- with(ccc, ifelse(grepl("college|university|school|institute of technology|\\bpoly(technic institute)?", location_detail, ignore.case = TRUE), 1, 0))
 ccc$casualties <- with(ccc, ifelse(injuries_crowd_any == 1 | !is.na(participant_deaths), 1, 0))
 
 # save version with only the cols req'd for the app
