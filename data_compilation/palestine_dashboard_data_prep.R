@@ -5,7 +5,7 @@ edge_date <- Sys.Date() - 1
 
 ccc <- read.csv("c:/users/ulfel/documents/nval/ccc/data_clean/ccc_compiled.csv") %>%
   filter(date >= "2023-10-07" & date <= edge_date) %>%
-  filter(grepl("for palestinian liberation|free palestine(?! from hamas)|in solidarity with palestin|in remembrance of palestin|for ceasefire in gaza", claims, ignore.case = TRUE, perl = TRUE)) %>%
+  filter(grepl("for palestinian (?:liberation|rights)|free palestine(?! from hamas)|in solidarity with (?:palestin|gaza)|in remembrance of palestin|ceasefire in gaza|against apartheid in israel|(?:for ending|against) israel's occupation of palestin|genocide of palestin", claims, ignore.case = TRUE, perl = TRUE)) %>%
   filter(!grepl("counter-protest", type)) %>%
   filter(!grepl("in solidarity with Israel", claims, ignore.case = TRUE))
 
@@ -71,7 +71,7 @@ ccc <- mutate(ccc, marker_radius = case_when(
 ccc$counterprotest <- with(ccc, ifelse(!is.na(macroevent), 1, 0))
 ccc$directaction <-  with(ccc, ifelse(grepl("direct action", type, ignore.case = TRUE), 1, 0))
 ccc$electeds <- with(ccc, ifelse(grepl("\\belected|lawmaker|legislator|council", participants, ignore.case = TRUE), 1, 0))
-ccc$schools <- with(ccc, ifelse(grepl("college|university|school|institute of technology|\\bpoly(technic institute)?", location_detail, ignore.case = TRUE), 1, 0))
+ccc$schools <- with(ccc, ifelse(grepl("college|university|school|institute of technology|\\bpoly(technic institute)?|\\bauraria|pentacrest", location_detail, ignore.case = TRUE), 1, 0))
 ccc$casualties <- with(ccc, ifelse(injuries_crowd_any == 1 | !is.na(participant_deaths), 1, 0))
 ccc$aaronbushnell <- with(ccc, ifelse(grepl("aaron bushnell", claims, ignore.case = TRUE) & grepl("vigil", type), 1, 0))
 ccc$encampment <- with(ccc, ifelse(grepl("encamp", participant_measures, ignore.case = TRUE), 1, 0))
