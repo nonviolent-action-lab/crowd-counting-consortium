@@ -6,8 +6,8 @@ edge_date <- Sys.Date() - 1
 ccc <- read.csv("c:/users/ulfel/documents/nval/ccc/data_clean/ccc_compiled.csv") %>%
   filter(date >= "2023-10-07" & date <= edge_date) %>%
   filter(grepl("for palestinian (?:liberation|rights)|free palestine(?! from hamas)|in solidarity with (?:palestin|gaza)|in remembrance of palestin|ceasefire in gaza|against apartheid in israel|(?:for ending|against) israel's occupation of palestin|genocide of palestin", claims, ignore.case = TRUE, perl = TRUE)) %>%
-  filter(!grepl("counter-protest", type)) %>%
-  filter(!grepl("in solidarity with Israel", claims, ignore.case = TRUE))
+  filter(!grepl("in solidarity with Israel", claims, ignore.case = TRUE)) %>%
+  filter(!(grepl("counter-protest", type) & !grepl("foreign", issues_major)))
 
 # format date col and then get nicely formatted date string for use in label
 ccc$date <- lubridate::date(ccc$date)
@@ -68,13 +68,20 @@ ccc <- mutate(ccc, marker_radius = case_when(
 ))
 
 # create other markers to use as filters
-ccc$counterprotest <- with(ccc, ifelse(!is.na(macroevent), 1, 0))
+ccc$counter <- with(ccc, as.integer(grepl("counter-protest", type)))
+ccc$countered <- with(ccc, ifelse(!is.na(macroevent), 1, 0))
 ccc$directaction <-  with(ccc, ifelse(grepl("direct action", type, ignore.case = TRUE), 1, 0))
 ccc$electeds <- with(ccc, ifelse(grepl("\\belected|lawmaker|legislator|council", participants, ignore.case = TRUE), 1, 0))
 ccc$schools <- with(ccc, ifelse(grepl("college|university|school|institute of technology|\\bpoly(technic institute)?|\\bauraria|pentacrest", location_detail, ignore.case = TRUE), 1, 0))
 ccc$casualties <- with(ccc, ifelse(injuries_crowd_any == 1 | !is.na(participant_deaths), 1, 0))
-ccc$aaronbushnell <- with(ccc, ifelse(grepl("aaron bushnell", claims, ignore.case = TRUE) & grepl("vigil", type), 1, 0))
 ccc$encampment <- with(ccc, ifelse(grepl("encamp", participant_measures, ignore.case = TRUE), 1, 0))
+
+ccc$arrests <- as.integer(ccc$arrests)
+ccc$arrests <- with(ccc, ifelse(is.na(arrests), 0, arrests))
+ccc$injuries_crowd <- as.integer(ccc$injuries_crowd)
+ccc$injuries_crowd <- with(ccc, ifelse(is.na(injuries_crowd), 0, injuries_crowd))
+ccc$injuries_police <- as.integer(ccc$injuries_police)
+ccc$injuries_police <- with(ccc, ifelse(is.na(injuries_police), 0, injuries_police))
 
 # save version with only the cols req'd for the app
 ccc <- select(ccc,
@@ -84,16 +91,19 @@ ccc <- select(ccc,
               type,
               size_mean,
               organizations,
+              arrests,
               arrests_any,
               property_damage_any,
+              injuries_crowd,
               injuries_crowd_any,
+              injuries_police,
               injuries_police_any,
-              counterprotest,
+              counter,
+              countered,
               directaction,
               electeds,
               schools,
               casualties,
-              aaronbushnell,
               encampment,
               claims,
               lat,
