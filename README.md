@@ -61,6 +61,10 @@ And here are some working papers we've seen that use the dataset. Again, please 
 ## Journalism Using CCC Data
 Journalists also use CCC data, often to document trends or provide context in stories on specific events. Here are some examples.
 
+* "Riot police and over 2,000 arrests: a look at 2 weeks of campus protests", *The Washington Post* (May 3, 2024) [link](https://www.washingtonpost.com/nation/interactive/2024/university-antiwar-campus-protests-arrests-data/)
+
+* "Wo US-Studierende für Palästina demonstrieren", *Zeit Online* (April 26, 2024) [link](https://www.zeit.de/politik/ausland/2024-04/us-universitaeten-proteste-israel-palaestina)
+
 * "The growing pro-Palestinian movement, visualized", *The Wall Street Journal* (April 24, 2024) [link](https://www.wsj.com/politics/college-campus-pro-palestinian-protests-64115768)
 
 * "The new movement for Palestine", Hadas Thier, *Hammer & Hope* (Spring 2024) [link](https://hammerandhope.org/article/palestine-mass-movement-gaza)
