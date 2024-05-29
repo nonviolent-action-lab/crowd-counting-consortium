@@ -68,11 +68,30 @@ ccc <- mutate(ccc, marker_radius = case_when(
 ))
 
 # create other markers to use as filters
+
+regex_schools <- paste(
+  
+  c("college(?! (?:st(reet)?|ave(nue)?|r(oa)?d|cir(cle)?|dr(ive)?\\b|blvd|heights|point|green|athletic))",
+    "university(?! (?:st(reet)?|ave(nue)?|r(oa)?d|cir(cle)?|dr(ive)?\\b|blvd|heights|city|behavioral|hospital|plaza|lakes|office|irving))",
+    "school(?! (?:st(reet)?\\b|ave(nue)?|r(oa)?d|cir(cle)?|dr(ive)?\\b|blvd|heights))",
+    "\\bcooper union",
+    "institute of technology",
+    "\\bpoly(technic (state )?(?:institute|university))?",
+    "auraria campus",
+    "pentacrest",
+    "(?:naval|air force|military) academy|west point(?! hwy)",
+    "\\b(?:c|s)uny\\b",
+    "\\buc\\b(?! theatre)"),
+
+  collapse = "|"
+
+)
+
 ccc$counter <- with(ccc, as.integer(grepl("counter-protest", type)))
 ccc$countered <- with(ccc, ifelse(!is.na(macroevent), 1, 0))
 ccc$directaction <-  with(ccc, ifelse(grepl("direct action", type, ignore.case = TRUE), 1, 0))
 ccc$electeds <- with(ccc, ifelse(grepl("\\belected|lawmaker|legislator|council", participants, ignore.case = TRUE), 1, 0))
-ccc$schools <- with(ccc, ifelse(grepl("college|university|school|institute of technology|\\bpoly(technic institute)?|\\bauraria|pentacrest", location_detail, ignore.case = TRUE), 1, 0))
+ccc$schools <- with(ccc, ifelse(grepl(regex_schools, location_detail, ignore.case = TRUE, perl = TRUE), 1, 0))
 ccc$casualties <- with(ccc, ifelse(injuries_crowd_any == 1 | !is.na(participant_deaths), 1, 0))
 ccc$encampment <- with(ccc, ifelse(grepl("encamp", participant_measures, ignore.case = TRUE), 1, 0))
 

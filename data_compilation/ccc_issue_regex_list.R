@@ -52,7 +52,7 @@ ccc_issue_regex_list <- list(
 
   military = "military|(?<!civil )\\b(anti.?)?war\\b(?! on )|\\bdod\\b|army|navy|air force|marines|space force|coast guard|(?<!confederate|union) soldier|veteran|us strike|air strike|airstrike|bombing|nuclear (?:weapon|arms|missile)|armed force|\\bva\\b|imperial|\\bvfw\\b|service member|fort hood|\\bicbm|peace",
 
-  patriotism = "patriot(?! missile)|american flag",
+  patriotism = "patriot(?! missile)|(?<!upside.down )american flag",
 
   policing = "(?<!coochie )polic(?:e|ing)|she[r]{1,2}iff|\\bdeput|law enforcement|\\bcops?\\b|(?:blue|black) lives matter|(?:back|defend) the blue|thin blue line|\\bblm\\b|school resource officer|\\bsro|\\bacab\\b|(?:ny|la|m)pd|f(uck )?12|george floyd|breonna taylor",
 

@@ -14,6 +14,25 @@ regex_actions <- list(
 
 )
 
+# for flagging events at schools of all kinds
+regex_schools <- paste(
+  
+  c("college(?! (?:st(reet)?|ave(nue)?|r(oa)?d|cir(cle)?|dr(ive)?\\b|blvd|heights|point|green|athletic))",
+    "university(?! (?:st(reet)?|ave(nue)?|r(oa)?d|cir(cle)?|dr(ive)?\\b|blvd|heights|city|behavioral|hospital|plaza|lakes|office|irving))",
+    "school(?! (?:st(reet)?\\b|ave(nue)?|r(oa)?d|cir(cle)?|dr(ive)?\\b|blvd|heights))",
+    "\\bcooper union",
+    "institute of technology",
+    "\\bpoly(technic (state )?(?:institute|university))?",
+    "auraria campus",
+    "pentacrest",
+    "(?:naval|air force|military) academy|west point(?! hwy)",
+    "\\b(?:c|s)uny\\b",
+    "\\buc\\b(?! theatre)"),
+
+  collapse = "|"
+
+)
+
 # for application to 'organizations' field since 2020
 regex_groups_farright <- list(
   
