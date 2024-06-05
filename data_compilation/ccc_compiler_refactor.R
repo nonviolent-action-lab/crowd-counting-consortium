@@ -251,6 +251,7 @@ dat <- left_join(dat, location_lookup, relationship = "many-to-many")
 
 # eyeball how many new locations were added to lookup table
 print(nrow(new_locations))
+print(new_locations)
 
 
 ### ISSUE TAGGING ###
