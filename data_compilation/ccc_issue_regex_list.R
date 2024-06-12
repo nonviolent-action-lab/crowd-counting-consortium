@@ -72,7 +72,7 @@ ccc_issue_regex_list <- list(
 
   taxes = "\\btax\\b(?! return)|\\btaxes\\b|taxation",
 
-  transportation = "\\btransport(ation)?\\b|subway|\\btransit\\b|bicycl(?:e|ist|ing)|\\bbike\\b|pedestrian|(?:high|free|express)way|interstate|\\broad(way)?\\b|(?<!wall )street|\\bcar\\b|\\bbus\\b|\\btrain\\b|rail(?:road|way)|light rail|tunnel|\\bbridge\\b|air(?:port|line)|ferry|\\btram\\b|\\btoll\\b|scooter|hov lane|streetcar|turnpike",
+  transportation = "\\btransport(ation)?\\b|subway|\\btransit\\b|bicycl(?:e|ist|ing)|\\bbike\\b|pedestrian|(?:high|free|express)way|interstate|\\broad(way)?\\b|(?<!wall )street|\\bcar\\b|\\bbus\\b|\\btrain\\b|rail(?:road|way)|light rail|tunnel|\\bbridge\\b|air(?:port|line)|ferry|\\btram\\b|\\btoll\\b|scooter|hov lane|streetcar|turnpike|congestion pricing",
 
   `women's rights` = "women|metoo|\\bsexis(?:t|m)|patriarch|\\bgender\\b|domestic violence|femicide|equal rights amendment|\\bmen\'?s rights|\\bmother|misogyn|uterus|feminis|pussy"
 
