@@ -10,9 +10,10 @@ library(patchwork)
 library(usmap)
 library(tidycensus)
 
+
 options(stringsAsFactors = FALSE)
-
-
+getwd()
+setwd("/Users/fifiteklemedhin/Desktop/Research Fall 2023/Fall 2023/crowd-counting-consortium/protest-under-trump-replication-materials")
 # DATA INGESTION AND PREP
 
 ccc <- read.csv("data/ccc_compiled_20211229.csv")
@@ -331,7 +332,7 @@ round((100 * table(george_floyd$arrests_any)[2]/sum(table(george_floyd$arrests_a
 ## FIGURES ##
 
 # journal specifies that TNR must be used in all figures
-windowsFonts(Times=windowsFont("Times New Roman"))
+#windowsFonts(Times=windowsFont("Times New Roman"))
 
 # Figure 1. Monthly counts of U.S. protest events, January 2017-January 2021
 ccc_mo_count_text_dates <- lubridate::date(c("2018-03-01", "2018-04-01", "2020-06-01"))
@@ -421,6 +422,321 @@ plot_usmap(data = dplyr::select(ccc_fips, fips = fips_code, n_pc_cat),
                     guide = "legend",
                     name = "events per\n100,000 pop.")
 dev.off()
+
+
+
+# *************************** TODO ********************************************************
+# TODO: figure 5a; protests per capita on left and right; 'valence' is left v right
+ccc_compiled_present = read_csv("data/ccc_compiled_2021-present.csv")
+ccc_protests <- ccc %>% subset(grepl("protest", type, ignore.case = TRUE))
+
+events_per_100k_by_fips_and_valence <- function(df, valence_num)
+{
+    df <- df %>% subset(valence == valence_num) %>%
+    group_by(fips_code) %>%
+    tally() %>% # tallies number of times each fip code (county code) shows up
+    left_join(county_pop,.) %>% # joins with another table that gets population according to fip code
+    mutate(n = ifelse(is.na(n), 0, n), # if count for fip code occurences is NA make it 0???
+           events_per_100k = n/(popsize/100000)) %>% # calculates events per 100k ppl
+    arrange(-n) %>%
+    mutate(n_cat = case_when(
+      n == 0 ~ "0",
+      n < 10 ~ "1s",
+      n < 100 ~ "10s",
+      n < 1000 ~ "100s",
+      TRUE ~ "1,000+" )) %>%
+    mutate(n_cat = fct_relevel(n_cat, "0", "1s", "10s", "100s", "1,000+")) %>%
+    mutate(n_pc_cat = case_when(
+      events_per_100k == 0 ~ "0",
+      events_per_100k < 10 ~ "< 10",
+      events_per_100k >= 10 & events_per_100k < 20 ~ "10-20",
+      events_per_100k >= 20 & events_per_100k < 30 ~ "20-30",
+      TRUE ~ "30+" )) %>%
+    mutate(n_pc_cat = fct_relevel(n_pc_cat, "0", "< 10", "10-20", "20-30", "30+"))
+  
+}
+
+
+plot_flips_map <- function(df, file_name, map_title, color, palette)
+{
+  z1 = 10
+  # want states to show up over county lines. referenced https://stackoverflow.com/questions/59851823/plotting-both-state-and-county-boundaries-on-same-map-using-plot-usmap-from-usma
+  states <- plot_usmap("states", 
+                       color = "black",
+                       fill = alpha(0.01))
+  
+  png(paste("figs/", file_name, ".png"), res = 300, width = 7, height = 5, units = "in") # specifies where to output file
+  print(
+    plot_usmap(data = dplyr::select(df, fips = fips_code, n_pc_cat), # selects fips and n_pc_cat data to plot on map
+               regions = "counties",
+               values = "n_pc_cat", # says that n_pc_cat denotes counties
+               color = color,
+               size = 0.05) +
+      theme(legend.position = "right",
+            text=element_text(family="Times")) +
+      scale_fill_brewer(palette = palette,
+                        guide = "legend",
+                        name = paste(map_title)) # labels graph
+  ) + 
+    # wanted state lines to appear over county ones: copied segments from https://stackoverflow.com/questions/59851823/plotting-both-state-and-county-boundaries-on-same-map-using-plot-usmap-from-usma
+    geom_polygon(data=states[[1]], 
+                 aes(x=x, 
+                     y=y, 
+                     group=group), 
+                 color = "#3A3B3B", 
+                 fill = alpha(0.01)) + 
+    coord_equal()
+}
+
+
+
+# ******************************** TODO generate graphs for each ideology and type of event
+# TODO: get each unique type of event in the events column; can't find a designated list of types online
+
+ccc_event <- ccc %>% subset(grepl("protest", type, ignore.case = TRUE))
+events_nonunique_list = c()
+
+append_delimited_events <- function(str){
+  delimited <- unlist(strsplit(as.character(tolower(str)), split = "; "))#[[1]]
+  print("delimited:" )
+  print(delimited)
+  print("")
+  events_nonunique_list <<- c(events_nonunique_list, delimited)
+}
+
+event_types <- as.data.frame(ccc$type)
+event_types_list <- apply(event_types, MARGIN = 2, FUN= append_delimited_events)
+unique(event_types_list)
+events_nonunique_list <- unique(events_nonunique_list)
+
+
+index_1 <- events_nonunique_list[[1]]
+c("hello", index_1)
+index_1[[1]]
+typeof(index_1)
+
+left_protests_per_fips <- events_per_100k_by_fips_and_valence(df = ccc_protests, valence_num = 1)
+plot_flips_map(left_protests_per_fips, file_name ="fig-5a-left-protests-per-county-per-capita-state-lines", map_title = "Left/anti-Trump protests", color = "grey75", palette = "Blues")
+dev.off()
+
+right_protests_per_fips <- events_per_100k_by_fips_and_valence(df = ccc_protests, valence_num = 2)
+plot_flips_map(right_protests_per_fips, file_name = "fig-5b-right-protests-per-county-per-capita-state-lines", map_title = "Right/pro-Trump protests", "grey75", palette = "Reds")
+dev.off()
+
+
+# TODO # ********************************  Try with number of protesters instead of number of protests  # ********************************  
+
+###### PASTED FROM CAT FOR THE PROTESTORS PER CAPITA COUNT
+
+
+protestors_per_100k_by_fips_and_valence <- function(df, valence_num)
+{
+  df <- df %>% subset(valence==valence_num) %>%
+    group_by(fips_code) %>%
+    summarise(protestors = sum(size_mean, na.rm = TRUE)) %>%
+    left_join(county_pop, .) %>%
+    mutate(protestors = ifelse(is.na(protestors), 0, protestors),
+           protestors_per_100k = protestors/(popsize/100000)) %>%
+    arrange(-protestors_per_100k) %>%
+    mutate(n_pc_cat = case_when(
+      protestors_per_100k == 0 ~ "0",
+      protestors_per_100k >= 0 & protestors_per_100k < 1 ~ "0-1",
+      protestors_per_100k >= 1 & protestors_per_100k < 3 ~ "1-3",
+      protestors_per_100k >= 3 & protestors_per_100k < 5 ~ "3-5",
+      protestors_per_100k >= 5 & protestors_per_100k < 10 ~ "5-10",
+      protestors_per_100k >= 10 & protestors_per_100k < 15 ~ "10-15",
+      protestors_per_100k >= 15 & protestors_per_100k < 20 ~ "15-20",
+      protestors_per_100k >= 20 & protestors_per_100k < 25 ~ "20-25",
+      TRUE ~ "35+" )) %>%
+    mutate(n_pc_cat = fct_relevel(n_pc_cat, "0", "0-1", "1-3", "3-5", "5-10", "10-15","15-20","20-25","25+"))
+  
+  
+}
+
+
+ccc_fips_right_protestors <- protestors_per_100k_by_fips_and_valence(df = ccc_protests, valence_num = 2)
+ccc_fips_left_protestors <- protestors_per_100k_by_fips_and_valence(df = ccc_protests, valence_num = 1)
+
+plot_flips_map(ccc_fips_left_protestors, file_name ="fig-5c-left-protestors-per-county", map_title = "Left/anti-Trump protestors per county", color = "grey75", palette = "Blues")
+dev.off()
+plot_flips_map(ccc_fips_right_protestors, file_name = "fig-5d-right-protestors-per-county", map_title = "Right/pro-Trump protests per county", "grey75", palette = "Reds")
+dev.off()
+
+tester <- ccc_fips_right_protestors %>% subset(protestors==0)
+# TODO # ********************************  Plot raw_count_right_wing_protests/raw_count_left_wing_protests protests for each county # ******************************** 
+
+
+
+national_total_left_protests <- sum(left_protests_per_fips$n)
+national_total_right_protests <- sum(right_protests_per_fips$n)
+national_percent_right_protests <- national_total_right_protests / (national_total_left_protests + national_total_right_protests) # national proportion of right-wing protests to total protests with valence 1 or 2
+print(national_total_left_protests + national_total_right_protests)
+print(national_percent_right_protests)
+
+cc_fips_protests <- right_protests_per_fips %>%
+  inner_join(left_protests_per_fips, by = "fips_code", suffix = c("_right", "_left"))%>%
+  rename(protests_right = n_right,
+         protests_left = n_left)%>%
+  mutate(total_protests = protests_right + protests_left) %>%
+  mutate(percent_right_protests = 100 * protests_right / total_protests) %>%
+  mutate(percent_left_protests = 100 *protests_left / total_protests) 
+
+cc_fips_protests <- cc_fips_protests %>%
+  mutate(percent_right_protests = ifelse(is.na(percent_right_protests), 0, percent_right_protests)) %>%
+  mutate(percent_left_protests = ifelse(is.na(percent_left_protests), 0, percent_left_protests)) 
+  
+cc_fips_protests <- cc_fips_protests %>%
+  select(fips_code, percent_right_protests, protests_right, protests_left, total_protests, everything())
+
+
+
+color_cases = c()
+num_ranges = c("No Protests")
+gradient_requirements = c()
+step = 5
+for (i in seq(0, 4, by = 1)) {
+  new_num_range = paste0(i, "-", i+1)
+  new_case = substitute(percent_right_protests >= i & percent_right_protests < i_plus_step ~ new_num_range, list(i=i, i_plus_step=i+1, new_num_range = new_num_range))
+  
+  num_ranges <- append(num_ranges, new_num_range)
+  color_cases <- append(color_cases, new_case)
+}
+for (i in seq(5, 95, by = step)) {
+  new_num_range = paste0(i, "-", i+step)
+  new_case = substitute(percent_right_protests >= i & percent_right_protests < i_plus_step ~ new_num_range, list(i=i, i_plus_step=i+step, new_num_range = new_num_range))
+  
+  num_ranges <- append(num_ranges, new_num_range)
+  color_cases <- append(color_cases, new_case)
+  
+}
+# Combine the formulas into a single formula string
+final_color_cases <- as.formula((paste(color_cases, collapse = " + ")))
+
+# used CHATGPT:
+# Define the color range
+colors <- c("#4270eb", "#4290eb", "#A030A0", "#eb4255","#D40032","#A60027")  # Blue, Purple, Red in hex format, "#4282eb", "#4230eb", "#A00180", 
+
+colors_blue <- c("#4270eb", "#d04255", )  # Blue, Purple, Red in hex format, "#4282eb", "#4230eb", "#A00180", 
+colors_red <- c("#D40032","#A60027") 
+# Create a function to generate the gradient colors
+generate_gradient <- colorRampPalette(colors)
+generate_blue_gradient <- colorRampPalette(colors_blue)
+generate_red_gradient <- colorRampPalette(colors_red)
+
+# Generate 10 colors in the gradient
+gradient_colors <- c("#f7f8fa")
+gradient_colors <- append(gradient_colors, generate_blue_gradient(3)) # did -1 since already predefined a color for 0, which is white
+gradient_colors <- append(gradient_colors, generate_red_gradient(length(num_ranges)-1 - 3)) 
+  
+gradient_requirements <- setNames(gradient_colors, num_ranges)
+
+print(length(gradient_colors))
+
+
+
+plot_flips_map_gradient <- function(df, file_name, map_title, color, gradient_requirements)
+{
+  z1 = 10
+  # want states to show up over county lines. referenced https://stackoverflow.com/questions/59851823/plotting-both-state-and-county-boundaries-on-same-map-using-plot-usmap-from-usma
+  states <- plot_usmap("states", 
+                       color = "black",
+                       fill = alpha(0.01))
+  # Display the gradient colors
+  gradient_colors
+  png(paste("figs/", file_name, ".png"), res = 300, width = 7, height = 5, units = "in") # specifies where to output file
+  print(
+    plot_usmap(data = dplyr::select(df, fips = fips_code, n_pc_cat), # selects fips and n_pc_cat data to plot on map
+               regions = "counties",
+               values = "n_pc_cat", # says that n_pc_cat denotes counties
+               color = color,
+               size = 0.05) +
+      theme(legend.position = "right",
+            text=element_text(family="Times")) +
+      
+      scale_fill_manual(
+        values = gradient_requirements,
+        na.value = "grey50"
+      ) + 
+      # wanted state lines to appear over county ones: copied segments from https://stackoverflow.com/questions/59851823/plotting-both-state-and-county-boundaries-on-same-map-using-plot-usmap-from-usma
+      geom_polygon(data=states[[1]], 
+                     aes(x=x, 
+                         y=y, 
+                         group=group), 
+                     color = "#3A3B3B", 
+                     fill = alpha(0.01)) + 
+      coord_equal()
+      
+  )
+}
+
+
+
+
+cc_fips_protests <- cc_fips_protests %>% 
+  arrange(-percent_right_protests) %>%
+  #mutate(n_pc_cat = case_when(percent_right_protests >= 0 & percent_right_protests < 110 ~ "0-10", final_color_cases, TRUE ~ "80+"  )) %>%
+  mutate(n_pc_cat_right = case_when(
+    percent_right_protests == 0 & percent_left_protests == 0 ~ "No Protests",
+    percent_right_protests >= 0 & percent_right_protests < 1 ~ "0-1",
+    percent_right_protests >= 1 & percent_right_protests < 2 ~ "1-2",
+    percent_right_protests >= 2 & percent_right_protests < 3 ~ "2-3",
+    percent_right_protests >= 3 & percent_right_protests < 4 ~ "3-4",
+    percent_right_protests >= 4 & percent_right_protests < 5 ~ "4-5", 
+    percent_right_protests >= 5 & percent_right_protests < 10 ~ "5-10",
+    percent_right_protests >= 10 & percent_right_protests < 15 ~ "10-15" ,
+    percent_right_protests >= 15 & percent_right_protests < 20 ~ "15-20" ,
+    percent_right_protests >= 20 & percent_right_protests < 25 ~ "20-25" ,
+    percent_right_protests >= 25 & percent_right_protests < 30 ~ "25-30" ,
+    percent_right_protests >= 30 & percent_right_protests < 35 ~ "30-35" ,
+    percent_right_protests >= 35 & percent_right_protests < 40 ~ "35-40" ,
+    percent_right_protests >= 40 & percent_right_protests < 45 ~ "40-45" ,
+    percent_right_protests >= 45 & percent_right_protests < 50 ~ "45-50" ,
+    percent_right_protests >= 50 & percent_right_protests < 55 ~ "50-55" ,
+    percent_right_protests >= 55 & percent_right_protests < 60 ~ "55-60" ,
+    percent_right_protests >= 60 & percent_right_protests < 65 ~ "60-65" ,
+    percent_right_protests >= 65 & percent_right_protests < 70 ~ "65-70" ,
+    percent_right_protests >= 70 & percent_right_protests < 75 ~ "70-75" ,
+    percent_right_protests >= 75 & percent_right_protests < 80 ~ "75-80" ,
+    percent_right_protests >= 80 & percent_right_protests < 85 ~ "80-85" ,
+    percent_right_protests >= 85 & percent_right_protests < 90 ~ "85-90" ,
+    percent_right_protests >= 90 & percent_right_protests < 95 ~ "90-95" ,
+    percent_right_protests >= 95 & percent_right_protests <= 100 ~ "95-100",
+    TRUE ~ "No Protests"
+  ))%>%
+  mutate(n_pc_cat_right = fct_relevel(n_pc_cat_right, "0", num_ranges, "90+"))
+
+  
+
+percent_right_fips_protests <- cc_fips_protests %>% 
+  select(fips_code, n_pc_cat_right) 
+colnames(percent_right_fips_protests)[2] <- "n_pc_cat"
+
+plot_flips_map_gradient(df = percent_right_fips_protests, file_name ="fig-5e", map_title = "national proportion of right-wing to total protests", color = "grey75", gradient_requirements = gradient_requirements)
+dev.off()
+
+
+
+has_protests <- cc_fips_protests %>%
+  filter(total_protests > 0)
+fivenum(has_protests$percent_left_protests)
+fivenum(has_protests$percent_right_protests)
+print(19897 + 2224) #
+
+#right_protests <- 
+print(2224/22121) # proportion of right-wing protests to total 
+
+
+
+
+
+# if rawcountrightwingprotests/rawcountleftwing protests for each county
+# national midpoint will be 2224/22121; proprotion of right-wing protests to total
+# counties that are higher than national midpoint are right-wing
+
+# for coloring use a gradient: get min non-0 proportion = blue and max proportion = red, national midpoint = purple, 0 is white 
+
+
+
 
 # Figure 6. Incidences of arrests, protester injuries, police injuries, and property damage at U.S. protests by year, 2017-2020
 p_arrests <- ccc %>%
