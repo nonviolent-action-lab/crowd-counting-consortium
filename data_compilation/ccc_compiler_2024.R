@@ -4,8 +4,6 @@ library(tidyverse)
 library(readxl)
 library(tigris)
 
-options(stringsAsFactors = FALSE)
-
 setwd("~/nval/ccc")
 
 edge_date <- Sys.Date() - 3
@@ -13,17 +11,63 @@ edge_date <- Sys.Date() - 3
 
 ### DATA COMPILATION ###
 
-# NOTE: This assumes that current versions of all relevant CCC Google Sheets have
-# been downloaded as .xls files into a local directory called ~/nval/ccc/data_raw
+# function to process a post-2021 sheet
+ccc_prepro <- function(x) {
 
-# preprocess all raw monthly files from Jan 2021 to current month
-# NOTE: this function depends on cols in all of these files having the same
-# number of cols in the same order, bc it prespecifies col types
-source("r/ccc_data_preprocessor.r")
+  require(tidyverse)
+  require(readxl)
 
-date_seq <- seq(from = as.Date("2021-01-01"), to = Sys.Date(), by = "month")
+  options(stringsAsFactors = FALSE)
 
-file_seq <- map_chr(date_seq, function(x) {
+  my_col_types <- c("date", rep("text", 5), rep("numeric", 2), rep("text", 3), "numeric", rep("text", 42))
+
+  dat <- read_excel(x, sheet = "Tally", col_types = my_col_types)
+
+  dat <- dat %>%
+    rename_at(vars(starts_with("source")), ~str_to_title(.)) %>% 
+    mutate(date = as.character(date),
+           Misc = paste(title, notes),
+           Misc = str_trim(str_replace_all(Misc, "NA", "")),
+           Actor = case_when(
+             (organizations == "na" | organizations == "" | is.na(organizations)) & is.na(participants) ~ "",
+             (organizations == "na" | organizations == "" | is.na(organizations)) & !is.na(participants) ~ participants,
+             is.na(participants) ~ organizations,
+             TRUE ~ paste(organizations, participants, sep = "; ")
+           ),
+           TearGas = as.numeric(grepl("tear gas|chemical|pepper|irritant", police_measures))) %>%
+    select(CityTown = locality,
+           StateTerritory = state,
+           Location = location,
+           Date = date,
+           EstimateText = size_text,
+           EstimateLow = size_low,
+           EstimateHigh = size_high,
+           Actor,
+           Claim = claims,
+           ClaimType = valence,
+           EventType = event_type,
+           ReportedArrests = arrests,
+           ReportedParticipantInjuries = participant_injuries,
+           ReportedPoliceInjuries = police_injuries,
+           ReportedPropertyDamage = property_damage,
+           TearGas,
+           MacroEvent = macroevent,
+           Misc,
+           starts_with("Source"),
+           title,
+           organizations,
+           participants,
+           participant_measures,
+           police_measures,
+           participant_deaths,
+           police_deaths)
+
+  return(dat)
+
+}
+
+# make vector of names of data sheets to process
+file_seq <- map_chr(seq(from = as.Date("2021-01-01"), to = Sys.Date() + 14, by = "month"), function(x) {
 
   yr <- substr(x, 1, 4)
 
@@ -33,29 +77,25 @@ file_seq <- map_chr(date_seq, function(x) {
 
 })
 
-purrr::walk(file_seq, ccc_prepro)
+# add super-repeater file name to that vector
+file_seq <- append(file_seq, "data_raw/CCC Super Repeaters.xlsx")
 
-# now preprocess raw file for super-repeater events
-ccc_prepro("data_raw/CCC Super Repeaters.xlsx")
+# process raw data files named in that vector into list
+dat_list <- lapply(file_seq, ccc_prepro)
 
-# compile all pre-processed monthly files into one table
-file_names <- grep("ccc_\\d{4}_\\d{2}", list.files("data_clean"), value = TRUE)
-file_names <- file_names[as.numeric(substr(file_names, 5, 8)) >= 2021]  # reduce to 2021-
-file_names <- append(file_names, "ccc_super_repeaters.csv")  # add super-repeaters
-clean_files <- map(paste0("data_clean/", file_names), read.csv)
-dat_raw <- data.table::rbindlist(clean_files, fill = TRUE)
-dat_raw <- dat_raw[date(dat_raw$Date) >= "2021-01-01",]  # drop super-repeaters from before 2021
+# collapse list into a single data frame
+dat <- data.table::rbindlist(dat_list, fill = TRUE)
+
+# reduce data to relevant period (Super-Repeaters contains earlier events)
+dat <- filter(dat, lubridate::date(Date) >= "2021-01-01")
+
+print(nrow(dat))
 
 
 ### DATA CLEANING ###
 
-dat <- dat_raw
-
-# remove country col
-dat <- select(dat, -Country)
-
 # create dummy for online/virtual events
-dat <- mutate(dat, Online = ifelse(StateTerritory == "VIRTUAL" | tolower(CityTown) == "online", 1, 0))
+dat$Online = with(dat, as.integer(StateTerritory == "VIRTUAL" | tolower(CityTown) == "online" | grepl("virtual|online", EventType, ignore.case = TRUE)))
 
 # clean up crowd estimates, convert to numeric, and create average and ordered factor for orders of magnitude
 dat$EstimateLow <- as.integer(dat$EstimateLow)
@@ -214,6 +254,7 @@ dat <- left_join(dat, location_lookup, relationship = "many-to-many")
 
 # eyeball how many new locations were added to lookup table
 print(nrow(new_locations))
+print(new_locations)
 
 
 ### ISSUE TAGGING ###
@@ -309,7 +350,7 @@ dat <- dat %>%
          resolved_state = state)
                    
 dat <- dat %>%
-  mutate(date = as.Date(date)) %>%
+  mutate(date = lubridate::date(date)) %>%
   arrange(date, state, locality)
 
 
@@ -322,34 +363,15 @@ dat <- fips_for_county(dat)
 
 ### OUTPUT ###
 
-dat_2021 <- dat
-nrow(dat_2021)
-
-# store version of post-2020 data for GitGub with recent events trimmed
-write.csv(dat_2021[dat_2021$date <= edge_date,],
-          "c:/users/ulfel/documents/github/crowd-counting-consortium/ccc_compiled_2021-present.csv",
-          row.names = FALSE)
-
-# load archived pre-2021 data
-dat_2017 <- read.csv("c:/users/ulfel/documents/github/crowd-counting-consortium/ccc_compiled_2017-2020.csv") %>%
-  mutate(date = lubridate::date(date),
-         fips_code = ifelse(nchar(fips_code) == 4, paste0("0", fips_code), fips_code))
-
-# merge pre- and post-2021 data
-dat_full <- rbindlist(list(dat_2017, dat_2021))
+print(nrow(dat))
 
 # store local version with all events from all sheets
-write.csv(dat_full, "data_clean/ccc_compiled.csv", row.names = FALSE)
+write.csv(dat, "data_clean/ccc_compiled_2021-present.csv", row.names = FALSE)
 
 # now drop past few days and all future days for posted version
-dat <- dat_full[dat_full$date <= edge_date,]
-nrow(dat)
+dat_truncated <- filter(dat, date <= edge_date)
+print(nrow(dat_truncated))
 
-# produce and store version with preprocessing and col dropping for CCC Data Dashboard
-source("r/ccc_dashboard_data_prep.r")
+# save for github
+write.csv(dat_truncated, "c:/users/ulfel/documents/github/crowd-counting-consortium/ccc_compiled_2021-present.csv", row.names = FALSE)
 
-# produce and store version with preprocessing and col dropping for Palestine Protest Dashboard
-source("r/palestine_dashboard_data_prep.r")
-
-# produce and store version with preprocessing and col dropping for Israel Protest Dashboard
-source("r/israel_dashboard_data_prep.r")
