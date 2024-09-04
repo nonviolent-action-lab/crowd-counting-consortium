@@ -93,6 +93,10 @@ ccc$electeds <- with(ccc, ifelse(grepl("\\belected|lawmaker|legislator|council",
 ccc$schools <- with(ccc, ifelse(grepl(regex_schools, location_detail, ignore.case = TRUE, perl = TRUE), 1, 0))
 ccc$casualties <- with(ccc, ifelse(injuries_crowd_any == 1 | !is.na(participant_deaths), 1, 0))
 
+# flag for events where foreign affairs was a major issue per coder (to allow option of 
+# excluding ones where it wasn't)
+ccc$major_issue <- with(ccc, ifelse(grepl("foreign", issues_major), 1, 0))
+
 ccc$arrests <- as.integer(ccc$arrests)
 ccc$arrests <- with(ccc, ifelse(is.na(arrests), 0, arrests))
 ccc$injuries_crowd <- as.integer(ccc$injuries_crowd)
@@ -121,6 +125,7 @@ ccc <- select(ccc,
               electeds,
               schools,
               casualties,
+              major_issue,
               claims,
               lat,
               lon,
