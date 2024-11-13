@@ -94,6 +94,7 @@ ccc$electeds <- with(ccc, ifelse(grepl("\\belected|lawmaker|legislator|council",
 ccc$schools <- with(ccc, ifelse(grepl(regex_schools, location_detail, ignore.case = TRUE, perl = TRUE), 1, 0))
 ccc$casualties <- with(ccc, ifelse(injuries_crowd_any == 1 | !is.na(participant_deaths), 1, 0))
 ccc$encampment <- with(ccc, ifelse(grepl("encamp", participant_measures, ignore.case = TRUE), 1, 0))
+ccc$studyin <- with(ccc, ifelse(grepl("(?:study|pray)-in", participant_measures, ignore.case = TRUE), 1, 0))
 
 # flag for events where foreign affairs was a major issue per coder (to allow option of 
 # excluding ones where it wasn't)
@@ -128,6 +129,7 @@ ccc <- select(ccc,
               schools,
               casualties,
               encampment,
+              studyin,
               major_issue,
               claims,
               lat,
