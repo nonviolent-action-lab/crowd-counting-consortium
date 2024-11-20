@@ -5,7 +5,7 @@ edge_date <- Sys.Date() - 1
 
 ccc <- read.csv("c:/users/ulfel/documents/nval/ccc/data_clean/ccc_compiled.csv") %>%
   filter(date >= "2023-10-07" & date <= edge_date) %>%
-  filter(grepl("for palestinian (?:liberation|rights)|for freedom for palestine|free palestine(?! from hamas)|in solidarity with (?:palestin|gaza)|in remembrance of palestin|ceasefire in gaza|against apartheid in israel|(?:for ending|against) israel's occupation of palestin|genocide of palestin", claims, ignore.case = TRUE, perl = TRUE)) %>%
+  filter(grepl("for palestinian (?:liberation|rights)|for freedom for palestine|free palestine(?! from hamas)|in solidarity with (?:palestin|gaza)|in remembrance of palestin|ceasefire in gaza|against apartheid in israel|(?:for ending|against) israel's occupation of palestin|genocide of palestin|against genocide in (?:gaza|palestine)", claims, ignore.case = TRUE, perl = TRUE)) %>%
   filter(!grepl("in solidarity with Israel", claims, ignore.case = TRUE)) %>%
   filter(!(grepl("counter-protest", type) & !grepl("foreign", issues_major)))
 

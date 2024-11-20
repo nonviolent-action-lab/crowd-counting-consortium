@@ -68,11 +68,13 @@ ccc <- mutate(ccc, marker_radius = case_when(
 ))
 
 # create other markers to use as filters
+
+# regular expression to tag schools
 regex_schools <- paste(
   
   c("college(?! (?:st(reet)?|ave(nue)?|r(oa)?d|cir(cle)?|dr(ive)?\\b|blvd|heights|point|green|athletic))",
-    "university(?! (?:st(reet)?|ave(nue)?|r(oa)?d|cir(cle)?|dr(ive)?\\b|blvd|heights|city|behavioral|hospital|plaza|lakes|office|irving))",
-    "school(?! (?:st(reet)?\\b|ave(nue)?|r(oa)?d|cir(cle)?|dr(ive)?\\b|blvd|heights))",
+    "university(?! (?:st(reet)?|ave(nue)?|r(oa)?d|cir(cle)?|dr(ive)?\\b|blvd|heights|city|behavioral|hospital|plaza|lakes|office|irving|system|investment))",
+    "(?<!public )school(?! (?:st(reet)?\\b|ave(nue)?|r(oa)?d|cir(cle)?|dr(ive)?\\b|blvd|heights|district|park))",
     "\\bcooper union",
     "institute of technology",
     "\\bpoly(technic (state )?(?:institute|university))?",
