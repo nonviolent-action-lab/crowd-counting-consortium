@@ -63,7 +63,9 @@ And here are some working papers we've seen that use the dataset. Again, please 
 ## Journalism Using CCC Data
 Journalists also use CCC data, often to document trends or provide context in stories on specific events. Here are some examples.
 
-* "How Donald Trump's Rally Sizes Have Shrunk Since 2016." *Newsweek* (November 4, 2024) [link](https://www.newsweek.com/how-trump-rallies-have-shrunk-2024-election-1979968)
+* "How universities cracked down on pro-Palestinian activism", *The New York Times* (November 25, 2024) [link](https://www.nytimes.com/2024/11/25/us/university-crackdowns-protests-israel-hamas-war.html)
+
+* "How Donald Trump's rally sizes have shrunk since 2016," *Newsweek* (November 4, 2024) [link](https://www.newsweek.com/how-trump-rallies-have-shrunk-2024-election-1979968)
 
 * "Riot police and over 2,000 arrests: a look at 2 weeks of campus protests", *The Washington Post* (May 3, 2024) [link](https://www.washingtonpost.com/nation/interactive/2024/university-antiwar-campus-protests-arrests-data/)
 
