@@ -27,7 +27,7 @@ walk(script.names, ~source(paste0("r/", .)))
 # number of cols in the same order, bc it prespecifies col types
 source("r/ccc_data_preprocessor.r")
 
-date_seq <- seq(from = as.Date("2021-01-01"), to = Sys.Date() + 14, by = "month")
+date_seq <- seq(from = as.Date("2021-01-01"), to = as.Date("2024-12-01"), by = "month")
 
 file_seq <- map_chr(date_seq, function(x) {
 
