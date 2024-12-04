@@ -28,6 +28,8 @@ If you have suggestions on how to improve this repository or the compiled versio
 ## Academic Research Using CCC Data
 Curious how these data are getting used? Here, in reverse chronological order, are peer-reviewed published studies that have used CCC's work. If you are aware of any published articles or monographs that cite the data that aren't listed here, please let us know.
 
+* Erica Chenoweth, Soha Hammam, Jeremy Pressman, and Jay Ulfelder. "Protests in the United States on Palestine and Israel, 2023–2024." *Social Movement Studies* (October 2024) [link](https://www.tandfonline.com/doi/full/10.1080/14742837.2024.2415674)
+
 * Amory Gethin and Vincent Pons. "Social Movements and Public Opinion in the United States." National Bureau of Economic Research Working Paper No. 32342 (April 2024) [link](https://www.nber.org/papers/w32342)
 
 * Neal Caren. "Right-Wing Protest in the United States, 2017 to 2022." *Socius: Sociological Research for a Dynamic World* (July 5, 2023). [link](https://journals.sagepub.com/doi/10.1177/23780231231181900)
@@ -60,6 +62,14 @@ And here are some working papers we've seen that use the dataset. Again, please 
 
 ## Journalism Using CCC Data
 Journalists also use CCC data, often to document trends or provide context in stories on specific events. Here are some examples.
+
+* "US-based lab recorded 12,400 pro-Palestine protests in 8 months after October 7", *The Jerusalem Post* (November 25, 2024) [link](https://www.jpost.com/diaspora/article-830687)
+
+* "The race to pacify protesters", *Chronicle of Higher Education* (November 25, 2024) [link](https://www.chronicle.com/article/the-race-to-pacify-protesters)
+
+* "How universities cracked down on pro-Palestinian activism", *The New York Times* (November 25, 2024) [link](https://www.nytimes.com/2024/11/25/us/university-crackdowns-protests-israel-hamas-war.html)
+
+* "How Donald Trump's rally sizes have shrunk since 2016," *Newsweek* (November 4, 2024) [link](https://www.newsweek.com/how-trump-rallies-have-shrunk-2024-election-1979968)
 
 * "Riot police and over 2,000 arrests: a look at 2 weeks of campus protests", *The Washington Post* (May 3, 2024) [link](https://www.washingtonpost.com/nation/interactive/2024/university-antiwar-campus-protests-arrests-data/)
 
