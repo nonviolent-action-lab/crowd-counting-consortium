@@ -1,3 +1,5 @@
+NOTE: In early 2025, this project will migrate its data dissemination to the Harvard Dataverse and, after a time, will close this repository. Stay tuned for relevant links. In the meantime, no more updates will be posted here.  
+
 # Crowd Counting Consortium Dataset
 This repository is home to a compiled and augmented version of the [Crowd Counting Consortium](https://sites.google.com/view/crowdcountingconsortium/home)'s data on political protest events in the United States. We use a broad definition of "protest," so the dataset includes protests, rallies, demonstrations, marches, strikes, and similar actions.
 
